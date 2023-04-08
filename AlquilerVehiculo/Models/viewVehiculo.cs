@@ -12,11 +12,15 @@ namespace AlquilerVehiculo.Models
         public string Estado { get; set; }
         public int IdSede { get; set; }
         public viewSede Sede { get; set; }
-        public string Nombres { get; set; }
-        public string Apellidos { get; set; }
-        public int Edad { get; set; }
-        public string NumeroLicencia { get; set; }
-        public int IdLicencia { get; set; }
+        public int IdMarca { get; set; }
+        public viewMarca Marca { get; set; }
+        public int IdGama { get; set; }
+        public viewGama Gama { get; set; }
+        public int IdColor { get; set; }
+        public viewColor Color { get; set; }
+        public int Precio { get; set; }
+        public int IdTipoVehiculo { get; set; }
+        public viewTipoVehiculo TipoVehiculo { get; set; }
         public string Comando { get; set; }
     }
 }

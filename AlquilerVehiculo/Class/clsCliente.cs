@@ -15,7 +15,7 @@ namespace AlquilerVehiculo.Class
         {
             //Crear el objeto conexión 
             clsConexion oConexion = new clsConexion();
-            string SQL = "Cliente_Ingresar";
+            string SQL = "Registrar_Cliente";
             oConexion.SQL = SQL;
             oConexion.StoredProcedure = true;
             oConexion.AgregarParametro("@prDocumento", System.Data.SqlDbType.VarChar, 20, vCliente.Documento);
@@ -41,7 +41,7 @@ namespace AlquilerVehiculo.Class
         {
             //Crear el objeto conexión 
             clsConexion oConexion = new clsConexion();
-            string SQL = "Cliente_Actualizar";
+            string SQL = "Actualizar_Cliente";
             oConexion.SQL = SQL;
             oConexion.StoredProcedure = true;
             oConexion.AgregarParametro("@prDocumento", System.Data.SqlDbType.VarChar, 20, vCliente.Documento);
@@ -67,7 +67,7 @@ namespace AlquilerVehiculo.Class
         {
             //Crear el objeto conexión 
             clsConexion oConexion = new clsConexion();
-            string SQL = "Cliente_Eliminar";
+            string SQL = "Borrar_Cliente";
             oConexion.SQL = SQL;
             oConexion.StoredProcedure = true;
             oConexion.AgregarParametro("@prDocumento", System.Data.SqlDbType.VarChar, 20, vCliente.Documento);
@@ -86,7 +86,7 @@ namespace AlquilerVehiculo.Class
         public viewCliente Consultar(string Documento)
         {
             clsConexion oConexion = new clsConexion();
-            string SQL = "Cliente_Consultar";
+            string SQL = "Consultar_Cliente";
             oConexion.SQL = SQL;
             oConexion.StoredProcedure = true;
             oConexion.AgregarParametro("@prDocumento", System.Data.SqlDbType.VarChar, 20, vCliente.Documento);

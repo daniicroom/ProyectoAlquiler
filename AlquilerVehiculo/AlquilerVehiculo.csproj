@@ -227,6 +227,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\viewTipoTelefono.cs" />
+    <Compile Include="Models\viewTelefonoCliente.cs" />
+    <Compile Include="Models\viewAlquiler.cs" />
+    <Compile Include="Models\viewDevolucion.cs" />
+    <Compile Include="Models\viewLicencia.cs" />
     <Compile Include="Models\viewPais.cs" />
     <Compile Include="Models\viewDepartamento.cs" />
     <Compile Include="Models\viewCiudad.cs" />
@@ -234,6 +239,10 @@
     <Compile Include="Models\viewCliente.cs" />
     <Compile Include="Models\viewEmpleado.cs" />
     <Compile Include="Models\viewCargoEmpleado.cs" />
+    <Compile Include="Models\viewGama.cs" />
+    <Compile Include="Models\viewMarca.cs" />
+    <Compile Include="Models\viewColor.cs" />
+    <Compile Include="Models\viewTipoVehiculo.cs" />
     <Compile Include="Models\viewTipoDocumento.cs" />
     <Compile Include="Models\viewVehiculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

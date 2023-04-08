@@ -28,21 +28,24 @@ namespace AlquilerVehiculo.Controllers
         private string Procesar(viewVehiculo vehiculo)
         {
             clsVehiculo oVehiculo = new clsVehiculo();
-            /*oVehiculo.vVehiculo = vehiculo;
+            oVehiculo.vVehiculo = vehiculo;
             switch (vehiculo.Comando)
             {
-                case "Insertar":
+                /*case "Insertar":
                     return oVehiculo.Insertar();
                 case "Actualizar":
                     return oVehiculo.Actualizar();
                 case "Eliminar":
-                    return oVehiculo.Eliminar();
-                case "Consultar":
-                    return JsonConvert.SerializeObject(oVehiculo.Consultar(vehiculo.Placa));
+                    return oVehiculo.Eliminar();*/
+                case "Alquilar":
+                    return oVehiculo.Alquilar();
+                case "Devolver":
+                    return oVehiculo.Devolver();
+                /*case "Consultar":
+                    return JsonConvert.SerializeObject(oVehiculo.Consultar(vehiculo.Placa));*/
                 default:
                     return "Comando sin definir";
-            }*/
-            return "ok";
+            }
         }
         public bool IsReusable
         {

@@ -15,6 +15,7 @@ namespace AlquilerVehiculo.Models
         public int Edad { get; set; }
         public string NumeroLicencia { get; set; }
         public int IdLicencia { get; set; }
+        public viewLicencia Licencia { get; set; }
         public string Comando { get; set; }
     }
 }

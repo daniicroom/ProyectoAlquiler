@@ -9,8 +9,8 @@ namespace AlquilerVehiculo.Models
     {
         public string Documento { get; set; }
         public string Nombres { get; set; }
-        public string Apelligos { get; set; }
-        public string IdCargoEmpleado { get; set; }
+        public string Apellidos { get; set; }
+        public int IdCargoEmpleado { get; set; }
         public viewCargoEmpleado CargoEmpleado { get; set; }
         public string Comando { get; set; }
     }
