@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GESTIONAR ALQUILER</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link href="Estilos/all.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link href="Estilos/adminlte.min.css" rel="stylesheet" />
+    <!-- Estilos para el datatable -->
+    <link href="Estilos/dataTables.min.css" rel="stylesheet" />
+    <link href="Estilos/dataTables.bootstrap4.min.css" rel="stylesheet" />
+</head>
+<body class="hold-transition sidebar-mini">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-dark">GESTIONAR ALQUILER</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form id="frmGestionarAlquiler">
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="txtCodigoDevolucion">Código de Alquiler</label>
+                                            <input type="text" class="form-control" id="txtCodigoDevolucion" placeholder="Código de devolución" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="cboEmpleado">Empleado</label>
+                                            <select id="cboEmpleado" class="form-control select2" style="width: 100%;">
+                                                <option selected="selected" value="0">Seleccione un empleado</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="txtPlaca">Placa del Vehículo</label>
+                                            <input type="text" class="form-control" id="txtPlaca" placeholder="Placa del Vehícul">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="txtFechaInicio">Fecha Inicio</label>
+                                            <input type="text" class="form-control" id="txtFechaInicio" placeholder="Fecha Inicio" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="txtFechaFin">Fecha Fin</label>
+                                            <input type="text" class="form-control" id="txtFechaFin" placeholder="Fecha Fin" >
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="txtDocumento">Documento Cliente</label>
+                                            <input type="text" class="form-control" id="txtDocumento" placeholder="Documento del Cliente">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <img id="btnBuscar" src="../Imagenes/Buscar.jpg" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtNombreCliente">Nombre del Cliente</label>
+                                            <input type="text" class="form-control" id="txtNombreCliente" placeholder="Nombre del Cliente" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="txtEstado">Estado Alquiler</label>
+                                            <input type="text" class="form-control" id="txtEstado" placeholder="Estado Alquiler" disabled>
+                                        </div>
+                                    </div>
+
+
+                                </div>                    
+
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <button type="button" id="btnRegistrar" class="btn-block btn-lg btn-primary">REGISTRAR</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" id="btnActualizar" class="btn-block btn-lg btn-primary">ACTUALIZAR</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" id="btnEliminar" class="btn-block btn-lg btn-primary">ELIMINAR</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" id="btnConsultar" class="btn-block btn-lg btn-primary">CONSULTAR</button>
+                                    </div>
+                                </div><br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table id="tblDevolucion" class="display" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Código Alquiler</th>
+                                                    <th>Cedula Cliente</th>
+                                                    <th>Empleado</th>
+                                                    <th>Placa Vehículo</th>
+                                                    <th>Estado Alquiler</th>
+                                                    <th>Fecha Inicio</th>
+                                                    <th>Fecha Fin</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                                <div id="dvMensaje" class=""></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../Scripts/jquery.min.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/jquery.dataTables.min.js"></script>
+    <script src="../Scripts/dataTables.bootstrap4.min.js"></script>
+    <script src="Scripts/Comunes/Combos.js"></script>
+    <script src="Scripts/Comunes/Tablas.js"></script>
+    <script src="Scripts/Comunes/FuncionesComunes.js"></script>
+    <script src="Scripts/AlquilerVehiculo.js"></script>
+    <!-- /.card -->
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlquilerVehiculo", "AlquilerVehiculo.csproj", "{5B27EAEB-32EF-4793-A841-B60E9E21E86D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicioAlquiler", "..\ServicioAlquiler\ServicioAlquiler.csproj", "{2274A20B-D760-4498-BDD7-E37C5B0C3FA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B27EAEB-32EF-4793-A841-B60E9E21E86D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B27EAEB-32EF-4793-A841-B60E9E21E86D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B27EAEB-32EF-4793-A841-B60E9E21E86D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B27EAEB-32EF-4793-A841-B60E9E21E86D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2274A20B-D760-4498-BDD7-E37C5B0C3FA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2274A20B-D760-4498-BDD7-E37C5B0C3FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2274A20B-D760-4498-BDD7-E37C5B0C3FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2274A20B-D760-4498-BDD7-E37C5B0C3FA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DAFE5284-1D8C-4FCF-AEC1-CE56278C08F0}
+	EndGlobalSection
+EndGlobal
