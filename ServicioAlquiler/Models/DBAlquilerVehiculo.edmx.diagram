@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f49ed34f560947efbbd280459aefebda" Name="Diagram1">
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblAlquiler" Width="1.5" PointX="12" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblCargoEmpleado" Width="1.5" PointX="7.5" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblCiudad" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblCliente" Width="1.5" PointX="9.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblColor" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblDepartamento" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblDevolucion" Width="1.5" PointX="14.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblEmpleado" Width="1.5" PointX="9.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblGama" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblLicencia" Width="1.5" PointX="7.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblMarca" Width="1.5" PointX="7.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblPais" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblSede" Width="1.5" PointX="7.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblTelefonoCliente" Width="1.5" PointX="12" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblTipoDocumento" Width="1.5" PointX="7.5" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblTipoTelefono" Width="1.5" PointX="9.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblTipoVehiculo" Width="1.5" PointX="7.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblVehiculo" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblAlquil__Cedul__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblAlquil__IDEmp__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblAlquil__Placa__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblDevolu__Codig__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblEmplea__IDCar__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblCiudad__Codig__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblSede__IDCiuda__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblClient__IDLic__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblClient__TipoD__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblTelefo__Cedul__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblVehicu__IDCol__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblDepart__IDPai__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblDevolu__IDEmp__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblVehicu__IDGam__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblVehicu__IDMar__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblVehicu__IDSed__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblTelefo__IDTip__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAlquilerVehiculoModel.FK__tblVehicu__IDTip__47DBAE45" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

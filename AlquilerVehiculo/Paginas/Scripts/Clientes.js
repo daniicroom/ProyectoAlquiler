@@ -18,11 +18,11 @@ $(document).ready(function () {
 });
 
 function LlenarComboTipoDocumento() {
-    LlenarComboServicio("http://localhost:50007/Api/Cliente", "#cboTipoDocumento", "", true);
+    LlenarComboServicio("http://localhost:62556/api/Cliente", "#cboTipoDocumento", "", true);
 }
 
 function LlenarCategoriaLicencia() {
-    LlenarComboServicio("http://localhost:50007/Api/Cliente", "#cboCategoriaLicencia", "", true);
+    LlenarComboServicio("http://localhost:62556/api/Cliente", "#cboCategoriaLicencia", "", true);
 }
 
 
@@ -32,7 +32,7 @@ function Consultar() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:50007/Api/Cliente?Documento=" + Documento,
+        url: "http://localhost:62556/api/Cliente?Documento=" + Documento,
         contentType: "application/json",
         data: null,
         dataType: "json",
@@ -79,7 +79,7 @@ function Procesar(Comando) {
     }
     $.ajax({
         type: Comando,
-        url: "http://localhost:50007/Api/Cliente",
+        url: "http://localhost:62556/api/Cliente",
         contentType: "application/json",
         data: JSON.stringify(DatosCliente),
         dataType: "json",

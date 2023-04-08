@@ -1,0 +1,6 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/ServicioAlquiler/obj/Debug
+/AlquilerVehiculo/packages/EntityFramework.5.0.0/Content

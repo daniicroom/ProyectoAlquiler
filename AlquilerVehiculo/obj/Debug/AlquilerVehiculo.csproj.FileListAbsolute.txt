@@ -74,10 +74,6 @@ C:\Users\JHON\Desktop\ProyectoAlquilerVehiculo\AlquilerVehiculo\obj\Debug\Alquil
 C:\Users\JHON\Desktop\ProyectoAlquilerVehiculo\AlquilerVehiculo\obj\Debug\AlquilerVehiculo.csproj.CopyComplete
 C:\Users\JHON\Desktop\ProyectoAlquilerVehiculo\AlquilerVehiculo\obj\Debug\AlquilerVehiculo.dll
 C:\Users\JHON\Desktop\ProyectoAlquilerVehiculo\AlquilerVehiculo\obj\Debug\AlquilerVehiculo.pdb
-C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\obj\Debug\AlquilerVehiculo.csproj.AssemblyReference.cache
-C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\obj\Debug\AlquilerVehiculo.csproj.CoreCompileInputs.cache
-C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\obj\Debug\AlquilerVehiculo.dll
-C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\obj\Debug\AlquilerVehiculo.pdb
 C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\bin\AlquilerVehiculo.dll.config
 C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\bin\AlquilerVehiculo.dll
 C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\bin\AlquilerVehiculo.pdb
@@ -149,4 +145,8 @@ C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlqu
 C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\bin\es\System.Web.Optimization.resources.dll
 C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
+C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\obj\Debug\AlquilerVehiculo.csproj.AssemblyReference.cache
+C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\obj\Debug\AlquilerVehiculo.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\obj\Debug\AlquilerVehiculo.csproj.CopyComplete
+C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\obj\Debug\AlquilerVehiculo.dll
+C:\Users\User\Documents\Daniel\U\programación distribuida\Entrega1\ProyectoAlquilerVehiculo\AlquilerVehiculo\obj\Debug\AlquilerVehiculo.pdb
