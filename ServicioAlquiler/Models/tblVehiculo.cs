@@ -9,9 +9,11 @@
 
 namespace ServicioAlquiler.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
     public partial class tblVehiculo
     {
         public tblVehiculo()
@@ -28,12 +30,29 @@ namespace ServicioAlquiler.Models
         public int IDColor { get; set; }
         public int Precio { get; set; }
         public int IDTipoVehiculo { get; set; }
-    
+        [JsonIgnore]
+        [IgnoreDataMember]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAlquiler> tblAlquiler { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblColor tblColor { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblGama tblGama { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblMarca tblMarca { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblSede tblSede { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblTipoVehiculo tblTipoVehiculo { get; set; }
     }
 }

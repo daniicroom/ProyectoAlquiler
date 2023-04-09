@@ -12,19 +12,12 @@ namespace ServicioAlquiler.Class
         public tblDevolucion devolucion { get; set; }
         public string GrabarDevolucion()
         {
-            try
-            {
-                //Consultar el número de factura
-                devolucion.Codigo = ConsultarCodigoDevolucion() + 1;
-                UpdateEstadoAlquiler();
-                dbAlquiler.tblDevolucion.Add(devolucion);
-                dbAlquiler.SaveChanges();
-                return devolucion.Codigo.ToString();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            //Consultar el número de factura
+            devolucion.Codigo = ConsultarCodigoDevolucion() + 1;
+            UpdateEstadoAlquiler();
+            dbAlquiler.tblDevolucion.Add(devolucion);
+            dbAlquiler.SaveChanges();
+            return devolucion.Codigo.ToString();
         }
         private int ConsultarCodigoDevolucion()
         {
@@ -40,14 +33,12 @@ namespace ServicioAlquiler.Class
         {
             try
             {
-                tblAlquiler alquiler = new tblAlquiler();
-                alquiler = ConsultarAlquiler();
+                tblAlquiler alquiler = ConsultarAlquiler();
 
                 UpdateEstadoVehiculo(alquiler.PlacaVehiculo);
 
-                dbAlquiler.tblAlquiler.Remove(alquiler);
+                dbAlquiler.SaveChanges();
                 alquiler.EstadoAlquiler = "Pagado";
-                dbAlquiler.tblAlquiler.Add(alquiler);
             }
             catch (Exception ex)
             {
@@ -58,16 +49,27 @@ namespace ServicioAlquiler.Class
         {
             try
             {
-
                 tblVehiculo vehiculo = dbAlquiler.tblVehiculo.Where(x => x.Placa == placa).FirstOrDefault();
-                dbAlquiler.tblVehiculo.Remove(vehiculo);
                 vehiculo.Estado = "Disponible";
-                dbAlquiler.tblVehiculo.Add(vehiculo);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+        public IQueryable<viewDatosAlquiler> GetDatosAlquiler(int idAlquiler)
+        {
+            return from ve in dbAlquiler.Set<tblVehiculo>()
+                   join al in dbAlquiler.Set<tblAlquiler>()
+                   on ve.Placa equals al.PlacaVehiculo
+                   where al.Codigo == idAlquiler
+                   select new viewDatosAlquiler
+                   {
+                       CodigoAlquiler = al.Codigo,
+                       Precio = ve.Precio,
+                       FechaInicial = al.FechaInicio
+                   };
+
         }
     }
 }
