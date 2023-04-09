@@ -16,12 +16,14 @@ namespace ServicioAlquiler.Class
                     .Where(x => x.Documento == Documento)
                     .FirstOrDefault();
         }
+
         public string GrabarEmpleado()
         {
             dbAlquiler.tblEmpleado.Add(Empleado);
             dbAlquiler.SaveChanges();
             return "Se ingresó el empleado" + Empleado.Documento.ToString();
         }
+
         public string Actualizar()
         {
             tblEmpleado _empleado = dbAlquiler.tblEmpleado
@@ -35,6 +37,7 @@ namespace ServicioAlquiler.Class
             dbAlquiler.SaveChanges();
             return "Se actualizó el empleado";
         }
+
         public string Eliminar(string Documento)
         {
             tblEmpleado _empleado = dbAlquiler.tblEmpleado

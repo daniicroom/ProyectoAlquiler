@@ -26,7 +26,7 @@ namespace ServicioAlquiler.Class
             try
             {
                 //Consultar el número de factura
-                alquiler.Codigo = ConsultarCodigoFactura() + 1;
+                alquiler.Codigo = ConsultarCodigoAlquiler() + 1;
                 UpdateEstadoVehiculo(alquiler.PlacaVehiculo);
 
                 dbAlquiler.tblAlquiler.Add(alquiler);
@@ -38,7 +38,7 @@ namespace ServicioAlquiler.Class
                 throw ex;
             }
         }
-        private int ConsultarCodigoFactura()
+        private int ConsultarCodigoAlquiler()
         {
             return dbAlquiler.tblAlquiler.Select(p => p.Codigo).DefaultIfEmpty(0).Max();
         }

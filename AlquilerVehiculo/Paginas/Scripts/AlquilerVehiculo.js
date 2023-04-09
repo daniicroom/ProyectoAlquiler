@@ -17,13 +17,16 @@ $(document).ready(function () {
     $("#btnActualizar").click(function () {
         Actualizar();
     })
+    $("#btnCancelar").click(function () {
+        Cancelar();
+    });
     $("#btnEliminar").click(function () {
         Eliminar();
     });
 
     //Lena el combo de empleados
     LlenarComboEmpleado();
-        //Lena el combo de vehiculos
+    //Lena el combo de vehiculos
     LlenarComboVehiculo();
 });
 
@@ -54,6 +57,9 @@ function ConsultarCliente() {
         }
     });
 }
+
+
+
 
 
 
