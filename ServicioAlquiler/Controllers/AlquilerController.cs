@@ -18,5 +18,10 @@ namespace ServicioAlquiler.Controllers
             oAlquiler.alquiler = alquiler;
             return oAlquiler.GrabarAlquiler();
         }
+        public List<tblAlquiler> GetAll()
+        {
+            clsAlquiler oAlquiler = new clsAlquiler();
+            return oAlquiler.GetAll();
+        }
     }
 }

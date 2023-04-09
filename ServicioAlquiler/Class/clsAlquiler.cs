@@ -10,6 +10,17 @@ namespace ServicioAlquiler.Class
     {
         private DBAlquilerVehiculoEntities dbAlquiler = new DBAlquilerVehiculoEntities();
         public tblAlquiler alquiler { get; set; }
+        public List<tblAlquiler> GetAll()
+        {
+            try
+            {
+                return dbAlquiler.tblAlquiler.OrderBy(x => x.Codigo).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public string GrabarAlquiler()
         {
             try

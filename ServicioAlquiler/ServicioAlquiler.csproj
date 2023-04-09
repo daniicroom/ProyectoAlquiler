@@ -212,6 +212,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Class\clsCargo.cs" />
     <Compile Include="Class\clsTipoDocumento.cs" />
     <Compile Include="Class\clsDevolucion.cs" />
     <Compile Include="Class\clsAlquiler.cs" />
@@ -225,6 +226,7 @@
     <Compile Include="Controllers\DevolucionController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CargoController.cs" />
     <Compile Include="Controllers\TipoDocumentoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
