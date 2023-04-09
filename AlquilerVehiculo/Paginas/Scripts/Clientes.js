@@ -2,7 +2,7 @@
 $(document).ready(function () {
 
     //Registrar los botones para responder al evento click
-    $("#btnIngresar").click(function () {
+    $("#btnRegistrar").click(function () {
         Procesar("POST");
     });
     $("#btnActualizar").click(function () {
@@ -70,12 +70,12 @@ function Procesar(Comando) {
 
         Documento: Documento,
         TipoDocumento: TipoDocumento,
-        Tombres: Nombres,
+        Nombres: Nombres,
         Apellidos: Apellidos,
         Direccion: Direccion,
         Edad: Edad,
         NumeroLicencia: NumeroLicencia,
-        IdLicencia: IdLicencia
+        IDLicencia: IdLicencia
 
     }
     $.ajax({

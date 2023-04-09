@@ -2,7 +2,7 @@
 $(document).ready(function () {
 
     //Registrar los botones para responder al evento click
-    $("#btnIngresar").click(function () {
+    $("#btnRegistrar").click(function () {
         Procesar("POST");
     });
     $("#btnActualizar").click(function () {

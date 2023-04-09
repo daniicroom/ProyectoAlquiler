@@ -31,5 +31,16 @@ namespace ServicioAlquiler.Controllers
             oEmpleado.Empleado = empleado;
             return oEmpleado.GrabarEmpleado();
         }
+        public string Put([FromBody] tblEmpleado empleado)
+        {
+            clsEmpleado oEmpleado = new clsEmpleado();
+            oEmpleado.Empleado = empleado;
+            return oEmpleado.Actualizar();
+        }
+        public string Delete([FromBody] tblEmpleado empleado)
+        {
+            clsEmpleado oEmpleado = new clsEmpleado();
+            return oEmpleado.Eliminar(empleado.Documento);
+        }
     }
 }
