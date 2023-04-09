@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f49ed34f560947efbbd280459aefebda" Name="Diagram1">
-        <EntityTypeShape EntityType="DBAlquilerVehiculoModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblAlquiler" Width="1.5" PointX="12" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblCargoEmpleado" Width="1.5" PointX="7.5" PointY="19.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DBAlquilerVehiculoModel.tblCiudad" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />

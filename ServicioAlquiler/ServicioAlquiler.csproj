@@ -246,9 +246,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBAlquilerVehiculo.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>DBAlquilerVehiculo.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tblAlquiler.cs">
       <DependentUpon>DBAlquilerVehiculo.tt</DependentUpon>
     </Compile>
