@@ -24,5 +24,10 @@ namespace ServicioAlquiler.Controllers
             clsVehiculo vehiculo = new clsVehiculo();
             return vehiculo.Consultar(placa);
         }
+        public tblVehiculo GetByIdAlquiler(int idAlquiler)
+        {
+            clsVehiculo vehiculo = new clsVehiculo();
+            return vehiculo.GetByIdAlquiler(idAlquiler);
+        }
     }
 }

@@ -301,6 +301,7 @@
     <Compile Include="Models\tblVehiculo.cs">
       <DependentUpon>DBAlquilerVehiculo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\viewDatosAlquiler.cs" />
     <Compile Include="Models\viewComboVehiculo.cs" />
     <Compile Include="Models\viewCombo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

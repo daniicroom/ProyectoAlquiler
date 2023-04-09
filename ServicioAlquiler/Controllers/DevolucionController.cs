@@ -19,5 +19,10 @@ namespace ServicioAlquiler.Controllers
             oDevolucion.devolucion = devolucion;
             return oDevolucion.GrabarDevolucion();
         }
+        public viewDatosAlquiler GetDatosAlquiler(int idAlquiler)
+        {
+            clsDevolucion oDevolucion = new clsDevolucion();
+            return oDevolucion.GetDatosAlquiler(idAlquiler).FirstOrDefault();
+        }
     }
 }

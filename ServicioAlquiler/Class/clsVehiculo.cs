@@ -28,5 +28,11 @@ namespace ServicioAlquiler.Class
                        Nombre = mar.Nombre + " - " + ve.Descripcion
                    };
         }
+        public tblVehiculo GetByIdAlquiler(int idAlquiler)
+        {
+            return dbAlquiler.tblVehiculo
+                    .Where(x => x.tblAlquiler.FirstOrDefault().Codigo == idAlquiler)
+                    .FirstOrDefault();
+        }
     }
 }

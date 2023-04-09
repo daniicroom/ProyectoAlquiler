@@ -9,18 +9,22 @@
 
 namespace ServicioAlquiler.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
     public partial class tblDevolucion
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public int Codigo { get; set; }
         public int CodigoAlquiler { get; set; }
         public string IDEmpleadoRecibe { get; set; }
         public System.DateTime FechaDevolucion { get; set; }
         public int TotalPagar { get; set; }
-    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblAlquiler tblAlquiler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblEmpleado tblEmpleado { get; set; }
     }
 }
