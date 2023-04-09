@@ -25,7 +25,6 @@ namespace ServicioAlquiler.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<tblAlquiler> tblAlquiler { get; set; }
         public DbSet<tblCargoEmpleado> tblCargoEmpleado { get; set; }
         public DbSet<tblCiudad> tblCiudad { get; set; }

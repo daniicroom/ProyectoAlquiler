@@ -224,6 +224,7 @@
     <Compile Include="Controllers\CategoriaLicenciaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\DevolucionController.cs" />
+    <Compile Include="Controllers\VehiculoController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CargoController.cs" />
@@ -245,9 +246,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBAlquilerVehiculo.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>DBAlquilerVehiculo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblAlquiler.cs">
       <DependentUpon>DBAlquilerVehiculo.tt</DependentUpon>
@@ -303,6 +301,7 @@
     <Compile Include="Models\tblVehiculo.cs">
       <DependentUpon>DBAlquilerVehiculo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\viewComboVehiculo.cs" />
     <Compile Include="Models\viewCombo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -89,7 +89,7 @@ function Procesar(Comando) {
             $("#dvMensaje").html(Rpta);
 
         },
-        error: function (errPaises) {
+        error: function (errClientes) {
             $("#dvMensaje").addClass("alert alert-danger");
             $("#dvMensaje").html(errClientes.html);
         }

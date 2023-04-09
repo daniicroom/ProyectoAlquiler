@@ -34,6 +34,7 @@ namespace ServicioAlquiler.Class
             _cliente.Edad = cliente.Edad;
             _cliente.NumeroLicencia = cliente.NumeroLicencia;
             _cliente.IDLicencia = cliente.IDLicencia;
+            _cliente.Direccion = cliente.Direccion;
 
             dbAlquiler.SaveChanges();
             return "Se actualizó el cliente";

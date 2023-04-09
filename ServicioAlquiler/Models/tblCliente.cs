@@ -29,6 +29,7 @@ namespace ServicioAlquiler.Models
         public int Edad { get; set; }
         public string NumeroLicencia { get; set; }
         public int IDLicencia { get; set; }
+        public string Direccion { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
