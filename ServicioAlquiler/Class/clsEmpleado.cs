@@ -16,6 +16,11 @@ namespace ServicioAlquiler.Class
                     .Where(x => x.Documento == Documento)
                     .FirstOrDefault();
         }
-
+        public string GrabarEmpleado()
+        {
+            dbAlquiler.tblEmpleado.Add(Empleado);
+            dbAlquiler.SaveChanges();
+            return Empleado.Documento.ToString();
+        }
     }
 }

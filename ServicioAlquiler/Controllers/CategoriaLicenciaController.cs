@@ -13,7 +13,7 @@ namespace ServicioAlquiler.Controllers
     [EnableCors(origins: "http://localhost:54777", headers: "*", methods: "*")]
     public class CategoriaLicenciaController : ApiController
     {
-        public List<tblLicencia> Get()
+        public List<viewCombo> Get()
         {
             clsCategoriaLicencia licencia = new clsCategoriaLicencia();
 

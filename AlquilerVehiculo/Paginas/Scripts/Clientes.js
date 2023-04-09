@@ -14,15 +14,16 @@ $(document).ready(function () {
     $("#btnConsultar").click(function () {
         Consultar();
     });
-
+    LlenarComboTipoDocumento();
+    LlenarCategoriaLicencia();
 });
 
 function LlenarComboTipoDocumento() {
-    LlenarComboServicio("http://localhost:62556/api/Cliente", "#cboTipoDocumento", "", true);
+    LlenarComboServicio("http://localhost:62556/api/TipoDocumento", "#cboTipoDocumento", "", false);
 }
 
 function LlenarCategoriaLicencia() {
-    LlenarComboServicio("http://localhost:62556/api/Cliente", "#cboCategoriaLicencia", "", true);
+    LlenarComboServicio("http://localhost:62556/api/CategoriaLicencia", "#cboCategoriaLicencia", "", false);
 }
 
 
@@ -43,7 +44,7 @@ function Consultar() {
             $("#txtApellidos").val(Cliente.Apellidos);
             $("#txtDireccion").val(Cliente.Direccion);
             $("#txtEdad").val(Cliente.Edad);
-            $("#cboCategoriaLicencia").val(Cliente.IdLicencia);
+            $("#cboCategoriaLicencia").val(Cliente.IDLicencia);
             $("#txtNumeroLicencia").val(Cliente.NumeroLicencia);
         },
         error: function (errPaises) {

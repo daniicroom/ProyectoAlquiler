@@ -10,9 +10,15 @@ namespace ServicioAlquiler.Class
     {
         private DBAlquilerVehiculoEntities dbAlquiler = new DBAlquilerVehiculoEntities();
         public tblLicencia licencia { get; set; }
-        public List<tblLicencia> GetAll()
+        public List<viewCombo> GetAll()
         {
-            return dbAlquiler.tblLicencia.OrderBy(x => x.CategoriaLicencia).ToList();
+            return dbAlquiler.tblLicencia
+            .Select(p => new viewCombo
+            {
+                Codigo = p.Codigo,
+                Nombre = p.CategoriaLicencia
+            }).OrderBy(x => x.Nombre)
+            .ToList();
         }
     }
 }

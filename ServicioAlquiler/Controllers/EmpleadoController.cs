@@ -24,5 +24,12 @@ namespace ServicioAlquiler.Controllers
             clsEmpleado empleado = new clsEmpleado();
             return empleado.Consultar(Documento);
         }
+
+        public string Post([FromBody] tblEmpleado empleado)
+        {
+            clsEmpleado oEmpleado = new clsEmpleado();
+            oEmpleado.Empleado = empleado;
+            return oEmpleado.GrabarEmpleado();
+        }
     }
 }
