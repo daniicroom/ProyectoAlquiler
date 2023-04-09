@@ -15,7 +15,7 @@ namespace ServicioAlquiler.Class
             try
             {
                 //Consultar el número de factura
-                devolucion.Codigo = ConsultarNroFactura() + 1;
+                devolucion.Codigo = ConsultarCodigoDevolucion() + 1;
                 UpdateEstadoAlquiler();
                 dbAlquiler.tblDevolucion.Add(devolucion);
                 dbAlquiler.SaveChanges();
@@ -26,10 +26,12 @@ namespace ServicioAlquiler.Class
                 throw ex;
             }
         }
-        private int ConsultarNroFactura()
+        private int ConsultarCodigoDevolucion()
         {
             return dbAlquiler.tblDevolucion.Select(p => p.Codigo).DefaultIfEmpty(0).Max();
         }
+
+
         private tblAlquiler ConsultarAlquiler()
         {
             return dbAlquiler.tblAlquiler.Where(p => p.Codigo == devolucion.CodigoAlquiler).FirstOrDefault();

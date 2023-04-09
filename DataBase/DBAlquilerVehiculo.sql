@@ -270,7 +270,7 @@ insert into tblEmpleado values ('1023525415', 'Juan Pablo', 'Martinez Gomez', 2)
 
 create table tblAlquiler
 (
-Codigo int primary key identity(1, 1) not null,
+Codigo int primary key not null,
 CedulaCliente varchar(20) foreign key references tblCliente(Documento) not null,
 IDEmpleado varchar(20) foreign key references tblEmpleado(Documento)not null,
 PlacaVehiculo varchar(6) foreign key references tblVehiculo(Placa) not null,
@@ -281,7 +281,7 @@ FechaFin datetime not null
 
 create table tblDevolucion
 (
-Codigo int primary key identity(1, 1) not null,
+Codigo int primary key not null,
 CodigoAlquiler int foreign key references tblAlquiler(Codigo) not null,
 IDEmpleadoRecibe varchar(20) foreign key references tblEmpleado(Documento)not null,
 FechaDevolucion datetime not null,
