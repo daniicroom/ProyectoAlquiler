@@ -9,9 +9,11 @@
 
 namespace ServicioAlquiler.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
     public partial class tblLicencia
     {
         public tblLicencia()
@@ -21,7 +23,9 @@ namespace ServicioAlquiler.Models
     
         public int Codigo { get; set; }
         public string CategoriaLicencia { get; set; }
-    
+        [JsonIgnore]
+        [IgnoreDataMember]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCliente> tblCliente { get; set; }
     }
 }

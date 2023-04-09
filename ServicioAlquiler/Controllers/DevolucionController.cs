@@ -11,7 +11,7 @@ using System.Web.Mvc;
 namespace ServicioAlquiler.Controllers
 {
     [EnableCors(origins: "http://localhost:54777", headers: "*", methods: "*")]
-    public class DevolucionController : Controller
+    public class DevolucionController : ApiController
     {
         public string Post([FromBody] tblDevolucion devolucion)
         {
