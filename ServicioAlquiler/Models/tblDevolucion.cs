@@ -16,7 +16,6 @@ namespace ServicioAlquiler.Models
 
     public partial class tblDevolucion
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public int Codigo { get; set; }
         public int CodigoAlquiler { get; set; }
         public string IDEmpleadoRecibe { get; set; }
