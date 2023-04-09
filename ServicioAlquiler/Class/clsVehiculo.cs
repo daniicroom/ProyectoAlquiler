@@ -16,5 +16,17 @@ namespace ServicioAlquiler.Class
                     .Where(x => x.Placa == placa)
                     .FirstOrDefault();
         }
+        public IQueryable<viewComboVehiculo> LlenarComboVehiculo()
+        {
+            return from ve in dbAlquiler.Set<tblVehiculo>()
+                   join mar in dbAlquiler.Set<tblMarca>()
+                   on ve.IDMarca equals mar.Codigo
+                   orderby mar.Nombre + " " + ve.Descripcion
+                   select new viewComboVehiculo
+                   {
+                       Codigo = ve.Placa,
+                       Nombre = mar.Nombre + " - " + ve.Descripcion
+                   };
+        }
     }
 }

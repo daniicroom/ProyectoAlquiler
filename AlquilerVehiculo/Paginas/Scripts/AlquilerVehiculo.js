@@ -28,12 +28,11 @@ $(document).ready(function () {
 });
 
 function LlenarComboEmpleado() {
-    LlenarComboServicio("http://localhost:62556/Api/Empleado", "#cboEmpleado", "", true);
+    LlenarComboServicio("http://localhost:62556/Api/Empleado", "#cboEmpleado", "", false);
 }
 
 function LlenarComboVehiculo() {
-    LlenarComboServicio("http://localhost:62556/Api/Alquiler", "#cboTipoProducto", "", false);
-    LlenarComboProducto();
+    LlenarComboServicio("http://localhost:62556/Api/Vehiculo", "#cboVehiculo", "", false);
 }
 
 // Aquí se realiza la consulta del cliente a traves del documento
