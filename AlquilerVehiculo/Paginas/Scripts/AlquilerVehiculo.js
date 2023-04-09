@@ -11,11 +11,11 @@ $(document).ready(function () {
     });
 
     $("#btnRegistrar").click(function () {
-        Registrar('POST');
+        Procesar('POST');
     });
 
     $("#btnActualizar").click(function () {
-        Actualizar('PUT');
+        Procesar('PUT');
     })
     $("#btnConsultar").click(function () {
         Consultar();
@@ -25,7 +25,7 @@ $(document).ready(function () {
     });
 
     $("#btnEliminar").click(function () {
-        Eliminar('DELETE');
+        Procesar('DELETE');
     });
 
     //Lena el combo de empleados
@@ -233,8 +233,8 @@ function Procesar(Comando) {
     DatosAlquiler = {
         Codigo: Codigo,
         CedulaCliente: DocumentoCliente,
-        IDEmpleado: 1,
-        PlacaVehiculo: GHJH32,
+        IDEmpleado: Empleado,
+        PlacaVehiculo: Vehiculo,
         EstadoAlquiler: Estado,
         FechaInicio: FechaInicio,
         FechaFin: FechaFin,

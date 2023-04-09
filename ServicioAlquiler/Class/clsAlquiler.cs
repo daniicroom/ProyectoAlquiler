@@ -28,7 +28,7 @@ namespace ServicioAlquiler.Class
                 //Consultar el número de factura
                 alquiler.Codigo = ConsultarCodigoAlquiler() + 1;
                 UpdateEstadoVehiculo(alquiler.PlacaVehiculo);
-
+                alquiler.EstadoAlquiler = "Activo";
                 dbAlquiler.tblAlquiler.Add(alquiler);
                 dbAlquiler.SaveChanges();
                 return alquiler.Codigo.ToString();
@@ -46,11 +46,9 @@ namespace ServicioAlquiler.Class
         {
             try
             {
-
                 tblVehiculo vehiculo = dbAlquiler.tblVehiculo.Where(x => x.Placa == placa).FirstOrDefault();
-                dbAlquiler.tblVehiculo.Remove(vehiculo);
+
                 vehiculo.Estado = "En alquiler";
-                dbAlquiler.tblVehiculo.Add(vehiculo);
             }
             catch (Exception ex)
             {
