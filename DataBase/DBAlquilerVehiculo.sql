@@ -133,13 +133,14 @@ create table tblCliente
   TipoDocumento int foreign key references tblTipoDocumento(Codigo) not null,
   Nombres varchar(50) not null,
   Apellidos varchar(50) not null,
+  Direccion varchar(100) not null,
   Edad int not null,
   NumeroLicencia varchar(20) not null,
   IDLicencia int foreign key references tblLicencia(Codigo) not null,
 
   )
 
-  insert into tblCliente values ( '12345', 2, 'JUAN ESTEBAN', 'MARIN LOPEZ', 29, 1000, 3)
+  insert into tblCliente values ( '12345', 2, 'JUAN ESTEBAN', 'MARIN LOPEZ', 'CRA 55 N 25 43', 29, 1000, 3)
   
   
 
