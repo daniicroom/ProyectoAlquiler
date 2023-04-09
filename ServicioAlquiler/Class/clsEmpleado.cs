@@ -45,5 +45,17 @@ namespace ServicioAlquiler.Class
             dbAlquiler.SaveChanges();
             return "Se eliminó el empleado";
         }
+        public IQueryable<viewCombo> LlenarComboEmpleados()
+        {
+            return from empl in dbAlquiler.Set<tblEmpleado>()
+                   join emplcarg in dbAlquiler.Set<tblCargoEmpleado>()
+                   on empl.IDCargoEmpleado equals emplcarg.Codigo
+                   orderby empl.Nombres + " " + empl.Apellidos
+                   select new viewCombo
+                   {
+                       Codigo = emplcarg.Codigo,
+                       Nombre = empl.Nombres + " " + empl.Apellidos
+                   };
+        }
     }
 }

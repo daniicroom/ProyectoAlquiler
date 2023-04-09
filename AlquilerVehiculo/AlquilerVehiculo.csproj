@@ -130,6 +130,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Paginas\AlquilerVehiculo.html" />
     <Content Include="Paginas\DevolverVehiculo.html" />
+    <Content Include="Paginas\Estilos\dataTables.bootstrap4.css" />
+    <Content Include="Paginas\Estilos\dataTables.bootstrap4.min.css" />
+    <Content Include="Paginas\Estilos\dataTables.min.css" />
     <Content Include="Paginas\Scripts\AlquilerVehiculo.js" />
     <Content Include="Paginas\Scripts\Clientes.js" />
     <Content Include="Paginas\Scripts\Comunes\Combos.js" />
@@ -157,10 +160,14 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\dataTables.bootstrap4.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
