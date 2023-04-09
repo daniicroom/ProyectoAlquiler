@@ -12,7 +12,7 @@
         dataType: "json",
         success: function (respuesta) {
             for (var op = 0; op < respuesta.length; op++) {
-                $(ComboLlenar).append('<option value=' + respuesta[op].Valor + '>' + respuesta[op].Texto + '</option>');
+                $(ComboLlenar).append('<option value=' + respuesta[op].Codigo + '>' + respuesta[op].Nombre + '</option>');
             }
         }
     });
@@ -21,7 +21,7 @@
 
 function LlenarComboDatos(respuesta, ComboLlenar) {
     for (var op = 0; op < respuesta.length; op++) {
-        $(ComboLlenar).append('<option value=' + respuesta[op].Valor + '>' + respuesta[op].Texto + '</option>');
+        $(ComboLlenar).append('<option value=' + respuesta[op].Codigo + '>' + respuesta[op].Nombre + '</option>');
     }
 }
 
@@ -41,7 +41,7 @@ function LlenarComboServicio(sURL, ComboLlenar, TextoSeleccione, async) {
         async: async,
         success: function (respuesta) {
             for (var op = 0; op < respuesta.length; op++) {
-                $(ComboLlenar).append('<option value=' + respuesta[op].Valor + '>' + respuesta[op].Texto + '</option>');
+                $(ComboLlenar).append('<option value=' + respuesta[op].Codigo + '>' + respuesta[op].Nombre + '</option>');
             }
         }
     });

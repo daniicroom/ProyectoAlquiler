@@ -19,5 +19,22 @@ namespace ServicioAlquiler.Controllers
             clsCliente cliente = new clsCliente();
             return cliente.Consultar(Documento);
         }
+        public string Post([FromBody] tblCliente cliente)
+        {
+            clsCliente oCliente = new clsCliente();
+            oCliente.cliente = cliente;
+            return oCliente.Grabarcliente();
+        }
+        public string Put([FromBody] tblCliente cliente)
+        {
+            clsCliente oCliente = new clsCliente();
+            oCliente.cliente = cliente;
+            return oCliente.Actualizar();
+        }
+        public string Delete([FromBody] tblCliente cliente)
+        {
+            clsCliente oCliente = new clsCliente();
+            return oCliente.Eliminar(cliente.Documento);
+        }
     }
 }

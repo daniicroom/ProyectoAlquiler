@@ -2,7 +2,7 @@
 $(document).ready(function () {
 
     //Registrar los botones para responder al evento click
-    $("#btnIngresar").click(function () {
+    $("#btnRegistrar").click(function () {
         Procesar("POST");
     });
     $("#btnActualizar").click(function () {
@@ -14,11 +14,11 @@ $(document).ready(function () {
     $("#btnConsultar").click(function () {
         Consultar();
     });
-
+    LlenarComboCargo();
 });
 
 function LlenarComboCargo() {
-    LlenarComboServicio("http://localhost:62556/Api/Cargo", "#cboCargo", "", true);
+    LlenarComboServicio("http://localhost:62556/api/Cargo", "#cboCargo", "", false);
 }
 
 
@@ -27,7 +27,7 @@ function Consultar() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:62556/Api/Empleado?Documento=" + Documento,
+        url: "http://localhost:62556/api/Empleado?Documento=" + Documento,
         contentType: "application/json",
         data: null,
         dataType: "json",
@@ -35,7 +35,7 @@ function Consultar() {
 
             $("#txtNombre").val(Empleado.Nombres);
             $("#txtApellidos").val(Empleado.Apellidos);
-            $("#cboCargo").val(Empleado.IdCargoEmpleado);
+            $("#cboCargo").val(Empleado.IDCargoEmpleado);
 
         },
         error: function (errPaises) {
@@ -50,7 +50,7 @@ function Procesar(Comando) {
     let Documento = $("#txtDocumento").val();
     let Nombres = $("#txtNombre").val();
     let Apellidos = $("#txtApellidos").val();
-    let Cargo = $("#cboCargo").val();
+    let IdCargoEmpleado = $("#cboCargo").val();
 
 
     DatosEmpleado = {
@@ -58,12 +58,12 @@ function Procesar(Comando) {
         Documento: Documento,
         Nombres: Nombres,
         Apellidos: Apellidos,
-        IdCargoEmpleado: IdCargoEmpleado
+        IDCargoEmpleado: IdCargoEmpleado
 
     }
     $.ajax({
         type: Comando,
-        url: "http://localhost:62556/Api/Empleado",
+        url: "http://localhost:62556/api/Empleado",
         contentType: "application/json",
         data: JSON.stringify(DatosEmpleado),
         dataType: "json",
@@ -72,7 +72,7 @@ function Procesar(Comando) {
             $("#dvMensaje").html(Rpta);
 
         },
-        error: function (errPaises) {
+        error: function (errEmpleados) {
             $("#dvMensaje").addClass("alert alert-danger");
             $("#dvMensaje").html(errEmpleados.html);
         }
