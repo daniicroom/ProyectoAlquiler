@@ -14,5 +14,6 @@ namespace ServicioAlquiler.Class
         {
             return dbAlquiler.tblCargoEmpleado.OrderBy(x => x.Nombre).ToList();
         }
+
     }
 }

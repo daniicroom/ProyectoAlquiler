@@ -13,6 +13,12 @@ namespace ServicioAlquiler.Controllers
     [EnableCors(origins: "http://localhost:54777", headers: "*", methods: "*")]
     public class EmpleadoController : ApiController
     {
+        /*public IQueryable<viewCombo> Get()
+        {
+            clsEmpleado empleado = new clsEmpleado();
+            return empleado.LlenarComboEmpleados();
+        }*/
+
         public tblEmpleado Get(string Documento)
         {
             clsEmpleado empleado = new clsEmpleado();

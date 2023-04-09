@@ -18,7 +18,7 @@ $(document).ready(function () {
 });
 
 function LlenarComboCargo() {
-    LlenarComboServicio("http://localhost:50007/Api/Empleado", "#cboCargo", "", true);
+    LlenarComboServicio("http://localhost:62556/Api/Cargo", "#cboCargo", "", true);
 }
 
 
@@ -27,7 +27,7 @@ function Consultar() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:50007/Api/Empleado?Documento=" + Documento,
+        url: "http://localhost:62556/Api/Empleado?Documento=" + Documento,
         contentType: "application/json",
         data: null,
         dataType: "json",
@@ -35,7 +35,7 @@ function Consultar() {
 
             $("#txtNombre").val(Empleado.Nombres);
             $("#txtApellidos").val(Empleado.Apellidos);
-            $("#cboCargo").val(Cliente.IdCargoEmpleado);
+            $("#cboCargo").val(Empleado.IdCargoEmpleado);
 
         },
         error: function (errPaises) {
@@ -63,7 +63,7 @@ function Procesar(Comando) {
     }
     $.ajax({
         type: Comando,
-        url: "http://localhost:50007/Api/Empleado",
+        url: "http://localhost:62556/Api/Empleado",
         contentType: "application/json",
         data: JSON.stringify(DatosEmpleado),
         dataType: "json",

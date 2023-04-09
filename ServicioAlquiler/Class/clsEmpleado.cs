@@ -16,5 +16,6 @@ namespace ServicioAlquiler.Class
                     .Where(x => x.Documento == Documento)
                     .FirstOrDefault();
         }
+
     }
 }

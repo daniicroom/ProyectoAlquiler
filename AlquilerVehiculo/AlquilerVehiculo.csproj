@@ -132,6 +132,9 @@
     <Content Include="Paginas\DevolverVehiculo.html" />
     <Content Include="Paginas\Scripts\AlquilerVehiculo.js" />
     <Content Include="Paginas\Scripts\Clientes.js" />
+    <Content Include="Paginas\Scripts\Comunes\Combos.js" />
+    <Content Include="Paginas\Scripts\Comunes\FuncionesComunes.js" />
+    <Content Include="Paginas\Scripts\Comunes\Tablas.js" />
     <Content Include="Paginas\Scripts\DevolverVehiculo.js" />
     <Content Include="Paginas\Scripts\Empleados.js" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
