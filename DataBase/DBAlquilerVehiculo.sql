@@ -189,7 +189,7 @@ insert into tblMarca  values('FORD' ),
 							('MAZDA'),
 							('VOLKSWAGEN'),
 							('KIA' ),
-							('MERCRDES BENZ' ),
+							('MERCEDES BENZ' ),
                             ('AUDI'),
 							('BENTLEY' )
 							
