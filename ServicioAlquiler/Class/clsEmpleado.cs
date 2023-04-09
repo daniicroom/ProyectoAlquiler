@@ -21,7 +21,7 @@ namespace ServicioAlquiler.Class
         {
             dbAlquiler.tblEmpleado.Add(Empleado);
             dbAlquiler.SaveChanges();
-            return "Se ingresó el empleado" + Empleado.Documento.ToString();
+            return "Se ingresó el empleado con número de documento: " + Empleado.Documento.ToString();
         }
 
         public string Actualizar()

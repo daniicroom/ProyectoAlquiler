@@ -243,7 +243,22 @@ Precio int not null,
 IDTipoVehiculo int foreign key references tblTipoVehiculo(Codigo) not null
 )
 
-insert into tblVehiculo values('ZTE235', 'CHEVROLET BEAT', 'DISPONIBLE', 1, 2, 1, 1, 60000, 1)
+insert into tblVehiculo values('ZTE235', 'BEAT', 'DISPONIBLE', 1, 2, 1, 1, 60000, 1),
+                              ('KGT569', 'CAMARO 6.2 Ss', 'DISPONIBLE', 1, 2, 3, 1, 120000, 1),
+                              ('CRH354', 'FIESTA 1.6', 'DISPONIBLE', 1, 1, 1, 4, 60000, 1),
+							  ('JHU128', 'EXPLORER 2.3', 'DISPONIBLE', 1, 1, 2, 3, 90000, 3),
+							  ('VGR645', 'DUSTER 2.0', 'DISPONIBLE', 1, 3, 2, 2, 90000, 3),
+							  ('LID987', 'LOGAN 1.6', 'DISPONIBLE', 1, 3, 1, 1, 60000, 1),
+							  ('YDF456', 'PRADO VX BLINDADA', 'DISPONIBLE', 1, 4, 3, 5, 120000, 3),
+							  ('YFR258', 'COROLLA 1.8', 'DISPONIBLE', 1, 4, 2, 2, 90000, 1),
+							  ('NGB159', 'CX-5 2.5', 'DISPONIBLE', 1, 5, 2, 4, 90000, 1),
+							  ('XSD951', '2 GRAND TOURING', 'DISPONIBLE', 1, 5, 2, 1, 90000, 3),
+							  ('POU357', 'GOLF 1.4', 'DISPONIBLE', 1, 6, 1, 4, 60000, 1),
+							  ('TGD458', 'T-CROSS 1.6', 'DISPONIBLE', 1, 6, 2, 3, 90000, 3),
+							  ('KIF478', 'SPORTAGE 2.0', 'DISPONIBLE', 1, 7, 2, 1, 60000, 3),
+							  ('XSA263', 'SPRINTER PANEL', 'DISPONIBLE', 1, 8, 1, 1, 60000, 5),
+							  ('DER251', 'A5 1.5 CONVERTIBLE', 'DISPONIBLE', 1, 9, 3, 1, 120000, 4),
+							  ('HUF897', 'CONTINENTAL GT SPEED', 'DISPONIBLE', 1, 10, 3, 1, 200000, 1)
 
 
 create table tblCargoEmpleado
