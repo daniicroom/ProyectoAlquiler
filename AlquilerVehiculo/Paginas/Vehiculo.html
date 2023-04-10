@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GESTIONAR VEHICULOS</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link href="Estilos/all.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link href="Estilos/adminlte.min.css" rel="stylesheet" />
+    <link href="Estilos/dataTables.min.css" rel="stylesheet" />
+    <link href="Estilos/dataTables.bootstrap4.min.css" rel="stylesheet" />
+</head>
+<body class="hold-transition sidebar-mini">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary"><br />
+                        <div class="card-header">
+                            <h3 class="card-dark">GESTIONAR VEHICULOS</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form id="frmRegistroCliente">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="txtPlaca">Número de Placa</label>
+                                            <input type="text" class="form-control" id="txtPlaca" placeholder="Número de placa">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtDescripcion">Nombre de Referencia</label>
+                                            <input type="text" class="form-control" id="txtDescripcion" placeholder="Nombre de Referencia">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="txtEstado">Disponibilidad</label>
+                                            <input type="text" class="form-control" id="txtEstado" placeholder="Disponibilidad">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="cboSede">Sede</label>
+                                            <select id="cboSede" class="form-control select2" style="width: 100%">
+                                                <option selected="selected" value="0">Asigne una sede</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="cboTipoVehiculo">Tipo de Vehículo</label>
+                                            <select id="cboTipoVehiculo" class="form-control select2" style="width: 100%">
+                                                <option selected="selected" value="0">Seleccione un tipo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="cboGama">Gama</label>
+                                            <select id="cboGama" class="form-control select2" style="width: 100%">
+                                                <option selected="selected" value="0">Asigne una gama</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="cboMarca">Marca</label>
+                                            <select id="cboMarca" class="form-control select2" style="width: 100%">
+                                                <option selected="selected" value="0">Asigne una marca</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="cboColor">Color</label>
+                                            <select id="cboColor" class="form-control select2" style="width: 100%">
+                                                <option selected="selected" value="0">Asigne una color</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="txtPrecio">Precio de Alquiler</label>
+                                            <input type="text" class="form-control" id="txtPrecio" placeholder="Precio de alquiler">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <button type="button" id="btnRegistrar" class="btn-block btn-lg btn-primary">REGISTRAR</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <button type="button" id="btnActualizar" class="btn-block btn-lg btn-primary">ACTUALIZAR</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <button type="button" id="btnEliminar" class="btn-block btn-lg btn-primary">ELIMINAR</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <button type="button" id="btnConsultar" class="btn-block btn-lg btn-primary">CONSULTAR</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table id="tblVehiculo" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Placa</th>
+                                                    <th>Descripcion</th>
+                                                    <th>Estado</th>
+                                                    <th>Sede</th>
+                                                    <th>Marca</th>
+                                                    <th>Gama</th>
+                                                    <th>Color</th>
+                                                    <th>Precio Alquiler</th>
+                                                    <th>Tipo</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                                <div id="dvMensaje" class=""></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../Scripts/jquery.min.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/jquery.dataTables.min.js"></script>
+    <script src="../Scripts/dataTables.bootstrap4.min.js"></script>
+    <script src="Scripts/Comunes/Tablas.js"></script>
+    <script src="Scripts/Comunes/Combos.js"></script>
+    <script src="Scripts/Vehiculo.js"></script>
+    <!-- /.card -->
+</body>
+</html>

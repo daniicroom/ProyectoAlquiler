@@ -10,8 +10,10 @@
 namespace ServicioAlquiler.Models
 {
     using System;
+    using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
     public partial class tblTipoVehiculo
     {
         public tblTipoVehiculo()
@@ -21,7 +23,9 @@ namespace ServicioAlquiler.Models
     
         public int Codigo { get; set; }
         public string Nombre { get; set; }
-    
+
+        [JsonIgnore]
+        [IgnoreDataMember]
         public virtual ICollection<tblVehiculo> tblVehiculo { get; set; }
     }
 }

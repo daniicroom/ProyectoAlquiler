@@ -140,6 +140,8 @@
     <Content Include="Paginas\Scripts\Comunes\Tablas.js" />
     <Content Include="Paginas\Scripts\DevolverVehiculo.js" />
     <Content Include="Paginas\Scripts\Empleados.js" />
+    <Content Include="Paginas\Scripts\Vehiculo.js" />
+    <Content Include="Paginas\Vehiculo.html" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Controllers\ControladorCliente.ashx" />
