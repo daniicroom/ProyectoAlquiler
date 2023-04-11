@@ -148,43 +148,7 @@ function EditarFila(DatosTabla) {
 }
 
 
-// Se graba el alquiler
-function Registrar() {
-    //Capturamos los datos del cliente y el empleado
-    let DocumentoCliente = $("#txtDocumento").val();
-    let IdEmpleado = $("#cboEmpleado").val();
-    //Capturar los datos de la tabla
-    var fieldNames = [], tblAlquiler = [];
-    oTabla.settings().columns()[0].forEach(function (index) {
-        fieldNames.push($(oTabla.column(index).header()).text().replace(/ /g, ""));
-    });
-    oTabla.rows().data().toArray().forEach(function (row) {
-        var item = {};
-        row.forEach(function (content, index) {
-            item[fieldNames[index]] = content;
-        });
-        tblAlquiler.push(item);
-    });
 
-    let DatosAlquiler = {
-        tblAlquiler
-    }
-    $.ajax({
-        type: "POST",
-        url: "http://localhost:62556/Api/Alquiler",
-        contentType: "application/json",
-        data: JSON.stringify(DatosAlquiler),
-        dataType: "json",
-        success: function (Rpta) {
-            $("#txtCodigoAlquiler").val(Rpta);
-            Limpiar();
-        },
-        error: function (Error) {
-            $("#dvMensaje").addClass("alert alert-danger");
-            $("#dvMensaje").html(Error);
-        }
-    });
-}
 */
 
 function Consultar() {
