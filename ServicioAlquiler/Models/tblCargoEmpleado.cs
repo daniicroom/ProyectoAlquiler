@@ -18,14 +18,14 @@ namespace ServicioAlquiler.Models
     {
         public tblCargoEmpleado()
         {
-            this.tblEmpleado = new HashSet<tblEmpleado>();
+            this.tblEmpleadoes = new HashSet<tblEmpleado>();
         }
     
         public int Codigo { get; set; }
         public string Nombre { get; set; }
+
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblEmpleado> tblEmpleado { get; set; }
+        public virtual ICollection<tblEmpleado> tblEmpleadoes { get; set; }
     }
 }

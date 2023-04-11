@@ -16,7 +16,7 @@ namespace ServicioAlquiler.Models
     {
         public tblDepartamento()
         {
-            this.tblCiudad = new HashSet<tblCiudad>();
+            this.tblCiudads = new HashSet<tblCiudad>();
         }
     
         public int Codigo { get; set; }
@@ -24,7 +24,7 @@ namespace ServicioAlquiler.Models
         public bool Activo { get; set; }
         public int IDPais { get; set; }
     
-        public virtual ICollection<tblCiudad> tblCiudad { get; set; }
-        public virtual tblPais tblPais { get; set; }
+        public virtual ICollection<tblCiudad> tblCiudads { get; set; }
+        public virtual tblPai tblPai { get; set; }
     }
 }

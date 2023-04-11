@@ -8,25 +8,25 @@ namespace ServicioAlquiler.Class
 {
     public class clsEmpleado
     {
-        private DBAlquilerVehiculoEntities dbAlquiler = new DBAlquilerVehiculoEntities();
+        private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
         public tblEmpleado Empleado { get; set; }
         public tblEmpleado Consultar(string Documento)
         {
-            return dbAlquiler.tblEmpleado
+            return dbAlquiler.tblEmpleadoes
                     .Where(x => x.Documento == Documento)
                     .FirstOrDefault();
         }
 
         public string GrabarEmpleado()
         {
-            dbAlquiler.tblEmpleado.Add(Empleado);
+            dbAlquiler.tblEmpleadoes.Add(Empleado);
             dbAlquiler.SaveChanges();
             return "Se ingresó el empleado con número de documento: " + Empleado.Documento.ToString();
         }
 
         public string Actualizar()
         {
-            tblEmpleado _empleado = dbAlquiler.tblEmpleado
+            tblEmpleado _empleado = dbAlquiler.tblEmpleadoes
                         .Where(p => p.Documento == Empleado.Documento)
                         .FirstOrDefault();
 
@@ -40,23 +40,23 @@ namespace ServicioAlquiler.Class
 
         public string Eliminar(string Documento)
         {
-            tblEmpleado _empleado = dbAlquiler.tblEmpleado
+            tblEmpleado _empleado = dbAlquiler.tblEmpleadoes
                         .Where(p => p.Documento == Documento)
                         .FirstOrDefault();
 
-            dbAlquiler.tblEmpleado.Remove(_empleado);
+            dbAlquiler.tblEmpleadoes.Remove(_empleado);
             dbAlquiler.SaveChanges();
             return "Se eliminó el empleado";
         }
-        public IQueryable<viewCombo> LlenarComboEmpleados()
+        public IQueryable<viewComboVehiculo> LlenarComboEmpleados()
         {
             return from empl in dbAlquiler.Set<tblEmpleado>()
                    join emplcarg in dbAlquiler.Set<tblCargoEmpleado>()
                    on empl.IDCargoEmpleado equals emplcarg.Codigo
                    orderby empl.Nombres + " " + empl.Apellidos
-                   select new viewCombo
+                   select new viewComboVehiculo
                    {
-                       Codigo = emplcarg.Codigo,
+                       Codigo = empl.Documento,
                        Nombre = empl.Nombres + " " + empl.Apellidos
                    };
         }

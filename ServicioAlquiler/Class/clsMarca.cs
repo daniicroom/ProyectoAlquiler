@@ -8,11 +8,11 @@ namespace ServicioAlquiler.Class
 {
     public class clsMarca
     {
-        private DBAlquilerVehiculoEntities dbAlquiler = new DBAlquilerVehiculoEntities();
+        private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
         public tblMarca marca { get; set; }
         public List<viewCombo> ListarMarcas()
         {
-            return dbAlquiler.tblMarca
+            return dbAlquiler.tblMarcas
                 .OrderBy(x => x.Nombre)
                 .Select(p => new viewCombo
                 {

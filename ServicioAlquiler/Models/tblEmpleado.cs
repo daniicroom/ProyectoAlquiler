@@ -18,25 +18,23 @@ namespace ServicioAlquiler.Models
     {
         public tblEmpleado()
         {
-            this.tblAlquiler = new HashSet<tblAlquiler>();
-            this.tblDevolucion = new HashSet<tblDevolucion>();
+            this.tblAlquilers = new HashSet<tblAlquiler>();
+            this.tblDevolucions = new HashSet<tblDevolucion>();
         }
     
         public string Documento { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public int IDCargoEmpleado { get; set; }
+
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAlquiler> tblAlquiler { get; set; }
+        public virtual ICollection<tblAlquiler> tblAlquilers { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblCargoEmpleado tblCargoEmpleado { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblDevolucion> tblDevolucion { get; set; }
+        public virtual ICollection<tblDevolucion> tblDevolucions { get; set; }
     }
 }

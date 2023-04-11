@@ -9,23 +9,19 @@
 
 namespace ServicioAlquiler.Models
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-
-    public partial class tblMarca
+    
+    public partial class tblPai
     {
-        public tblMarca()
+        public tblPai()
         {
-            this.tblVehiculoes = new HashSet<tblVehiculo>();
+            this.tblDepartamentoes = new HashSet<tblDepartamento>();
         }
     
         public int Codigo { get; set; }
         public string Nombre { get; set; }
-
-        [JsonIgnore]
-        [IgnoreDataMember]
-        public virtual ICollection<tblVehiculo> tblVehiculoes { get; set; }
+    
+        public virtual ICollection<tblDepartamento> tblDepartamentoes { get; set; }
     }
 }

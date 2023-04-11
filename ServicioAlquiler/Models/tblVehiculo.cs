@@ -18,7 +18,7 @@ namespace ServicioAlquiler.Models
     {
         public tblVehiculo()
         {
-            this.tblAlquiler = new HashSet<tblAlquiler>();
+            this.tblAlquilers = new HashSet<tblAlquiler>();
         }
     
         public string Placa { get; set; }
@@ -30,29 +30,24 @@ namespace ServicioAlquiler.Models
         public int IDColor { get; set; }
         public int Precio { get; set; }
         public int IDTipoVehiculo { get; set; }
+
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAlquiler> tblAlquiler { get; set; }
+        public virtual ICollection<tblAlquiler> tblAlquilers { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblColor tblColor { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblGama tblGama { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblMarca tblMarca { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblSede tblSede { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblTipoVehiculo tblTipoVehiculo { get; set; }
     }
 }

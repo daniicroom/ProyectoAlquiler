@@ -21,9 +21,12 @@ namespace ServicioAlquiler.Models
         public string IDEmpleadoRecibe { get; set; }
         public System.DateTime FechaDevolucion { get; set; }
         public int TotalPagar { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        [JsonIgnore]
+        [IgnoreDataMember]
         public virtual tblAlquiler tblAlquiler { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
+        [IgnoreDataMember]
         public virtual tblEmpleado tblEmpleado { get; set; }
     }
 }

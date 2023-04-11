@@ -9,14 +9,16 @@
 
 namespace ServicioAlquiler.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
     public partial class tblAlquiler
     {
         public tblAlquiler()
         {
-            this.tblDevolucion = new HashSet<tblDevolucion>();
+            this.tblDevolucions = new HashSet<tblDevolucion>();
         }
     
         public int Codigo { get; set; }
@@ -26,10 +28,17 @@ namespace ServicioAlquiler.Models
         public string EstadoAlquiler { get; set; }
         public System.DateTime FechaInicio { get; set; }
         public System.DateTime FechaFin { get; set; }
-    
+        [JsonIgnore]
+        [IgnoreDataMember]
         public virtual tblCliente tblCliente { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
         public virtual tblEmpleado tblEmpleado { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
         public virtual tblVehiculo tblVehiculo { get; set; }
-        public virtual ICollection<tblDevolucion> tblDevolucion { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        public virtual ICollection<tblDevolucion> tblDevolucions { get; set; }
     }
 }

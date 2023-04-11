@@ -8,11 +8,11 @@ namespace ServicioAlquiler.Class
 {
     public class clsCategoriaLicencia
     {
-        private DBAlquilerVehiculoEntities dbAlquiler = new DBAlquilerVehiculoEntities();
+        private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
         public tblLicencia licencia { get; set; }
         public List<viewCombo> GetAll()
         {
-            return dbAlquiler.tblLicencia
+            return dbAlquiler.tblLicencias
             .Select(p => new viewCombo
             {
                 Codigo = p.Codigo,

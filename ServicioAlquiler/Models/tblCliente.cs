@@ -18,33 +18,30 @@ namespace ServicioAlquiler.Models
     {
         public tblCliente()
         {
-            this.tblAlquiler = new HashSet<tblAlquiler>();
-            this.tblTelefonoCliente = new HashSet<tblTelefonoCliente>();
+            this.tblAlquilers = new HashSet<tblAlquiler>();
+            this.tblTelefonoClientes = new HashSet<tblTelefonoCliente>();
         }
     
         public string Documento { get; set; }
         public int TipoDocumento { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
+        public string Direccion { get; set; }
         public int Edad { get; set; }
         public string NumeroLicencia { get; set; }
         public int IDLicencia { get; set; }
-        public string Direccion { get; set; }
+
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAlquiler> tblAlquiler { get; set; }
+        public virtual ICollection<tblAlquiler> tblAlquilers { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblLicencia tblLicencia { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual tblTipoDocumento tblTipoDocumento { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblTelefonoCliente> tblTelefonoCliente { get; set; }
+        public virtual ICollection<tblTelefonoCliente> tblTelefonoClientes { get; set; }
     }
 }

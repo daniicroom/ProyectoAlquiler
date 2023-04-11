@@ -45,7 +45,8 @@ $(document).ready(function () {
         }
     });
 
-    LlenarTablaAlquiler();
+    LlenarTablaAlquiler("http://localhost:62556/Api/Empleado", "#tblAlquiler");
+
 });
 
 function LlenarComboEmpleado() {
@@ -187,22 +188,23 @@ function Registrar() {
 */
 
 function Consultar() {
-    let CedulaCliente = $("#txtDocumentoCliente").val();
+    let Documento = $("#txtDocumentoCliente").val();
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:62556/Api/Alquiler?CedulaCliente=" + DocumentoCliente,
+        url: "http://localhost:62556/Api/Alquiler?Documento=" + Documento,
         contentType: "application/json",
         data: null,
         dataType: "json",
         success: function (Alquiler) {
 
             $("#txtCodigoAlquiler").val(Alquiler.Codigo);
-            $("#txtDocumentoCliente").val(Alquiler.DocumentoCliente);
+            $("#txtDocumentoCliente").val(Alquiler.CedulaCliente);
+
             ConsultarCliente();
-            // DUDAS AQUI
-            $("#cboEmpleado").val(Alquiler.IdEmpleado);
-            $("#cboVehiculo").val();
+
+            $("#cboEmpleado").val(Alquiler.IDEmpleado);
+            $("#cboVehiculo").val(Alquiler.PlacaVehiculo);
             $("#txtEstado").val(Alquiler.Estado);
             $("#txtFechaInicio").val(Alquiler.FechaInicio);
             $("#txtFechaFin").val(Alquiler.FechaFin);
@@ -250,7 +252,7 @@ function Procesar(Comando) {
             $("#dvMensaje").addClass("alert alert-success");
             $("#dvMensaje").html(Rpta);
             //Vuelve y presenta la tabla con los cambios realizados
-            LlenarTablaAlquiler();
+            LlenarTablaAlquiler("http://localhost:62556/Api/Empleado", "#tblAlquiler");
         },
         error: function (errAlquiler) {
             $("#dvMensaje").addClass("alert alert-danger");

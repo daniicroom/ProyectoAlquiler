@@ -8,11 +8,11 @@ namespace ServicioAlquiler.Class
 {
     public class clsCargo
     {
-        private DBAlquilerVehiculoEntities dbAlquiler = new DBAlquilerVehiculoEntities();
+        private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
         public tblCargoEmpleado cargoEmpleado { get; set; }
         public List<tblCargoEmpleado> GetAll()
         {
-            return dbAlquiler.tblCargoEmpleado.OrderBy(x => x.Nombre).ToList();
+            return dbAlquiler.tblCargoEmpleadoes.OrderBy(x => x.Nombre).ToList();
         }
 
     }

@@ -9,8 +9,8 @@
 
 namespace ServicioAlquiler.Models
 {
-    using System;
     using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
 
@@ -18,7 +18,7 @@ namespace ServicioAlquiler.Models
     {
         public tblSede()
         {
-            this.tblVehiculo = new HashSet<tblVehiculo>();
+            this.tblVehiculoes = new HashSet<tblVehiculo>();
         }
     
         public int Codigo { get; set; }
@@ -31,6 +31,6 @@ namespace ServicioAlquiler.Models
         public virtual tblCiudad tblCiudad { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
-        public virtual ICollection<tblVehiculo> tblVehiculo { get; set; }
+        public virtual ICollection<tblVehiculo> tblVehiculoes { get; set; }
     }
 }

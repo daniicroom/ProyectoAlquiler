@@ -16,12 +16,12 @@ namespace ServicioAlquiler.Models
     {
         public tblTipoTelefono()
         {
-            this.tblTelefonoCliente = new HashSet<tblTelefonoCliente>();
+            this.tblTelefonoClientes = new HashSet<tblTelefonoCliente>();
         }
     
         public int Codigo { get; set; }
         public string Nombre { get; set; }
     
-        public virtual ICollection<tblTelefonoCliente> tblTelefonoCliente { get; set; }
+        public virtual ICollection<tblTelefonoCliente> tblTelefonoClientes { get; set; }
     }
 }

@@ -35,7 +35,7 @@ $(document).ready(function () {
     LlenarComboTipoVehiculo();
 
     //Llenar la tabla con la informacion de los vehiculos
-    LlenaTablaServicio();
+    LlenaTablaServicio("http://localhost:62556/api/Vehiculo/GetAll", "#tblVehiculo");
 
 
     //REVISAR
@@ -69,6 +69,7 @@ function LlenarComboTipoVehiculo() {
 
 // Fucion para manipular los datos de las filas
 function EditarFila(DatosFila) {
+    $("#txtPlaca").val(DatosFila.find('td:eq(0)').text());
     $("#txtDescripcion").val(DatosFila.find('td:eq(1)').text());
     $("#txtEstado").val(DatosFila.find('td:eq(2)').text());
     $("#cboSede").val(DatosFila.find('td:eq(3)').text());
@@ -115,6 +116,13 @@ function Consultar() {
 function Procesar(Comando) {
     let Placa = $("#txtPlaca").val();
     let Descripcion = $("#txtDescripcion").val();
+    let Estado = $("#txtEstado").val();
+
+    if (Estado == null) {
+        Estado = "DISPONIBLE";
+    }
+
+    
     let IdSede = $("#cboSede").val();
     let IdMarca = $("#cboMarca").val();
     let IdGama = $("#cboGama").val();
@@ -125,6 +133,7 @@ function Procesar(Comando) {
     DatosVehiculo = {
         Placa: Placa,
         Descripcion: Descripcion,
+        Estado: Estado,
         IdSede: IdSede,
         IdMarca: IdMarca,
         IdGama: IdGama,
@@ -142,7 +151,7 @@ function Procesar(Comando) {
             $("#dvMensaje").addClass("alert alert-success");
             $("#dvMensaje").html(Rpta);
             //Vuelve y presenta la tabla con los cambios realizados
-            LlenaTablaServicio();
+            LlenaTablaServicio("http://localhost:62556/api/Vehiculo/GetAll", "#tblVehiculo");
         },
         error: function (errVehiculo) {
             $("#dvMensaje").addClass("alert alert-danger");

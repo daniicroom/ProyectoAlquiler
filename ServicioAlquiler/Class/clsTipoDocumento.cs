@@ -8,11 +8,11 @@ namespace ServicioAlquiler.Class
 {
     public class clsTipoDocumento
     {
-        private DBAlquilerVehiculoEntities dbAlquiler = new DBAlquilerVehiculoEntities();
+        private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
         public tblTipoDocumento tipoDocumento { get; set; }
         public List<tblTipoDocumento> GetAll()
         {
-            return dbAlquiler.tblTipoDocumento.OrderBy(x => x.Nombre).ToList();
+            return dbAlquiler.tblTipoDocumentoes.OrderBy(x => x.Nombre).ToList();
         }
     }
 }

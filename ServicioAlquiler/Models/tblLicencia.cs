@@ -18,14 +18,14 @@ namespace ServicioAlquiler.Models
     {
         public tblLicencia()
         {
-            this.tblCliente = new HashSet<tblCliente>();
+            this.tblClientes = new HashSet<tblCliente>();
         }
     
         public int Codigo { get; set; }
         public string CategoriaLicencia { get; set; }
+
         [JsonIgnore]
         [IgnoreDataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblCliente> tblCliente { get; set; }
+        public virtual ICollection<tblCliente> tblClientes { get; set; }
     }
 }

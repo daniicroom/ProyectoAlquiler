@@ -8,23 +8,23 @@ namespace ServicioAlquiler.Class
 {
     public class clsCliente
     {
-        private DBAlquilerVehiculoEntities dbAlquiler = new DBAlquilerVehiculoEntities();
+        private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
         public tblCliente cliente { get; set; }
         public tblCliente Consultar(string Documento)
         {
-            return dbAlquiler.tblCliente
+            return dbAlquiler.tblClientes
                     .Where(x => x.Documento == Documento)
                     .FirstOrDefault();
         }
         public string Grabarcliente()
         {
-            dbAlquiler.tblCliente.Add(cliente);
+            dbAlquiler.tblClientes.Add(cliente);
             dbAlquiler.SaveChanges();
             return "Se ingresó el cliente" + cliente.Documento.ToString();
         }
         public string Actualizar()
         {
-            tblCliente _cliente = dbAlquiler.tblCliente
+            tblCliente _cliente = dbAlquiler.tblClientes
                         .Where(p => p.Documento == cliente.Documento)
                         .FirstOrDefault();
 
@@ -41,11 +41,11 @@ namespace ServicioAlquiler.Class
         }
         public string Eliminar(string Documento)
         {
-            tblCliente _cliente = dbAlquiler.tblCliente
+            tblCliente _cliente = dbAlquiler.tblClientes
                         .Where(p => p.Documento == Documento)
                         .FirstOrDefault();
 
-            dbAlquiler.tblCliente.Remove(_cliente);
+            dbAlquiler.tblClientes.Remove(_cliente);
             dbAlquiler.SaveChanges();
             return "Se eliminó el cliente";
         }

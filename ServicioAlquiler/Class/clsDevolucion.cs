@@ -8,26 +8,26 @@ namespace ServicioAlquiler.Class
 {
     public class clsDevolucion
     {
-        private DBAlquilerVehiculoEntities dbAlquiler = new DBAlquilerVehiculoEntities();
+        private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
         public tblDevolucion devolucion { get; set; }
         public string GrabarDevolucion()
         {
             //Consultar el número de factura
             devolucion.Codigo = ConsultarCodigoDevolucion() + 1;
             UpdateEstadoAlquiler();
-            dbAlquiler.tblDevolucion.Add(devolucion);
+            dbAlquiler.tblDevolucions.Add(devolucion);
             dbAlquiler.SaveChanges();
             return devolucion.Codigo.ToString();
         }
         private int ConsultarCodigoDevolucion()
         {
-            return dbAlquiler.tblDevolucion.Select(p => p.Codigo).DefaultIfEmpty(0).Max();
+            return dbAlquiler.tblDevolucions.Select(p => p.Codigo).DefaultIfEmpty(0).Max();
         }
 
 
         private tblAlquiler ConsultarAlquiler()
         {
-            return dbAlquiler.tblAlquiler.Where(p => p.Codigo == devolucion.CodigoAlquiler).FirstOrDefault();
+            return dbAlquiler.tblAlquilers.Where(p => p.Codigo == devolucion.CodigoAlquiler).FirstOrDefault();
         }
         private void UpdateEstadoAlquiler()
         {
@@ -49,7 +49,7 @@ namespace ServicioAlquiler.Class
         {
             try
             {
-                tblVehiculo vehiculo = dbAlquiler.tblVehiculo.Where(x => x.Placa == placa).FirstOrDefault();
+                tblVehiculo vehiculo = dbAlquiler.tblVehiculoes.Where(x => x.Placa == placa).FirstOrDefault();
                 vehiculo.Estado = "Disponible";
             }
             catch (Exception ex)
