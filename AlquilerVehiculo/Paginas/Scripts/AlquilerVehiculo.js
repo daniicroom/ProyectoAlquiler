@@ -1,9 +1,19 @@
 ﻿var oTabla = $("#tblAlquiler").DataTable();
 
 $(document).ready(function () {
+    //Prepara la edición de la tabla
+    $('#tblAlquiler tbody').on('click', 'tr', function () {
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+        } else {
+            oTabla.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+            EditarFila($(this).closest('tr'));
+        }
+    });
     // Obtiene la fecha del sistema y la presenta en el txt
     let now = new Date();
-    $("#txtFechaInicio").val(now.toISOString().split('T')[0]);  
+    $("#txtFechaInicio").val(now.toISOString().split('T')[0]);
 
     //Registrar los botones para responder al evento click
     $("#btnBuscar").click(function () {
@@ -34,16 +44,7 @@ $(document).ready(function () {
     LlenarComboVehiculo();
 
 
-    //Prepara la edición de la tabla
-    $('#tblAlquiler tbody').on('click', 'tr', function () {
-        if ($(this).hasClass('selected')) {
-            $(this).removeClass('selected');
-        } else {
-            oTabla.$('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-            EditarFila($(this).closest('tr'));
-        }
-    });
+
 
     LlenarTablaAlquiler("http://localhost:62556/Api/Empleado", "#tblAlquiler");
 
@@ -151,6 +152,17 @@ function EditarFila(DatosTabla) {
 
 */
 
+// Fucion para manipular los datos de las filas
+function EditarFila(DatosFila) {
+    $("#txtCodigoAlquiler").val(DatosFila.find('td:eq(0)').text());
+    $("#txtDocumentoCliente").val(DatosFila.find('td:eq(1)').text());
+    $("#cboEmpleado").val(DatosFila.find('td:eq(2)').text());
+    $("#cboVehiculo").val(DatosFila.find('td:eq(3)').text());
+    $("#txtEstado").val(DatosFila.find('td:eq(4)').text());
+    $("#txtFechaInicio").val(DatosFila.find('td:eq(5)').text());
+    $("#txtFechaFin").val(DatosFila.find('td:eq(6)').text());
+}
+
 function Consultar() {
     let Documento = $("#txtDocumentoCliente").val();
 
@@ -194,7 +206,7 @@ function Procesar(Comando) {
     let FechaInicio = $("#txtFechaInicio").val();
     let FechaFin = $("#txtFechaFin").val();
 
-    
+
 
     DatosAlquiler = {
         Codigo: Codigo,
@@ -213,8 +225,12 @@ function Procesar(Comando) {
         data: JSON.stringify(DatosAlquiler),
         dataType: "json",
         success: function (Rpta) {
-            $("#dvMensaje").addClass("alert alert-success");
-            $("#dvMensaje").html(Rpta);
+            if (Rpta.length < 4) {
+                $("#txtCodigoAlquiler").val(Rpta);
+            } else {
+                $("#dvMensaje").addClass("alert alert-success");
+                $("#dvMensaje").html(Rpta);
+            }
             //Vuelve y presenta la tabla con los cambios realizados
             LlenarTablaAlquiler("http://localhost:62556/Api/Empleado", "#tblAlquiler");
         },

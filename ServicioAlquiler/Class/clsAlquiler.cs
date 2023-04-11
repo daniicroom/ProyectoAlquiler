@@ -64,5 +64,38 @@ namespace ServicioAlquiler.Class
                 throw ex;
             }
         }
+        public string GrabarEmpleado()
+        {
+            dbAlquiler.tblAlquilers.Add(alquiler);
+            dbAlquiler.SaveChanges();
+            return "Se ingresó el registro de alquiler con código: " + alquiler.Codigo.ToString();
+        }
+
+        public string Actualizar()
+        {
+            tblAlquiler _alquiler = dbAlquiler.tblAlquilers
+                        .Where(p => p.Codigo == alquiler.Codigo)
+                        .FirstOrDefault();
+
+            _alquiler.CedulaCliente = alquiler.CedulaCliente;
+            _alquiler.IDEmpleado = alquiler.IDEmpleado;
+            _alquiler.PlacaVehiculo = alquiler.PlacaVehiculo;
+            _alquiler.FechaInicio = alquiler.FechaInicio;
+            _alquiler.FechaFin = alquiler.FechaFin;
+
+            dbAlquiler.SaveChanges();
+            return "Se actualizó el alquiler";
+        }
+
+        public string Eliminar(int Codigo)
+        {
+            tblAlquiler alquiler = dbAlquiler.tblAlquilers
+                        .Where(p => p.Codigo == Codigo)
+                        .FirstOrDefault();
+
+            dbAlquiler.tblAlquilers.Remove(alquiler);
+            dbAlquiler.SaveChanges();
+            return "Se eliminó el alquiler";
+        }
     }
 }

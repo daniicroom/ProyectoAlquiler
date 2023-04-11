@@ -30,5 +30,16 @@ namespace ServicioAlquiler.Controllers
             clsAlquiler oAlquiler = new clsAlquiler();
             return oAlquiler.GetAll();
         }
+        public string Put([FromBody] tblAlquiler alquiler)
+        {
+            clsAlquiler oAlquiler = new clsAlquiler();
+            oAlquiler.alquiler = alquiler;
+            return oAlquiler.Actualizar();
+        }
+        public string Delete([FromBody] tblAlquiler alquiler)
+        {
+            clsAlquiler oAlquiler = new clsAlquiler();
+            return oAlquiler.Eliminar(alquiler.Codigo);
+        }
     }
 }

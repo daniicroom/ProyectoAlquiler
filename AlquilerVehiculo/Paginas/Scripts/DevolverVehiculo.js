@@ -36,10 +36,18 @@ $(document).ready(function () {
         }
     });
 
-    LlenarTablaDevolucion("http://localhost:62556/Api/Devolucion", "#tblDevolucion");
+    LlenaTablaServicio("http://localhost:62556/Api/Devolucion", "#tblDevolucion");
 
 });
 
+// Fucion para manipular los datos de las filas
+function EditarFila(DatosFila) {
+    $("#txtCodigoDevolucion").val(DatosFila.find('td:eq(0)').text());
+    $("#txtCodigoAlquiler").val(DatosFila.find('td:eq(1)').text());
+    $("#txtFechaDevolucion").val(DatosFila.find('td:eq(3)').text());
+    $("#txtDocumentoEmpleado").val(DatosFila.find('td:eq(2)').text());
+    $("#txtTotalPagar").val(DatosFila.find('td:eq(4)').text());
+}
 
 // Aquí se realiza la consulta del cliente a traves del documento
 function ConsultarEmpleado() {
@@ -98,7 +106,7 @@ function Procesar(Comando) {
 
     ConsultarEmpleado();
 
-    let IDEmpleadoRecibe = $("#cboEmpleado").val();
+    let IDEmpleadoRecibe = $("#txtDocumentoEmpleado").val();
     let FechaDevolucion = $("#txtFechaDevolucion").val();
     let TotalPagar = $("#txtTotalPagar").val();
 
@@ -106,7 +114,7 @@ function Procesar(Comando) {
     DatosDevolucion = {
         Codigo: Codigo,
         CodigoAlquiler: CodigoAlquiler,
-        IDEmpleadoRecibe: Empleado,
+        IDEmpleadoRecibe: IDEmpleadoRecibe,
         FechaDevolucion: FechaDevolucion,
         TotalPagar: TotalPagar,
  
@@ -122,7 +130,7 @@ function Procesar(Comando) {
             $("#dvMensaje").addClass("alert alert-success");
             $("#dvMensaje").html(Rpta);
             //Vuelve y presenta la tabla con los cambios realizados
-            LlenarTablaDevolucion("http://localhost:62556/Api/Devolucion", "#tblDevolucion");
+            LlenaTablaServicio("http://localhost:62556/Api/Devolucion", "#tblDevolucion");
         },
         error: function (errDevolucion) {
             $("#dvMensaje").addClass("alert alert-danger");

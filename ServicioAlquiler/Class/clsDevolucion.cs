@@ -10,6 +10,17 @@ namespace ServicioAlquiler.Class
     {
         private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
         public tblDevolucion devolucion { get; set; }
+        public List<tblDevolucion> GetAll()
+        {
+            try
+            {
+                return dbAlquiler.tblDevolucions.OrderBy(x => x.Codigo).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public string GrabarDevolucion()
         {
             //Consultar el número de factura
@@ -70,6 +81,32 @@ namespace ServicioAlquiler.Class
                        FechaInicial = al.FechaInicio
                    };
 
+        }
+
+        public string Actualizar()
+        {
+            tblDevolucion _devolucion = dbAlquiler.tblDevolucions
+                        .Where(p => p.Codigo == devolucion.Codigo)
+                        .FirstOrDefault();
+
+            _devolucion.CodigoAlquiler = devolucion.CodigoAlquiler;
+            _devolucion.IDEmpleadoRecibe = devolucion.IDEmpleadoRecibe;
+            _devolucion.FechaDevolucion = devolucion.FechaDevolucion;
+            _devolucion.TotalPagar = devolucion.TotalPagar;
+
+            dbAlquiler.SaveChanges();
+            return "Se actualizó la devolucion";
+        }
+
+        public string Eliminar(int Codigo)
+        {
+            tblDevolucion devolucion = dbAlquiler.tblDevolucions
+                        .Where(p => p.Codigo == Codigo)
+                        .FirstOrDefault();
+
+            dbAlquiler.tblDevolucions.Remove(devolucion);
+            dbAlquiler.SaveChanges();
+            return "Se eliminó la devolucion";
         }
     }
 }

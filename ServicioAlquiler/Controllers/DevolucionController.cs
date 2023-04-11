@@ -24,5 +24,21 @@ namespace ServicioAlquiler.Controllers
             clsDevolucion oDevolucion = new clsDevolucion();
             return oDevolucion.GetDatosAlquiler(idAlquiler).FirstOrDefault();
         }
+        public string Put([FromBody] tblDevolucion devolucion)
+        {
+            clsDevolucion oDevolucion = new clsDevolucion();
+            oDevolucion.devolucion = devolucion;
+            return oDevolucion.Actualizar();
+        }
+        public string Delete([FromBody] tblDevolucion devolucion)
+        {
+            clsDevolucion oDevolucion = new clsDevolucion();
+            return oDevolucion.Eliminar(devolucion.Codigo);
+        }
+        public List<tblDevolucion> GetAll()
+        {
+            clsDevolucion oDevolucion = new clsDevolucion();
+            return oDevolucion.GetAll();
+        }
     }
 }
