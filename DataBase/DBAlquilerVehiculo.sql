@@ -174,7 +174,9 @@ Direccion varchar(50) not null,
 IDCiudadSede int foreign key references tblCiudad(Codigo) not null
 )
 
-insert into tblSede values ('Principal', 'CR 54 N 25 36', 1 )
+insert into tblSede values ('PRINCIPAL', 'CR 54 N 25 36', 1 ),
+                           ('POBLADO', 'CLL 10 N 55 17', 1 ),
+						   ('BELLO', 'CLL 53 N 41 26', 2 )
 
 create table tblMarca
 (

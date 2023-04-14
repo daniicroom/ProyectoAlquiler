@@ -33,6 +33,39 @@ namespace ServicioAlquiler.Class
                        Nombre = mar.Nombre + " - " + ve.Descripcion
                    };
         }
+
+        public IQueryable<viewDataTableVehiculos> LlenarTablaVehiculos()
+        {
+            return from veh in dbAlquiler.Set<tblVehiculo>()
+                   join sede in dbAlquiler.Set<tblSede>() on veh.IDSede equals sede.Codigo
+                   join marca in dbAlquiler.Set<tblMarca>() on veh.IDMarca equals marca.Codigo
+                   join gama in dbAlquiler.Set<tblGama>() on veh.IDGama equals gama.Codigo
+                   join color in dbAlquiler.Set<tblColor>() on veh.IDColor equals color.Codigo
+                   join tipo in dbAlquiler.Set<tblTipoVehiculo>() on veh.IDTipoVehiculo equals tipo.Codigo
+
+                   orderby veh.IDMarca
+                   select new viewDataTableVehiculos
+                   {
+                       Placa = veh.Placa,
+                       Descripcion = veh.Descripcion,
+                       Estado = veh.Estado,
+                       IDSede = veh.IDSede,
+                       Sede = sede.Nombre,
+                       IDMarca = veh.IDMarca,
+                       Marca = marca.Nombre,
+                       IDGama = veh.IDGama,
+                       Gama = gama.Nombre,
+                       IDColor = veh.IDColor,
+                       Color = color.Nombre,
+                       IDTipoVehiculo = veh.IDTipoVehiculo,
+                       TipoVehiculo = tipo.Nombre,
+                       Precio = veh.Precio
+
+                   };
+
+
+        }
+
         public tblVehiculo GetByIdAlquiler(int idAlquiler)
         {
             return dbAlquiler.tblVehiculoes

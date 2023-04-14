@@ -257,21 +257,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBAlquiler.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBAlquilerVehiculo.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBAlquilerVehiculo.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DBAlquilerVehiculo.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBAlquilerVehiculo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DBAlquilerVehiculo.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBAlquilerVehiculo.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\tblAlquiler.cs">
       <DependentUpon>DBAlquiler.tt</DependentUpon>
     </Compile>
@@ -308,9 +293,6 @@
     <Compile Include="Models\tblPai.cs">
       <DependentUpon>DBAlquiler.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tblPais.cs">
-      <DependentUpon>DBAlquilerVehiculo.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tblSede.cs">
       <DependentUpon>DBAlquiler.tt</DependentUpon>
     </Compile>
@@ -329,6 +311,7 @@
     <Compile Include="Models\tblVehiculo.cs">
       <DependentUpon>DBAlquiler.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\viewDataTableVehiculos.cs" />
     <Compile Include="Models\viewDatosAlquiler.cs" />
     <Compile Include="Models\viewComboVehiculo.cs" />
     <Compile Include="Models\viewCombo.cs" />
@@ -353,16 +336,6 @@
       <DependentUpon>DBAlquiler.edmx</DependentUpon>
       <LastGenOutput>DBAlquiler.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DBAlquilerVehiculo.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DBAlquilerVehiculo.Context.cs</LastGenOutput>
-      <DependentUpon>DBAlquilerVehiculo.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\DBAlquilerVehiculo.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBAlquilerVehiculo.edmx</DependentUpon>
-      <LastGenOutput>DBAlquilerVehiculo.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -384,13 +357,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Models\DBAlquilerVehiculo.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBAlquilerVehiculo.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DBAlquilerVehiculo.edmx.diagram">
-      <DependentUpon>DBAlquilerVehiculo.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\DBAlquiler.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBAlquiler.Designer.cs</LastGenOutput>

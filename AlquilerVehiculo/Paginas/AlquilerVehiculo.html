@@ -60,16 +60,26 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="txtFechaInicio">Fecha Inicio</label>
-                                            <input type="text" class="form-control" id="txtFechaInicio" placeholder="Fecha Inicio" disabled>
+                                            <input type="date" class="form-control" id="txtFechaInicio" name="txtFechaInicio" min="">
                                         </div>
                                     </div>
 
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="txtFechaFin">Fecha Fin</label>
-                                            <input type="datetime" class="form-control" id="txtFechaFin" placeholder="Fecha Fin">
+                                            <input type="date" class="form-control" id="txtFechaFin" name="txtFechaFin" min="">
                                         </div>
                                     </div>
+
+                                    <script>
+                                        const startDateInput = document.getElementById("txtFechaInicio");
+                                        const endDateInput = document.getElementById("txtFechaFin");
+
+                                        startDateInput.addEventListener("input", (event) => {
+                                            endDateInput.min = event.target.value;
+                                        });
+                                    </script>
+
 
                                 </div>
 

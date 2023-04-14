@@ -35,7 +35,7 @@ $(document).ready(function () {
     LlenarComboTipoVehiculo();
 
     //Llenar la tabla con la informacion de los vehiculos
-    LlenaTablaServicio("http://localhost:62556/api/Vehiculo/GetAll", "#tblVehiculo");
+    LlenaTablaServicio("http://localhost:62556/api/Vehiculo/GetTable", "#tblVehiculo");
 
 
     //REVISAR
@@ -73,17 +73,14 @@ function EditarFila(DatosFila) {
     $("#txtDescripcion").val(DatosFila.find('td:eq(1)').text());
     $("#txtEstado").val(DatosFila.find('td:eq(2)').text());
     $("#cboSede").val(DatosFila.find('td:eq(3)').text());
-    $("#cboMarca").val(DatosFila.find('td:eq(4)').text());
-    $("#cboGama").val(DatosFila.find('td:eq(5)').text());
-    $("#cboColor").val(DatosFila.find('td:eq(6)').text());
-    $("#txtPrecio").val(DatosFila.find('td:eq(7)').text());
-    $("#cboTipoVehiculo").val(DatosFila.find('td:eq(8)').text());
+    $("#cboMarca").val(DatosFila.find('td:eq(5)').text());
+    $("#cboGama").val(DatosFila.find('td:eq(7)').text());
+    $("#cboColor").val(DatosFila.find('td:eq(9)').text());
+    $("#cboTipoVehiculo").val(DatosFila.find('td:eq(11)').text());
+    $("#txtPrecio").val(DatosFila.find('td:eq(13)').text());
 }
 
 
-function LlenarTablaVehiculoServ() {
-    LlenaTablaServicio("http://localhost:62556/Api/Vehiculo", "#tblVehiculo");
-}
 
 function Consultar() {
     let Placa = $("#txtPlaca").val();
@@ -101,8 +98,9 @@ function Consultar() {
             $("#cboMarca").val(Vehiculo.IDMarca);
             $("#cboGama").val(Vehiculo.IDGama);
             $("#cboColor").val(Vehiculo.IDColor);
-            $("#txtPrecio").val(Vehiculo.Precio);
             $("#cboTipoVehiculo").val(Vehiculo.IDTipoVehiculo);
+            $("#txtPrecio").val(Vehiculo.Precio);
+            
             
         },
         error: function (errVehiculo) {
@@ -127,8 +125,9 @@ function Procesar(Comando) {
     let IdMarca = $("#cboMarca").val();
     let IdGama = $("#cboGama").val();
     let IdColor = $("#cboColor").val();
-    let Precio = $("#txtPrecio").val();
     let IdTipoVehiculo = $("#cboTipoVehiculo").val();
+    let Precio = $("#txtPrecio").val();
+    
 
     DatosVehiculo = {
         Placa: Placa,
@@ -138,8 +137,9 @@ function Procesar(Comando) {
         IdMarca: IdMarca,
         IdGama: IdGama,
         IdColor: IdColor,
+        IdTipoVehiculo: IdTipoVehiculo,
         Precio: Precio,
-        IdTipoVehiculo: IdTipoVehiculo
+        
     }
     $.ajax({
         type: Comando,
@@ -151,7 +151,7 @@ function Procesar(Comando) {
             $("#dvMensaje").addClass("alert alert-success");
             $("#dvMensaje").html(Rpta);
             //Vuelve y presenta la tabla con los cambios realizados
-            LlenaTablaServicio("http://localhost:62556/api/Vehiculo/GetAll", "#tblVehiculo");
+            LlenaTablaServicio("http://localhost:62556/api/Vehiculo/GetTable", "#tblVehiculo");
         },
         error: function (errVehiculo) {
             $("#dvMensaje").addClass("alert alert-danger");

@@ -21,6 +21,16 @@ namespace ServicioAlquiler.Controllers
             clsVehiculo vehiculo = new clsVehiculo();
             return vehiculo.GetAll();
         }
+
+        [HttpGet]
+        [Route("GetTable")]
+        public IQueryable<viewDataTableVehiculos> GetTable()
+        {
+            clsVehiculo vehiculo = new clsVehiculo();
+            return vehiculo.LlenarTablaVehiculos();
+
+        }
+
         public IQueryable<viewComboVehiculo> Get()
         {
             clsVehiculo vehiculo = new clsVehiculo();
