@@ -84,83 +84,16 @@ function ConsultarCliente() {
 
 
 
-/*
-function ActualizarBotones(valor) {
-    if (valor) {
-        $("#btnRegistrar").show();
-        $("#btnActualizar").show();
-        $("#btnEliminar").show();
-        $("#btnConsultar").show();
-        $("#btnLimpiar").hide();
-    }
-    else {
-        $("#btnRegistrar").hide();
-        $("#btnActualizar").hide();
-        $("#btnEliminar").hide();
-        $("#btnConsultar").hide();
-        $("#btnLimpiar").show();
-
-    }
-}
-
-
-function Eliminar() {
-    //Borra una fila de la tabla
-    oTabla.row('.selected').remove().draw(false);
-    ActualizarBotones(true);
-
-}
-
-function Limpiar() {
-    oTabla.clear().draw(false);
-
-    $("#txtDocumentoCliente").val("");
-    $("#txtNombreCliente").val("");
-
-    /*$("#txtCodigoAlquiler").val(0);
-    $("#txtDocumentoCliente").val("");
-    $("#txtNombreCliente").val("");
-    $("#cboEmpleado").val("");
-    $("#cboVehiculo").val("");
-    $("#txtEstado").val("");
-    $("#txtFechaInicio").val("");
-    $("#txtFechaFin").val("");
-}
-
-function Cancelar() {
-    
-    ActualizarBotones(true);
-}
-
-function EditarFila(DatosTabla) {
-    
-    ActualizarBotones(false);
-
-    $("#txtCodigoAlquiler").val(DatosTabla.find('td:eq(0)').text());
-    $("#txtDocumentoCliente").val(DatosTabla.find('td:eq(1)').text());
-    ConsultarCliente();
-
-    $("#cboEmpleado").val(DatosTabla.find('td:eq(2)').text());
-    $("#cboVehiculo").val(DatosTabla.find('td:eq(3)').text());
-    $("#txtEstado").val(DatosTabla.find('td:eq(4)').text());
-    $("#txtFechaInicio").val(DatosTabla.find('td:eq(5)').text());
-    $("#txtFechaFin").val(DatosTabla.find('td:eq(6)').text());
-    
-}
-
-
-
-*/
-
 // Fucion para manipular los datos de las filas
 function EditarFila(DatosFila) {
     $("#txtCodigoAlquiler").val(DatosFila.find('td:eq(0)').text());
     $("#txtDocumentoCliente").val(DatosFila.find('td:eq(1)').text());
-    $("#cboEmpleado").val(DatosFila.find('td:eq(2)').text());
+    ConsultarCliente();
+    $("#cboEmpleado").val(DatosFila.find('td:eq(2)').text()); 
     $("#cboVehiculo").val(DatosFila.find('td:eq(3)').text());
     $("#txtEstado").val(DatosFila.find('td:eq(4)').text());
-    $("#txtFechaInicio").val(DatosFila.find('td:eq(5)').text());
-    $("#txtFechaFin").val(DatosFila.find('td:eq(6)').text());
+    $("#txtFechaInicio").val(DatosFila.find('td:eq(5)').text().split('T')[0]);
+    $("#txtFechaFin").val(DatosFila.find('td:eq(6)').text().split('T')[0]);
 }
 
 function Consultar() {
@@ -182,9 +115,13 @@ function Consultar() {
             $("#cboEmpleado").val(Alquiler.IDEmpleado);
             $("#cboVehiculo").val(Alquiler.PlacaVehiculo);
             $("#txtEstado").val(Alquiler.Estado);
-            $("#txtFechaInicio").val(Alquiler.FechaInicio);
-            $("#txtFechaFin").val(Alquiler.FechaFin);
 
+            let FechaInicio = Alquiler.FechaInicio.split('T')[0];
+            $("#txtFechaInicio").val(FechaInicio);
+            
+
+            let FechaFin = Alquiler.FechaFin.split('T')[0];
+            $("#txtFechaFin").val(FechaFin);
 
         },
         error: function (errAlquiler) {

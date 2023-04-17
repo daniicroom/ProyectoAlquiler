@@ -82,7 +82,10 @@ function Consultar() {
 
             $("#txtCodigoDevolucion").val(Devolucion.Codigo);
             $("#txtCodigoAlquiler").val(Devolucion.CodigoAlquiler);
-            $("#txtFechaDevolucion").val(Devolucion.FechaDevolucion);
+
+            let FechaDevolucion = Devolucion.FechaDevolucion.split('T')[0];
+            $("#txtFechaDevolucion").val(FechaDevolucion);
+
             $("#txtDocumentoEmpleado").val(Devolucion.Documento);
 
             ConsultarEmpleado();
@@ -102,11 +105,10 @@ function Consultar() {
 function Procesar(Comando) {
 
     let Codigo = $("#txtCodigoDevolucion").val();
+    CalcularTotalPagar();
     let CodigoAlquiler = $("#txtCodigoAlquiler").val();
-
-    ConsultarEmpleado();
-
     let IDEmpleadoRecibe = $("#txtDocumentoEmpleado").val();
+    ConsultarEmpleado();
     let FechaDevolucion = $("#txtFechaDevolucion").val();
     let TotalPagar = $("#txtTotalPagar").val();
 
