@@ -178,7 +178,7 @@ function Procesar(Comando) {
                 $("#dvMensaje").html(Rpta);
             }
             //Vuelve y presenta la tabla con los cambios realizados
-            LlenarTablaAlquiler("http://localhost:62556/Api/Empleado", "#tblAlquiler");
+            LlenarTablaAlquiler("http://localhost:62556/Api/Alquiler", "#tblAlquiler");
         },
         error: function (errAlquiler) {
             $("#dvMensaje").addClass("alert alert-danger");

@@ -12,10 +12,37 @@ namespace ServicioAlquiler.Controllers
     [EnableCors(origins: "http://localhost:54777", headers: "*", methods: "*")]
     public class ReservaController : ApiController
     {
+        //Se obtiene todo de la tabla Reservar
         public List<tblReservar> GetAll()
         {
             clsReserva oReserva = new clsReserva();
             return oReserva.GetAll();
+        }
+
+        // CRUD
+        public tblReservar Get(int Codigo)
+        {
+            clsReserva reserva = new clsReserva();
+            return reserva.Consultar(Codigo);
+        }
+
+        public string Post([FromBody] tblReservar reserva)
+        {
+            clsReserva oReserva = new clsReserva();
+            oReserva.reserva = reserva;
+            return oReserva.GrabarReserva();
+        }
+
+        public string Put([FromBody] tblReservar reserva)
+        {
+            clsReserva oReserva = new clsReserva();
+            oReserva.reserva = reserva;
+            return oReserva.Actualizar();
+        }
+        public string Delete([FromBody] tblReservar reserva)
+        {
+            clsReserva oReserva = new clsReserva();
+            return oReserva.Eliminar(reserva.Codigo);
         }
 
     }

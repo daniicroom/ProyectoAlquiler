@@ -162,7 +162,7 @@ function Procesar(Comando) {
             $("#dvMensaje").addClass("alert alert-success");
             $("#dvMensaje").html(Rpta);
             //Vuelve y presenta la tabla con los cambios realizados
-            LlenaTablaServicio("http://localhost:62556/Api/Reserva", "#tblReserva");
+            LlenarTablaReserva();
         },
         error: function (errReserva) {
             $("#dvMensaje").addClass("alert alert-danger");

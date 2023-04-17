@@ -11,13 +11,7 @@ namespace ServicioAlquiler.Class
         private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblAlquiler alquiler { get; set; }
 
-        public tblAlquiler Consultar(string Documento)
-        {
-            return dbAlquiler.tblAlquilers.Where(x => x.tblCliente.Documento == Documento)
-                .FirstOrDefault();
-                    
-        }
-
+      
 
         public List<tblAlquiler> GetAll()
         {
@@ -29,6 +23,15 @@ namespace ServicioAlquiler.Class
             {
                 throw ex;
             }
+        }
+
+
+        //CRUD
+        public tblAlquiler Consultar(string Documento)
+        {
+            return dbAlquiler.tblAlquilers.Where(x => x.tblCliente.Documento == Documento)
+                .FirstOrDefault();
+
         }
 
         public string GrabarAlquiler()
