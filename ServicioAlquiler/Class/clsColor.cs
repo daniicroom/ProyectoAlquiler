@@ -9,7 +9,7 @@ namespace ServicioAlquiler.Class
     
     public class clsColor
     {
-        private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
+        private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public List<viewCombo> ListarColorVehiculo()
         {
             return dbAlquiler.tblColors

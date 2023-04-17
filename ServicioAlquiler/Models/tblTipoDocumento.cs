@@ -13,6 +13,7 @@ namespace ServicioAlquiler.Models
     using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
+   
 
     public partial class tblTipoDocumento
     {

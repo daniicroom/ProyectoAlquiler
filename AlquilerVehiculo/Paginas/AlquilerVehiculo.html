@@ -22,7 +22,8 @@
                 <!-- left column -->
                 <div class="col-md-12">
                     <!-- general form elements -->
-                    <div class="card card-primary"><br />
+                    <div class="card card-primary">
+                        <br />
                         <div class="card-header">
                             <h3 class="card-dark">GESTIONAR ALQUILER</h3>
                         </div>
@@ -35,7 +36,7 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="txtCodigoAlquiler">Código del Alquiler</label>
-                                            <input type="text" class="form-control" id="txtCodigoAlquiler" placeholder="Código del alquiler" disabled>
+                                            <input type="text" class="form-control" id="txtCodigoAlquiler" placeholder="Código del alquiler">
                                         </div>
                                     </div>
 
@@ -44,15 +45,6 @@
                                             <label for="cboEmpleado">Empleado</label>
                                             <select id="cboEmpleado" class="form-control select2" style="width: 100%">
                                                 <option selected="selected" value="0">Seleccione un empleado</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="cboVehiculo">Vehículo</label>
-                                            <select id="cboVehiculo" class="form-control select2" style="width: 100%">
-                                                <option selected="selected" value="0">Seleccione el Vehículo</option>
                                             </select>
                                         </div>
                                     </div>
@@ -97,14 +89,32 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="txtNombreCliente">Nombre del Cliente</label>
                                             <input type="text" class="form-control" id="txtNombreCliente" placeholder="Nombre del Cliente" disabled>
                                         </div>
                                     </div>
 
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="cboTipoVehiculo">Tipo Vehículo</label>
+                                            <select id="cboTipoVehiculo" class="form-control select2" style="width: 100%" onchange="LlenarComboVehiculo()">
+                                                <option selected="selected" value="0">Seleccione el tipo de Vehículo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="cboVehiculo">Vehículo</label>
+                                            <select id="cboVehiculo" class="form-control select2" style="width: 100%">
+                                                <option selected="selected" value="0">Seleccione el Vehículo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-1">
                                         <div class="form-group">
                                             <label for="txtEstado"></label>
                                             <input type="text" class="form-control" id="txtEstado" placeholder="Estado Alquiler" hidden>
@@ -124,18 +134,14 @@
                                     </div>
 
                                     <div class="col-md-3">
+                                        <button type="button" id="btnEliminar" class="btn-block btn-lg btn-primary">ELIMINAR</button>
+                                    </div>
+
+                                    <div class="col-md-3">
                                         <button type="button" id="btnConsultar" class="btn-block btn-lg btn-primary">CONSULTAR</button>
                                     </div>
                                 </div><br />
 
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <button type="button" id="btnCancelar" class="btn-block btn-lg btn-primary">CANCELAR</button>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" id="btnEliminar" class="btn-block btn-lg btn-primary">ELIMINAR</button>
-                                    </div>
-                                </div><br />
 
                                 <div class="row">
                                     <div class="col-md-12">
@@ -145,6 +151,7 @@
                                                     <th>Código Alquiler</th>
                                                     <th>Documento Cliente</th>
                                                     <th>Empleado</th>
+                                                    <th>IdTipoVehiculo</th>
                                                     <th>Placa Vehículo</th>
                                                     <th>Estado Alquiler</th>
                                                     <th>Fecha Inicio</th>

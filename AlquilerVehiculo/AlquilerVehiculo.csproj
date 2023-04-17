@@ -133,6 +133,7 @@
     <Content Include="Paginas\Estilos\dataTables.bootstrap4.css" />
     <Content Include="Paginas\Estilos\dataTables.bootstrap4.min.css" />
     <Content Include="Paginas\Estilos\dataTables.min.css" />
+    <Content Include="Paginas\ReservarVehiculo.html" />
     <Content Include="Paginas\Scripts\AlquilerVehiculo.js" />
     <Content Include="Paginas\Scripts\Clientes.js" />
     <Content Include="Paginas\Scripts\Comunes\Combos.js" />
@@ -140,6 +141,7 @@
     <Content Include="Paginas\Scripts\Comunes\Tablas.js" />
     <Content Include="Paginas\Scripts\DevolverVehiculo.js" />
     <Content Include="Paginas\Scripts\Empleados.js" />
+    <Content Include="Paginas\Scripts\ReservarVehiculo.js" />
     <Content Include="Paginas\Scripts\Vehiculo.js" />
     <Content Include="Paginas\Vehiculo.html" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />

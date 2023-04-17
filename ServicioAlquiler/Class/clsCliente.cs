@@ -8,7 +8,7 @@ namespace ServicioAlquiler.Class
 {
     public class clsCliente
     {
-        private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
+        private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblCliente cliente { get; set; }
         public tblCliente Consultar(string Documento)
         {

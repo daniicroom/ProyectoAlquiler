@@ -9,9 +9,11 @@
 
 namespace ServicioAlquiler.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
     public partial class tblTipoTelefono
     {
         public tblTipoTelefono()
@@ -21,7 +23,9 @@ namespace ServicioAlquiler.Models
     
         public int Codigo { get; set; }
         public string Nombre { get; set; }
-    
+
+        [JsonIgnore]
+        [IgnoreDataMember]
         public virtual ICollection<tblTelefonoCliente> tblTelefonoClientes { get; set; }
     }
 }

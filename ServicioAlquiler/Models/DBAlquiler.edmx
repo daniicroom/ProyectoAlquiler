@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBAlquilerVehiculoModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DBAlquilerVehiculoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblAlquiler">
           <Key>
             <PropertyRef Name="Codigo" />
@@ -12,10 +12,11 @@
           <Property Name="Codigo" Type="int" Nullable="false" />
           <Property Name="CedulaCliente" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="IDEmpleado" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IDTipoVehiculo" Type="int" Nullable="false" />
           <Property Name="PlacaVehiculo" Type="varchar" MaxLength="6" Nullable="false" />
           <Property Name="EstadoAlquiler" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="FechaInicio" Type="datetime" Nullable="false" />
-          <Property Name="FechaFin" Type="datetime" Nullable="false" />
+          <Property Name="FechaInicio" Type="date" Nullable="false" />
+          <Property Name="FechaFin" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="tblCargoEmpleado">
           <Key>
@@ -69,7 +70,7 @@
           <Property Name="Codigo" Type="int" Nullable="false" />
           <Property Name="CodigoAlquiler" Type="int" Nullable="false" />
           <Property Name="IDEmpleadoRecibe" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="FechaDevolucion" Type="datetime" Nullable="false" />
+          <Property Name="FechaDevolucion" Type="date" Nullable="false" />
           <Property Name="TotalPagar" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblEmpleado">
@@ -108,6 +109,19 @@
           </Key>
           <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblReservar">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="CedulaCliente" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IDEmpleado" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IDTipoVehiculo" Type="int" Nullable="false" />
+          <Property Name="PlacaVehiculo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="EstadoReserva" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FechaInicio" Type="date" Nullable="false" />
+          <Property Name="FechaFin" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="tblSede">
           <Key>
@@ -162,7 +176,7 @@
           <Property Name="Precio" Type="int" Nullable="false" />
           <Property Name="IDTipoVehiculo" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__tblAlquil__Cedul__4F7CD00D">
+        <Association Name="FK__tblAlquil__Cedul__5535A963">
           <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
           <End Role="tblAlquiler" Type="Self.tblAlquiler" Multiplicity="*" />
           <ReferentialConstraint>
@@ -174,7 +188,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblAlquil__IDEmp__5070F446">
+        <Association Name="FK__tblAlquil__IDEmp__5629CD9C">
           <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="1" />
           <End Role="tblAlquiler" Type="Self.tblAlquiler" Multiplicity="*" />
           <ReferentialConstraint>
@@ -186,7 +200,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblAlquil__Placa__5165187F">
+        <Association Name="FK__tblAlquil__IDTip__571DF1D5">
+          <End Role="tblTipoVehiculo" Type="Self.tblTipoVehiculo" Multiplicity="1" />
+          <End Role="tblAlquiler" Type="Self.tblAlquiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoVehiculo">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblAlquiler">
+              <PropertyRef Name="IDTipoVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAlquil__Placa__5812160E">
           <End Role="tblVehiculo" Type="Self.tblVehiculo" Multiplicity="1" />
           <End Role="tblAlquiler" Type="Self.tblAlquiler" Multiplicity="*" />
           <ReferentialConstraint>
@@ -246,7 +272,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblDevolu__Codig__5441852A">
+        <Association Name="FK__tblDevolu__Codig__5AEE82B9">
           <End Role="tblAlquiler" Type="Self.tblAlquiler" Multiplicity="1" />
           <End Role="tblDevolucion" Type="Self.tblDevolucion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -258,7 +284,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblDevolu__IDEmp__5535A963">
+        <Association Name="FK__tblDevolu__IDEmp__5BE2A6F2">
           <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="1" />
           <End Role="tblDevolucion" Type="Self.tblDevolucion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -279,6 +305,54 @@
             </Principal>
             <Dependent Role="tblEmpleado">
               <PropertyRef Name="IDCargoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblReserv__Cedul__4F7CD00D">
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblReservar" Type="Self.tblReservar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCliente">
+              <PropertyRef Name="Documento" />
+            </Principal>
+            <Dependent Role="tblReservar">
+              <PropertyRef Name="CedulaCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblReserv__IDEmp__5070F446">
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="1" />
+          <End Role="tblReservar" Type="Self.tblReservar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleado">
+              <PropertyRef Name="Documento" />
+            </Principal>
+            <Dependent Role="tblReservar">
+              <PropertyRef Name="IDEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblReserv__IDTip__5165187F">
+          <End Role="tblTipoVehiculo" Type="Self.tblTipoVehiculo" Multiplicity="1" />
+          <End Role="tblReservar" Type="Self.tblReservar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoVehiculo">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblReservar">
+              <PropertyRef Name="IDTipoVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblReserv__Placa__52593CB8">
+          <End Role="tblVehiculo" Type="Self.tblVehiculo" Multiplicity="1" />
+          <End Role="tblReservar" Type="Self.tblReservar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVehiculo">
+              <PropertyRef Name="Placa" />
+            </Principal>
+            <Dependent Role="tblReservar">
+              <PropertyRef Name="PlacaVehiculo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -378,7 +452,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBAlquilerVehiculoModel1StoreContainer">
+        <EntityContainer Name="DBAlquilerVehiculoModelStoreContainer">
           <EntitySet Name="tblAlquiler" EntityType="Self.tblAlquiler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCargoEmpleado" EntityType="Self.tblCargoEmpleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCiudad" EntityType="Self.tblCiudad" Schema="dbo" store:Type="Tables" />
@@ -391,21 +465,26 @@
           <EntitySet Name="tblLicencia" EntityType="Self.tblLicencia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMarca" EntityType="Self.tblMarca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPais" EntityType="Self.tblPais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblReservar" EntityType="Self.tblReservar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSede" EntityType="Self.tblSede" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTelefonoCliente" EntityType="Self.tblTelefonoCliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTipoDocumento" EntityType="Self.tblTipoDocumento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTipoTelefono" EntityType="Self.tblTipoTelefono" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTipoVehiculo" EntityType="Self.tblTipoVehiculo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblVehiculo" EntityType="Self.tblVehiculo" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tblAlquil__Cedul__4F7CD00D" Association="Self.FK__tblAlquil__Cedul__4F7CD00D">
+          <AssociationSet Name="FK__tblAlquil__Cedul__5535A963" Association="Self.FK__tblAlquil__Cedul__5535A963">
             <End Role="tblCliente" EntitySet="tblCliente" />
             <End Role="tblAlquiler" EntitySet="tblAlquiler" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblAlquil__IDEmp__5070F446" Association="Self.FK__tblAlquil__IDEmp__5070F446">
+          <AssociationSet Name="FK__tblAlquil__IDEmp__5629CD9C" Association="Self.FK__tblAlquil__IDEmp__5629CD9C">
             <End Role="tblEmpleado" EntitySet="tblEmpleado" />
             <End Role="tblAlquiler" EntitySet="tblAlquiler" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblAlquil__Placa__5165187F" Association="Self.FK__tblAlquil__Placa__5165187F">
+          <AssociationSet Name="FK__tblAlquil__IDTip__571DF1D5" Association="Self.FK__tblAlquil__IDTip__571DF1D5">
+            <End Role="tblTipoVehiculo" EntitySet="tblTipoVehiculo" />
+            <End Role="tblAlquiler" EntitySet="tblAlquiler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAlquil__Placa__5812160E" Association="Self.FK__tblAlquil__Placa__5812160E">
             <End Role="tblVehiculo" EntitySet="tblVehiculo" />
             <End Role="tblAlquiler" EntitySet="tblAlquiler" />
           </AssociationSet>
@@ -425,17 +504,33 @@
             <End Role="tblPais" EntitySet="tblPais" />
             <End Role="tblDepartamento" EntitySet="tblDepartamento" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblDevolu__Codig__5441852A" Association="Self.FK__tblDevolu__Codig__5441852A">
+          <AssociationSet Name="FK__tblDevolu__Codig__5AEE82B9" Association="Self.FK__tblDevolu__Codig__5AEE82B9">
             <End Role="tblAlquiler" EntitySet="tblAlquiler" />
             <End Role="tblDevolucion" EntitySet="tblDevolucion" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblDevolu__IDEmp__5535A963" Association="Self.FK__tblDevolu__IDEmp__5535A963">
+          <AssociationSet Name="FK__tblDevolu__IDEmp__5BE2A6F2" Association="Self.FK__tblDevolu__IDEmp__5BE2A6F2">
             <End Role="tblEmpleado" EntitySet="tblEmpleado" />
             <End Role="tblDevolucion" EntitySet="tblDevolucion" />
           </AssociationSet>
           <AssociationSet Name="FK__tblEmplea__IDCar__4CA06362" Association="Self.FK__tblEmplea__IDCar__4CA06362">
             <End Role="tblCargoEmpleado" EntitySet="tblCargoEmpleado" />
             <End Role="tblEmpleado" EntitySet="tblEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblReserv__Cedul__4F7CD00D" Association="Self.FK__tblReserv__Cedul__4F7CD00D">
+            <End Role="tblCliente" EntitySet="tblCliente" />
+            <End Role="tblReservar" EntitySet="tblReservar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblReserv__IDEmp__5070F446" Association="Self.FK__tblReserv__IDEmp__5070F446">
+            <End Role="tblEmpleado" EntitySet="tblEmpleado" />
+            <End Role="tblReservar" EntitySet="tblReservar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblReserv__IDTip__5165187F" Association="Self.FK__tblReserv__IDTip__5165187F">
+            <End Role="tblTipoVehiculo" EntitySet="tblTipoVehiculo" />
+            <End Role="tblReservar" EntitySet="tblReservar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblReserv__Placa__52593CB8" Association="Self.FK__tblReserv__Placa__52593CB8">
+            <End Role="tblVehiculo" EntitySet="tblVehiculo" />
+            <End Role="tblReservar" EntitySet="tblReservar" />
           </AssociationSet>
           <AssociationSet Name="FK__tblSede__IDCiuda__398D8EEE" Association="Self.FK__tblSede__IDCiuda__398D8EEE">
             <End Role="tblCiudad" EntitySet="tblCiudad" />
@@ -474,7 +569,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DBAlquilerVehiculoModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DBAlquilerVehiculoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="tblAlquiler">
           <Key>
             <PropertyRef Name="Codigo" />
@@ -482,14 +577,16 @@
           <Property Name="Codigo" Type="Int32" Nullable="false" />
           <Property Name="CedulaCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDEmpleado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDTipoVehiculo" Type="Int32" Nullable="false" />
           <Property Name="PlacaVehiculo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EstadoAlquiler" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="tblCliente" Relationship="Self.FK__tblAlquil__Cedul__4F7CD00D" FromRole="tblAlquiler" ToRole="tblCliente" />
-          <NavigationProperty Name="tblEmpleado" Relationship="Self.FK__tblAlquil__IDEmp__5070F446" FromRole="tblAlquiler" ToRole="tblEmpleado" />
-          <NavigationProperty Name="tblVehiculo" Relationship="Self.FK__tblAlquil__Placa__5165187F" FromRole="tblAlquiler" ToRole="tblVehiculo" />
-          <NavigationProperty Name="tblDevolucions" Relationship="Self.FK__tblDevolu__Codig__5441852A" FromRole="tblAlquiler" ToRole="tblDevolucion" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tblCliente" Relationship="Self.FK__tblAlquil__Cedul__5535A963" FromRole="tblAlquiler" ToRole="tblCliente" />
+          <NavigationProperty Name="tblEmpleado" Relationship="Self.FK__tblAlquil__IDEmp__5629CD9C" FromRole="tblAlquiler" ToRole="tblEmpleado" />
+          <NavigationProperty Name="tblTipoVehiculo" Relationship="Self.FK__tblAlquil__IDTip__571DF1D5" FromRole="tblAlquiler" ToRole="tblTipoVehiculo" />
+          <NavigationProperty Name="tblVehiculo" Relationship="Self.FK__tblAlquil__Placa__5812160E" FromRole="tblAlquiler" ToRole="tblVehiculo" />
+          <NavigationProperty Name="tblDevolucions" Relationship="Self.FK__tblDevolu__Codig__5AEE82B9" FromRole="tblAlquiler" ToRole="tblDevolucion" />
         </EntityType>
         <EntityType Name="tblCargoEmpleado">
           <Key>
@@ -522,9 +619,10 @@
           <Property Name="Edad" Type="Int32" Nullable="false" />
           <Property Name="NumeroLicencia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDLicencia" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblAlquilers" Relationship="Self.FK__tblAlquil__Cedul__4F7CD00D" FromRole="tblCliente" ToRole="tblAlquiler" />
+          <NavigationProperty Name="tblAlquilers" Relationship="Self.FK__tblAlquil__Cedul__5535A963" FromRole="tblCliente" ToRole="tblAlquiler" />
           <NavigationProperty Name="tblLicencia" Relationship="Self.FK__tblClient__IDLic__30F848ED" FromRole="tblCliente" ToRole="tblLicencia" />
           <NavigationProperty Name="tblTipoDocumento" Relationship="Self.FK__tblClient__TipoD__300424B4" FromRole="tblCliente" ToRole="tblTipoDocumento" />
+          <NavigationProperty Name="tblReservars" Relationship="Self.FK__tblReserv__Cedul__4F7CD00D" FromRole="tblCliente" ToRole="tblReservar" />
           <NavigationProperty Name="tblTelefonoClientes" Relationship="Self.FK__tblTelefo__Cedul__35BCFE0A" FromRole="tblCliente" ToRole="tblTelefonoCliente" />
         </EntityType>
         <EntityType Name="tblColor">
@@ -553,10 +651,10 @@
           <Property Name="Codigo" Type="Int32" Nullable="false" />
           <Property Name="CodigoAlquiler" Type="Int32" Nullable="false" />
           <Property Name="IDEmpleadoRecibe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FechaDevolucion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaDevolucion" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TotalPagar" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblAlquiler" Relationship="Self.FK__tblDevolu__Codig__5441852A" FromRole="tblDevolucion" ToRole="tblAlquiler" />
-          <NavigationProperty Name="tblEmpleado" Relationship="Self.FK__tblDevolu__IDEmp__5535A963" FromRole="tblDevolucion" ToRole="tblEmpleado" />
+          <NavigationProperty Name="tblAlquiler" Relationship="Self.FK__tblDevolu__Codig__5AEE82B9" FromRole="tblDevolucion" ToRole="tblAlquiler" />
+          <NavigationProperty Name="tblEmpleado" Relationship="Self.FK__tblDevolu__IDEmp__5BE2A6F2" FromRole="tblDevolucion" ToRole="tblEmpleado" />
         </EntityType>
         <EntityType Name="tblEmpleado">
           <Key>
@@ -566,9 +664,10 @@
           <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDCargoEmpleado" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblAlquilers" Relationship="Self.FK__tblAlquil__IDEmp__5070F446" FromRole="tblEmpleado" ToRole="tblAlquiler" />
+          <NavigationProperty Name="tblAlquilers" Relationship="Self.FK__tblAlquil__IDEmp__5629CD9C" FromRole="tblEmpleado" ToRole="tblAlquiler" />
           <NavigationProperty Name="tblCargoEmpleado" Relationship="Self.FK__tblEmplea__IDCar__4CA06362" FromRole="tblEmpleado" ToRole="tblCargoEmpleado" />
-          <NavigationProperty Name="tblDevolucions" Relationship="Self.FK__tblDevolu__IDEmp__5535A963" FromRole="tblEmpleado" ToRole="tblDevolucion" />
+          <NavigationProperty Name="tblDevolucions" Relationship="Self.FK__tblDevolu__IDEmp__5BE2A6F2" FromRole="tblEmpleado" ToRole="tblDevolucion" />
+          <NavigationProperty Name="tblReservars" Relationship="Self.FK__tblReserv__IDEmp__5070F446" FromRole="tblEmpleado" ToRole="tblReservar" />
         </EntityType>
         <EntityType Name="tblGama">
           <Key>
@@ -601,6 +700,23 @@
           <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tblDepartamentoes" Relationship="Self.FK__tblDepart__IDPai__267ABA7A" FromRole="tblPais" ToRole="tblDepartamento" />
+        </EntityType>
+        <EntityType Name="tblReservar">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="CedulaCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDEmpleado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDTipoVehiculo" Type="Int32" Nullable="false" />
+          <Property Name="PlacaVehiculo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EstadoReserva" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tblCliente" Relationship="Self.FK__tblReserv__Cedul__4F7CD00D" FromRole="tblReservar" ToRole="tblCliente" />
+          <NavigationProperty Name="tblEmpleado" Relationship="Self.FK__tblReserv__IDEmp__5070F446" FromRole="tblReservar" ToRole="tblEmpleado" />
+          <NavigationProperty Name="tblTipoVehiculo" Relationship="Self.FK__tblReserv__IDTip__5165187F" FromRole="tblReservar" ToRole="tblTipoVehiculo" />
+          <NavigationProperty Name="tblVehiculo" Relationship="Self.FK__tblReserv__Placa__52593CB8" FromRole="tblReservar" ToRole="tblVehiculo" />
         </EntityType>
         <EntityType Name="tblSede">
           <Key>
@@ -646,6 +762,8 @@
           </Key>
           <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAlquilers" Relationship="Self.FK__tblAlquil__IDTip__571DF1D5" FromRole="tblTipoVehiculo" ToRole="tblAlquiler" />
+          <NavigationProperty Name="tblReservars" Relationship="Self.FK__tblReserv__IDTip__5165187F" FromRole="tblTipoVehiculo" ToRole="tblReservar" />
           <NavigationProperty Name="tblVehiculoes" Relationship="Self.FK__tblVehicu__IDTip__47DBAE45" FromRole="tblTipoVehiculo" ToRole="tblVehiculo" />
         </EntityType>
         <EntityType Name="tblVehiculo">
@@ -661,14 +779,15 @@
           <Property Name="IDColor" Type="Int32" Nullable="false" />
           <Property Name="Precio" Type="Int32" Nullable="false" />
           <Property Name="IDTipoVehiculo" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblAlquilers" Relationship="Self.FK__tblAlquil__Placa__5165187F" FromRole="tblVehiculo" ToRole="tblAlquiler" />
+          <NavigationProperty Name="tblAlquilers" Relationship="Self.FK__tblAlquil__Placa__5812160E" FromRole="tblVehiculo" ToRole="tblAlquiler" />
           <NavigationProperty Name="tblColor" Relationship="Self.FK__tblVehicu__IDCol__46E78A0C" FromRole="tblVehiculo" ToRole="tblColor" />
           <NavigationProperty Name="tblGama" Relationship="Self.FK__tblVehicu__IDGam__45F365D3" FromRole="tblVehiculo" ToRole="tblGama" />
           <NavigationProperty Name="tblMarca" Relationship="Self.FK__tblVehicu__IDMar__44FF419A" FromRole="tblVehiculo" ToRole="tblMarca" />
+          <NavigationProperty Name="tblReservars" Relationship="Self.FK__tblReserv__Placa__52593CB8" FromRole="tblVehiculo" ToRole="tblReservar" />
           <NavigationProperty Name="tblSede" Relationship="Self.FK__tblVehicu__IDSed__440B1D61" FromRole="tblVehiculo" ToRole="tblSede" />
           <NavigationProperty Name="tblTipoVehiculo" Relationship="Self.FK__tblVehicu__IDTip__47DBAE45" FromRole="tblVehiculo" ToRole="tblTipoVehiculo" />
         </EntityType>
-        <Association Name="FK__tblAlquil__Cedul__4F7CD00D">
+        <Association Name="FK__tblAlquil__Cedul__5535A963">
           <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
           <End Role="tblAlquiler" Type="Self.tblAlquiler" Multiplicity="*" />
           <ReferentialConstraint>
@@ -680,7 +799,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblAlquil__IDEmp__5070F446">
+        <Association Name="FK__tblAlquil__IDEmp__5629CD9C">
           <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="1" />
           <End Role="tblAlquiler" Type="Self.tblAlquiler" Multiplicity="*" />
           <ReferentialConstraint>
@@ -692,7 +811,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblAlquil__Placa__5165187F">
+        <Association Name="FK__tblAlquil__IDTip__571DF1D5">
+          <End Role="tblTipoVehiculo" Type="Self.tblTipoVehiculo" Multiplicity="1" />
+          <End Role="tblAlquiler" Type="Self.tblAlquiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoVehiculo">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblAlquiler">
+              <PropertyRef Name="IDTipoVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAlquil__Placa__5812160E">
           <End Role="tblVehiculo" Type="Self.tblVehiculo" Multiplicity="1" />
           <End Role="tblAlquiler" Type="Self.tblAlquiler" Multiplicity="*" />
           <ReferentialConstraint>
@@ -704,7 +835,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblDevolu__Codig__5441852A">
+        <Association Name="FK__tblDevolu__Codig__5AEE82B9">
           <End Role="tblAlquiler" Type="Self.tblAlquiler" Multiplicity="1" />
           <End Role="tblDevolucion" Type="Self.tblDevolucion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -776,6 +907,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__tblReserv__Cedul__4F7CD00D">
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblReservar" Type="Self.tblReservar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCliente">
+              <PropertyRef Name="Documento" />
+            </Principal>
+            <Dependent Role="tblReservar">
+              <PropertyRef Name="CedulaCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__tblTelefo__Cedul__35BCFE0A">
           <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
           <End Role="tblTelefonoCliente" Type="Self.tblTelefonoCliente" Multiplicity="*" />
@@ -812,7 +955,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblDevolu__IDEmp__5535A963">
+        <Association Name="FK__tblDevolu__IDEmp__5BE2A6F2">
           <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="1" />
           <End Role="tblDevolucion" Type="Self.tblDevolucion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -821,6 +964,18 @@
             </Principal>
             <Dependent Role="tblDevolucion">
               <PropertyRef Name="IDEmpleadoRecibe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblReserv__IDEmp__5070F446">
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="1" />
+          <End Role="tblReservar" Type="Self.tblReservar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleado">
+              <PropertyRef Name="Documento" />
+            </Principal>
+            <Dependent Role="tblReservar">
+              <PropertyRef Name="IDEmpleado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -845,6 +1000,30 @@
             </Principal>
             <Dependent Role="tblVehiculo">
               <PropertyRef Name="IDMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblReserv__IDTip__5165187F">
+          <End Role="tblTipoVehiculo" Type="Self.tblTipoVehiculo" Multiplicity="1" />
+          <End Role="tblReservar" Type="Self.tblReservar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoVehiculo">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblReservar">
+              <PropertyRef Name="IDTipoVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblReserv__Placa__52593CB8">
+          <End Role="tblVehiculo" Type="Self.tblVehiculo" Multiplicity="1" />
+          <End Role="tblReservar" Type="Self.tblReservar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVehiculo">
+              <PropertyRef Name="Placa" />
+            </Principal>
+            <Dependent Role="tblReservar">
+              <PropertyRef Name="PlacaVehiculo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -884,7 +1063,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBAlquilerVehiculoEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBAlquilerVehiculoEntities5" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblAlquilers" EntityType="Self.tblAlquiler" />
           <EntitySet Name="tblCargoEmpleadoes" EntityType="Self.tblCargoEmpleado" />
           <EntitySet Name="tblCiudads" EntityType="Self.tblCiudad" />
@@ -897,25 +1076,30 @@
           <EntitySet Name="tblLicencias" EntityType="Self.tblLicencia" />
           <EntitySet Name="tblMarcas" EntityType="Self.tblMarca" />
           <EntitySet Name="tblPais" EntityType="Self.tblPai" />
+          <EntitySet Name="tblReservars" EntityType="Self.tblReservar" />
           <EntitySet Name="tblSedes" EntityType="Self.tblSede" />
           <EntitySet Name="tblTelefonoClientes" EntityType="Self.tblTelefonoCliente" />
           <EntitySet Name="tblTipoDocumentoes" EntityType="Self.tblTipoDocumento" />
           <EntitySet Name="tblTipoTelefonoes" EntityType="Self.tblTipoTelefono" />
           <EntitySet Name="tblTipoVehiculoes" EntityType="Self.tblTipoVehiculo" />
           <EntitySet Name="tblVehiculoes" EntityType="Self.tblVehiculo" />
-          <AssociationSet Name="FK__tblAlquil__Cedul__4F7CD00D" Association="Self.FK__tblAlquil__Cedul__4F7CD00D">
+          <AssociationSet Name="FK__tblAlquil__Cedul__5535A963" Association="Self.FK__tblAlquil__Cedul__5535A963">
             <End Role="tblCliente" EntitySet="tblClientes" />
             <End Role="tblAlquiler" EntitySet="tblAlquilers" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblAlquil__IDEmp__5070F446" Association="Self.FK__tblAlquil__IDEmp__5070F446">
+          <AssociationSet Name="FK__tblAlquil__IDEmp__5629CD9C" Association="Self.FK__tblAlquil__IDEmp__5629CD9C">
             <End Role="tblEmpleado" EntitySet="tblEmpleadoes" />
             <End Role="tblAlquiler" EntitySet="tblAlquilers" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblAlquil__Placa__5165187F" Association="Self.FK__tblAlquil__Placa__5165187F">
+          <AssociationSet Name="FK__tblAlquil__IDTip__571DF1D5" Association="Self.FK__tblAlquil__IDTip__571DF1D5">
+            <End Role="tblTipoVehiculo" EntitySet="tblTipoVehiculoes" />
+            <End Role="tblAlquiler" EntitySet="tblAlquilers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAlquil__Placa__5812160E" Association="Self.FK__tblAlquil__Placa__5812160E">
             <End Role="tblVehiculo" EntitySet="tblVehiculoes" />
             <End Role="tblAlquiler" EntitySet="tblAlquilers" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblDevolu__Codig__5441852A" Association="Self.FK__tblDevolu__Codig__5441852A">
+          <AssociationSet Name="FK__tblDevolu__Codig__5AEE82B9" Association="Self.FK__tblDevolu__Codig__5AEE82B9">
             <End Role="tblAlquiler" EntitySet="tblAlquilers" />
             <End Role="tblDevolucion" EntitySet="tblDevolucions" />
           </AssociationSet>
@@ -939,6 +1123,10 @@
             <End Role="tblTipoDocumento" EntitySet="tblTipoDocumentoes" />
             <End Role="tblCliente" EntitySet="tblClientes" />
           </AssociationSet>
+          <AssociationSet Name="FK__tblReserv__Cedul__4F7CD00D" Association="Self.FK__tblReserv__Cedul__4F7CD00D">
+            <End Role="tblCliente" EntitySet="tblClientes" />
+            <End Role="tblReservar" EntitySet="tblReservars" />
+          </AssociationSet>
           <AssociationSet Name="FK__tblTelefo__Cedul__35BCFE0A" Association="Self.FK__tblTelefo__Cedul__35BCFE0A">
             <End Role="tblCliente" EntitySet="tblClientes" />
             <End Role="tblTelefonoCliente" EntitySet="tblTelefonoClientes" />
@@ -951,9 +1139,13 @@
             <End Role="tblPais" EntitySet="tblPais" />
             <End Role="tblDepartamento" EntitySet="tblDepartamentoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblDevolu__IDEmp__5535A963" Association="Self.FK__tblDevolu__IDEmp__5535A963">
+          <AssociationSet Name="FK__tblDevolu__IDEmp__5BE2A6F2" Association="Self.FK__tblDevolu__IDEmp__5BE2A6F2">
             <End Role="tblEmpleado" EntitySet="tblEmpleadoes" />
             <End Role="tblDevolucion" EntitySet="tblDevolucions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblReserv__IDEmp__5070F446" Association="Self.FK__tblReserv__IDEmp__5070F446">
+            <End Role="tblEmpleado" EntitySet="tblEmpleadoes" />
+            <End Role="tblReservar" EntitySet="tblReservars" />
           </AssociationSet>
           <AssociationSet Name="FK__tblVehicu__IDGam__45F365D3" Association="Self.FK__tblVehicu__IDGam__45F365D3">
             <End Role="tblGama" EntitySet="tblGamas" />
@@ -962,6 +1154,14 @@
           <AssociationSet Name="FK__tblVehicu__IDMar__44FF419A" Association="Self.FK__tblVehicu__IDMar__44FF419A">
             <End Role="tblMarca" EntitySet="tblMarcas" />
             <End Role="tblVehiculo" EntitySet="tblVehiculoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblReserv__IDTip__5165187F" Association="Self.FK__tblReserv__IDTip__5165187F">
+            <End Role="tblTipoVehiculo" EntitySet="tblTipoVehiculoes" />
+            <End Role="tblReservar" EntitySet="tblReservars" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblReserv__Placa__52593CB8" Association="Self.FK__tblReserv__Placa__52593CB8">
+            <End Role="tblVehiculo" EntitySet="tblVehiculoes" />
+            <End Role="tblReservar" EntitySet="tblReservars" />
           </AssociationSet>
           <AssociationSet Name="FK__tblVehicu__IDSed__440B1D61" Association="Self.FK__tblVehicu__IDSed__440B1D61">
             <End Role="tblSede" EntitySet="tblSedes" />
@@ -981,13 +1181,14 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBAlquilerVehiculoModel1StoreContainer" CdmEntityContainer="DBAlquilerVehiculoEntities1">
+        <EntityContainerMapping StorageEntityContainer="DBAlquilerVehiculoModelStoreContainer" CdmEntityContainer="DBAlquilerVehiculoEntities5">
           <EntitySetMapping Name="tblAlquilers">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblAlquiler">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblAlquiler">
               <MappingFragment StoreEntitySet="tblAlquiler">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="CedulaCliente" ColumnName="CedulaCliente" />
                 <ScalarProperty Name="IDEmpleado" ColumnName="IDEmpleado" />
+                <ScalarProperty Name="IDTipoVehiculo" ColumnName="IDTipoVehiculo" />
                 <ScalarProperty Name="PlacaVehiculo" ColumnName="PlacaVehiculo" />
                 <ScalarProperty Name="EstadoAlquiler" ColumnName="EstadoAlquiler" />
                 <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
@@ -996,7 +1197,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblCargoEmpleadoes">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblCargoEmpleado">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblCargoEmpleado">
               <MappingFragment StoreEntitySet="tblCargoEmpleado">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1004,7 +1205,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblCiudads">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblCiudad">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblCiudad">
               <MappingFragment StoreEntitySet="tblCiudad">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1014,7 +1215,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblClientes">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblCliente">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblCliente">
               <MappingFragment StoreEntitySet="tblCliente">
                 <ScalarProperty Name="Documento" ColumnName="Documento" />
                 <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
@@ -1028,7 +1229,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblColors">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblColor">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblColor">
               <MappingFragment StoreEntitySet="tblColor">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1036,7 +1237,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblDepartamentoes">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblDepartamento">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblDepartamento">
               <MappingFragment StoreEntitySet="tblDepartamento">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1046,7 +1247,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblDevolucions">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblDevolucion">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblDevolucion">
               <MappingFragment StoreEntitySet="tblDevolucion">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="CodigoAlquiler" ColumnName="CodigoAlquiler" />
@@ -1057,7 +1258,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblEmpleadoes">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblEmpleado">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblEmpleado">
               <MappingFragment StoreEntitySet="tblEmpleado">
                 <ScalarProperty Name="Documento" ColumnName="Documento" />
                 <ScalarProperty Name="Nombres" ColumnName="Nombres" />
@@ -1067,7 +1268,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblGamas">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblGama">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblGama">
               <MappingFragment StoreEntitySet="tblGama">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1075,7 +1276,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblLicencias">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblLicencia">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblLicencia">
               <MappingFragment StoreEntitySet="tblLicencia">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="CategoriaLicencia" ColumnName="CategoriaLicencia" />
@@ -1083,7 +1284,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblMarcas">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblMarca">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblMarca">
               <MappingFragment StoreEntitySet="tblMarca">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1091,15 +1292,29 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblPais">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblPai">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblPai">
               <MappingFragment StoreEntitySet="tblPais">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblReservars">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblReservar">
+              <MappingFragment StoreEntitySet="tblReservar">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="CedulaCliente" ColumnName="CedulaCliente" />
+                <ScalarProperty Name="IDEmpleado" ColumnName="IDEmpleado" />
+                <ScalarProperty Name="IDTipoVehiculo" ColumnName="IDTipoVehiculo" />
+                <ScalarProperty Name="PlacaVehiculo" ColumnName="PlacaVehiculo" />
+                <ScalarProperty Name="EstadoReserva" ColumnName="EstadoReserva" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblSedes">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblSede">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblSede">
               <MappingFragment StoreEntitySet="tblSede">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1109,7 +1324,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblTelefonoClientes">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblTelefonoCliente">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblTelefonoCliente">
               <MappingFragment StoreEntitySet="tblTelefonoCliente">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Numero" ColumnName="Numero" />
@@ -1119,7 +1334,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblTipoDocumentoes">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblTipoDocumento">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblTipoDocumento">
               <MappingFragment StoreEntitySet="tblTipoDocumento">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1127,7 +1342,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblTipoTelefonoes">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblTipoTelefono">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblTipoTelefono">
               <MappingFragment StoreEntitySet="tblTipoTelefono">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1135,7 +1350,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblTipoVehiculoes">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblTipoVehiculo">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblTipoVehiculo">
               <MappingFragment StoreEntitySet="tblTipoVehiculo">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1143,7 +1358,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblVehiculoes">
-            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel1.tblVehiculo">
+            <EntityTypeMapping TypeName="DBAlquilerVehiculoModel.tblVehiculo">
               <MappingFragment StoreEntitySet="tblVehiculo">
                 <ScalarProperty Name="Placa" ColumnName="Placa" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />

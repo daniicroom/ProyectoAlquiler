@@ -9,9 +9,11 @@
 
 namespace ServicioAlquiler.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
     public partial class tblCiudad
     {
         public tblCiudad()
@@ -23,8 +25,12 @@ namespace ServicioAlquiler.Models
         public string Nombre { get; set; }
         public bool Activo { get; set; }
         public int CodigoDepartamento { get; set; }
-    
+
+        [JsonIgnore]
+        [IgnoreDataMember]
         public virtual tblDepartamento tblDepartamento { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
         public virtual ICollection<tblSede> tblSedes { get; set; }
     }
 }

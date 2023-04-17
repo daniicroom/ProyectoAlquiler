@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GESTIONAR RESERVA DE VEHICULO</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link href="Estilos/all.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link href="Estilos/adminlte.min.css" rel="stylesheet" />
+    <!-- Estilos para el datatable -->
+    <link href="Estilos/dataTables.min.css" rel="stylesheet" />
+    <link href="Estilos/dataTables.bootstrap4.min.css" rel="stylesheet" />
+</head>
+<body class="hold-transition sidebar-mini">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <br />
+                        <div class="card-header">
+                            <h3 class="card-dark">GESTIONAR RESERVA DE VEHICULO</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form id="frmGestionarAlquiler">
+                            <div class="card-body">
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="txtCodigoReserva">Código de reserva</label>
+                                            <input type="text" class="form-control" id="txtCodigoReserva" placeholder="Código de reserva">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="txtFechaInicio">Fecha Inicio</label>
+                                            <input type="date" class="form-control" id="txtFechaInicio" name="txtFechaInicio" min="">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="txtFechaFin">Fecha Fin</label>
+                                            <input type="date" class="form-control" id="txtFechaFin" name="txtFechaFin" min="">
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        let startDateInput = document.getElementById("txtFechaInicio");
+                                        let endDateInput = document.getElementById("txtFechaFin");
+
+                                        startDateInput.addEventListener("input", (event) => {
+                                            endDateInput.min = event.target.value;
+                                        });</script>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="cboEmpleado">Empleado</label>
+                                            <select id="cboEmpleado" class="form-control select2" style="width: 100%">
+                                                <option selected="selected" value="0">Seleccione un empleado</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="cboTipoVehiculo">Tipo de vehículo</label>
+                                            <select id="cboTipoVehiculo" class="form-control select2" style="width: 100%" onchange="LlenarComboVehiculo()">
+                                                <option selected="selected" value="0">Tipo de vehículo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label for="cboVehiculo">Vehículos disponibles</label>
+                                            <select id="cboVehiculo" class="form-control select2" style="width: 100%">
+                                                <option selected="selected" value="0">Seleccione el Vehículo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="txtDocumentoCliente">Documento Cliente</label>
+                                            <input type="text" class="form-control" id="txtDocumentoCliente" placeholder="Documento del Cliente">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <img id="btnBuscar" src="../Imagenes/Buscar.jpg" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="txtNombreCliente">Nombre del Cliente</label>
+                                            <input type="text" class="form-control" id="txtNombreCliente" placeholder="Nombre del Cliente" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="txtEstadoReserva"></label>
+                                            <input type="text" class="form-control" id="txtEstadoReserva" placeholder="Estado Alquiler" hidden>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <button type="button" id="btnRegistrar" class="btn-block btn-lg btn-primary">REGISTRAR</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" id="btnActualizar" class="btn-block btn-lg btn-primary">ACTUALIZAR</button>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <button type="button" id="btnEliminar" class="btn-block btn-lg btn-primary">ELIMINAR</button>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <button type="button" id="btnConsultar" class="btn-block btn-lg btn-primary">CONSULTAR</button>
+                                    </div>
+                                </div><br />
+  
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table id="tblReserva" class="display" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Código Reserva</th>
+                                                    <th>Documento Cliente</th>
+                                                    <th>Empleado</th>
+                                                    <th>IDTipoVehiculo</th>
+                                                    <th>Placa Vehículo</th>
+                                                    <th>Estado Reserva</th>
+                                                    <th>Fecha Inicio</th>
+                                                    <th>Fecha Fin</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div><br />
+
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                                <div id="dvMensaje" class=""></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../Scripts/jquery.min.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/jquery.dataTables.min.js"></script>
+    <script src="../Scripts/dataTables.bootstrap4.min.js"></script>
+    <script src="Scripts/Comunes/Combos.js"></script>
+    <script src="Scripts/Comunes/Tablas.js"></script>
+    <script src="Scripts/Comunes/FuncionesComunes.js"></script>
+    <script src="Scripts/ReservarVehiculo.js"></script>
+    <!-- /.card -->
+</body>
+</html>

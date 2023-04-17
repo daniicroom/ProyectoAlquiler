@@ -19,6 +19,7 @@ namespace ServicioAlquiler.Models
         public tblVehiculo()
         {
             this.tblAlquilers = new HashSet<tblAlquiler>();
+            this.tblReservars = new HashSet<tblReservar>();
         }
     
         public string Placa { get; set; }
@@ -43,6 +44,9 @@ namespace ServicioAlquiler.Models
         [JsonIgnore]
         [IgnoreDataMember]
         public virtual tblMarca tblMarca { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        public virtual ICollection<tblReservar> tblReservars { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
         public virtual tblSede tblSede { get; set; }

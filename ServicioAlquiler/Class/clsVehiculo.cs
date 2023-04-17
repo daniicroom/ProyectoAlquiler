@@ -8,7 +8,7 @@ namespace ServicioAlquiler.Class
 {
     public class clsVehiculo
     {
-        private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
+        private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblVehiculo vehiculo { get; set; }
         public tblVehiculo Consultar(string placa)
         {
@@ -31,6 +31,23 @@ namespace ServicioAlquiler.Class
                    {
                        Codigo = ve.Placa,
                        Nombre = mar.Nombre + " - " + ve.Descripcion
+                   };
+        }
+
+        public IQueryable<viewCombo> LlenarComboVehiculosDisponibles()
+        {
+            return from veh in dbAlquiler.Set<tblVehiculo>()
+                   join marca in dbAlquiler.Set<tblMarca>() on veh.IDMarca equals marca.Codigo
+                   join gama in dbAlquiler.Set<tblGama>() on veh.IDGama equals gama.Codigo
+                   join color in dbAlquiler.Set<tblColor>() on veh.IDColor equals color.Codigo
+                   join tipo in dbAlquiler.Set<tblTipoVehiculo>() on veh.IDTipoVehiculo equals tipo.Codigo
+                   where veh.Estado == "DISPONIBLE"
+                   orderby tipo.Nombre + " " + marca.Nombre
+                   select new viewCombo
+                   {
+                       Codigo = veh.IDTipoVehiculo,
+
+                       Nombre = marca.Nombre + " " + veh.Descripcion + "  " + color.Nombre + "         | GAMA: " + gama.Nombre
                    };
         }
 
@@ -63,6 +80,28 @@ namespace ServicioAlquiler.Class
 
                    };
 
+        }
+
+        public List<tblVehiculo> ListarVehiculos(int Codigo)
+        {
+            return dbAlquiler.tblVehiculoes
+                    .Where(x => x.IDTipoVehiculo == Codigo)
+                    .OrderBy(x => x.Placa)
+                    .ToList();
+        }
+
+        public List<viewComboVehiculo> LlenarComboVehiculosXTipo(int Codigo)
+        {
+            return dbAlquiler.tblVehiculoes
+                    .Where(x => x.IDTipoVehiculo == Codigo)
+                    .Select(p => new viewComboVehiculo
+                    {
+                        Codigo = p.Placa,
+                        Nombre = p.tblMarca.Nombre + " " + p.Descripcion
+                    }
+                    )
+                    .OrderBy(x => x.Nombre)
+                    .ToList();
 
         }
 

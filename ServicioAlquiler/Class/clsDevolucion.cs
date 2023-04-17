@@ -8,7 +8,7 @@ namespace ServicioAlquiler.Class
 {
     public class clsDevolucion
     {
-        private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
+        private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblDevolucion devolucion { get; set; }
         public List<tblDevolucion> GetAll()
         {
@@ -49,7 +49,7 @@ namespace ServicioAlquiler.Class
                 UpdateEstadoVehiculo(alquiler.PlacaVehiculo);
 
                 dbAlquiler.SaveChanges();
-                alquiler.EstadoAlquiler = "Pagado";
+                alquiler.EstadoAlquiler = "FINALIZADO";
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace ServicioAlquiler.Class
             try
             {
                 tblVehiculo vehiculo = dbAlquiler.tblVehiculoes.Where(x => x.Placa == placa).FirstOrDefault();
-                vehiculo.Estado = "Disponible";
+                vehiculo.Estado = "DISPONIBLE";
             }
             catch (Exception ex)
             {

@@ -40,12 +40,16 @@ $(document).ready(function () {
 
 });
 
+
+
+
 // Fucion para manipular los datos de las filas
 function EditarFila(DatosFila) {
     $("#txtCodigoDevolucion").val(DatosFila.find('td:eq(0)').text());
     $("#txtCodigoAlquiler").val(DatosFila.find('td:eq(1)').text());
-    $("#txtFechaDevolucion").val(DatosFila.find('td:eq(3)').text());
+    $("#txtFechaDevolucion").val(DatosFila.find('td:eq(3)').text().split('T')[0]);
     $("#txtDocumentoEmpleado").val(DatosFila.find('td:eq(2)').text());
+    ConsultarEmpleado();
     $("#txtTotalPagar").val(DatosFila.find('td:eq(4)').text());
 }
 
@@ -82,10 +86,7 @@ function Consultar() {
 
             $("#txtCodigoDevolucion").val(Devolucion.Codigo);
             $("#txtCodigoAlquiler").val(Devolucion.CodigoAlquiler);
-
-            let FechaDevolucion = Devolucion.FechaDevolucion.split('T')[0];
-            $("#txtFechaDevolucion").val(FechaDevolucion);
-
+            $("#txtFechaDevolucion").val(Devolucion.FechaDevolucion.split('T')[0]);
             $("#txtDocumentoEmpleado").val(Devolucion.Documento);
 
             ConsultarEmpleado();

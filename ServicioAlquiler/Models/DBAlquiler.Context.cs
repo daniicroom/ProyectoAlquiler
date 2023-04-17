@@ -13,10 +13,10 @@ namespace ServicioAlquiler.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBAlquilerVehiculoEntities1 : DbContext
+    public partial class DBAlquilerVehiculoEntities5 : DbContext
     {
-        public DBAlquilerVehiculoEntities1()
-            : base("name=DBAlquilerVehiculoEntities1")
+        public DBAlquilerVehiculoEntities5()
+            : base("name=DBAlquilerVehiculoEntities5")
         {
         }
     
@@ -37,6 +37,7 @@ namespace ServicioAlquiler.Models
         public DbSet<tblLicencia> tblLicencias { get; set; }
         public DbSet<tblMarca> tblMarcas { get; set; }
         public DbSet<tblPai> tblPais { get; set; }
+        public DbSet<tblReservar> tblReservars { get; set; }
         public DbSet<tblSede> tblSedes { get; set; }
         public DbSet<tblTelefonoCliente> tblTelefonoClientes { get; set; }
         public DbSet<tblTipoDocumento> tblTipoDocumentoes { get; set; }

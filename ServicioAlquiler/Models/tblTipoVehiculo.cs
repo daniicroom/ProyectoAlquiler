@@ -18,11 +18,20 @@ namespace ServicioAlquiler.Models
     {
         public tblTipoVehiculo()
         {
+            this.tblAlquilers = new HashSet<tblAlquiler>();
+            this.tblReservars = new HashSet<tblReservar>();
             this.tblVehiculoes = new HashSet<tblVehiculo>();
         }
     
         public int Codigo { get; set; }
         public string Nombre { get; set; }
+
+        [JsonIgnore]
+        [IgnoreDataMember]
+        public virtual ICollection<tblAlquiler> tblAlquilers { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        public virtual ICollection<tblReservar> tblReservars { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
         public virtual ICollection<tblVehiculo> tblVehiculoes { get; set; }

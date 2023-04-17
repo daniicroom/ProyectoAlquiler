@@ -19,6 +19,7 @@ namespace ServicioAlquiler.Models
         public tblCliente()
         {
             this.tblAlquilers = new HashSet<tblAlquiler>();
+            this.tblReservars = new HashSet<tblReservar>();
             this.tblTelefonoClientes = new HashSet<tblTelefonoCliente>();
         }
     
@@ -40,6 +41,9 @@ namespace ServicioAlquiler.Models
         [JsonIgnore]
         [IgnoreDataMember]
         public virtual tblTipoDocumento tblTipoDocumento { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        public virtual ICollection<tblReservar> tblReservars { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
         public virtual ICollection<tblTelefonoCliente> tblTelefonoClientes { get; set; }

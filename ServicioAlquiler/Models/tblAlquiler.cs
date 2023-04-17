@@ -24,16 +24,21 @@ namespace ServicioAlquiler.Models
         public int Codigo { get; set; }
         public string CedulaCliente { get; set; }
         public string IDEmpleado { get; set; }
+        public int IDTipoVehiculo { get; set; }
         public string PlacaVehiculo { get; set; }
         public string EstadoAlquiler { get; set; }
         public System.DateTime FechaInicio { get; set; }
         public System.DateTime FechaFin { get; set; }
+
         [JsonIgnore]
         [IgnoreDataMember]
         public virtual tblCliente tblCliente { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
         public virtual tblEmpleado tblEmpleado { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        public virtual tblTipoVehiculo tblTipoVehiculo { get; set; }
         [JsonIgnore]
         [IgnoreDataMember]
         public virtual tblVehiculo tblVehiculo { get; set; }

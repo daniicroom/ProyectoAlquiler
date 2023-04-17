@@ -8,7 +8,7 @@ namespace ServicioAlquiler.Class
 {
     public class clsTipoDocumento
     {
-        private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
+        private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblTipoDocumento tipoDocumento { get; set; }
         public List<tblTipoDocumento> GetAll()
         {

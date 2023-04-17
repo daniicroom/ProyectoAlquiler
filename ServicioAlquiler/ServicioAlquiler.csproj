@@ -216,6 +216,7 @@
     <Compile Include="Class\clsColor.cs" />
     <Compile Include="Class\clsGama.cs" />
     <Compile Include="Class\clsMarca.cs" />
+    <Compile Include="Class\clsReserva.cs" />
     <Compile Include="Class\clsSede.cs" />
     <Compile Include="Class\clsTipoDocumento.cs" />
     <Compile Include="Class\clsDevolucion.cs" />
@@ -232,6 +233,7 @@
     <Compile Include="Controllers\DevolucionController.cs" />
     <Compile Include="Controllers\GamaController.cs" />
     <Compile Include="Controllers\MarcaController.cs" />
+    <Compile Include="Controllers\ReservaController.cs" />
     <Compile Include="Controllers\SedeController.cs" />
     <Compile Include="Controllers\TipoVehiculoController.cs" />
     <Compile Include="Controllers\VehiculoController.cs" />
@@ -291,6 +293,9 @@
       <DependentUpon>DBAlquiler.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblPai.cs">
+      <DependentUpon>DBAlquiler.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblReservar.cs">
       <DependentUpon>DBAlquiler.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblSede.cs">

@@ -41,12 +41,9 @@ $(document).ready(function () {
     //Lena el combo de empleados
     LlenarComboEmpleado();
     //Lena el combo de vehiculos
-    LlenarComboVehiculo();
+    LlenarComboTipoVehiculo();
 
-
-
-
-    LlenarTablaAlquiler("http://localhost:62556/Api/Empleado", "#tblAlquiler");
+    LlenarTablaAlquiler();
 
 });
 
@@ -54,14 +51,24 @@ function LlenarComboEmpleado() {
     LlenarComboServicio("http://localhost:62556/Api/Empleado", "#cboEmpleado", "", false);
 }
 
-function LlenarComboVehiculo() {
-    LlenarComboServicio("http://localhost:62556/Api/Vehiculo", "#cboVehiculo", "", false);
-}
-
 function LlenarTablaAlquiler() {
     LlenaTablaServicio("http://localhost:62556/Api/Alquiler", "#tblAlquiler");
 }
 
+function LlenarComboTipoVehiculo() {
+
+    LlenarComboServicio("http://localhost:62556/Api/TipoVehiculo", "#cboTipoVehiculo", "", false);
+    LlenarComboVehiculo();
+}
+
+function LlenarComboVehiculo() {
+
+    let Codigo = $("#cboTipoVehiculo").val();
+    if (Codigo >= 0) {
+        let sURL = "http://localhost:62556/Api/Vehiculo/GetComboVehiculosXTipo?Codigo=" + Codigo
+        LlenarComboServicio(sURL, "#cboVehiculo", "", false);
+    }
+}
 
 // Aquí se realiza la consulta del cliente a traves del documento
 function ConsultarCliente() {
@@ -86,14 +93,18 @@ function ConsultarCliente() {
 
 // Fucion para manipular los datos de las filas
 function EditarFila(DatosFila) {
+    $("#cboTipoVehiculo").val(DatosFila.find('td:eq(3)').text());
+    LlenarComboVehiculo();
+
     $("#txtCodigoAlquiler").val(DatosFila.find('td:eq(0)').text());
     $("#txtDocumentoCliente").val(DatosFila.find('td:eq(1)').text());
+    $("#cboEmpleado").val(DatosFila.find('td:eq(2)').text());
     ConsultarCliente();
-    $("#cboEmpleado").val(DatosFila.find('td:eq(2)').text()); 
-    $("#cboVehiculo").val(DatosFila.find('td:eq(3)').text());
-    $("#txtEstado").val(DatosFila.find('td:eq(4)').text());
-    $("#txtFechaInicio").val(DatosFila.find('td:eq(5)').text().split('T')[0]);
-    $("#txtFechaFin").val(DatosFila.find('td:eq(6)').text().split('T')[0]);
+
+    $("#txtEstado").val(DatosFila.find('td:eq(5)').text());
+    $("#txtFechaInicio").val(DatosFila.find('td:eq(6)').text().split('T')[0]);
+    $("#txtFechaFin").val(DatosFila.find('td:eq(7)').text().split('T')[0]);
+    $("#cboVehiculo").val(DatosFila.find('td:eq(4)').text());
 }
 
 function Consultar() {
@@ -106,22 +117,18 @@ function Consultar() {
         data: null,
         dataType: "json",
         success: function (Alquiler) {
-
+            LlenarComboTipoVehiculo();
             $("#txtCodigoAlquiler").val(Alquiler.Codigo);
             $("#txtDocumentoCliente").val(Alquiler.CedulaCliente);
 
             ConsultarCliente();
 
             $("#cboEmpleado").val(Alquiler.IDEmpleado);
+            $("#cboTipoVehiculo").val(Alquiler.IDTipoVehiculo);
             $("#cboVehiculo").val(Alquiler.PlacaVehiculo);
             $("#txtEstado").val(Alquiler.Estado);
-
-            let FechaInicio = Alquiler.FechaInicio.split('T')[0];
-            $("#txtFechaInicio").val(FechaInicio);
-            
-
-            let FechaFin = Alquiler.FechaFin.split('T')[0];
-            $("#txtFechaFin").val(FechaFin);
+            $("#txtFechaInicio").val(Alquiler.FechaInicio.split('T')[0]);
+            $("#txtFechaFin").val(Alquiler.FechaFin.split('T')[0]);
 
         },
         error: function (errAlquiler) {
@@ -138,6 +145,7 @@ function Procesar(Comando) {
     let DocumentoCliente = $("#txtDocumentoCliente").val();
     ConsultarCliente();
     let Empleado = $("#cboEmpleado").val();
+    let IDTipoVehiculo = $("cboTipoVehiculo").val();
     let Vehiculo = $("#cboVehiculo").val();
     let Estado = $("#txtEstado").val();
     let FechaInicio = $("#txtFechaInicio").val();
@@ -149,6 +157,7 @@ function Procesar(Comando) {
         Codigo: Codigo,
         CedulaCliente: DocumentoCliente,
         IDEmpleado: Empleado,
+        IDTipoVehiculo: IDTipoVehiculo,
         PlacaVehiculo: Vehiculo,
         EstadoAlquiler: Estado,
         FechaInicio: FechaInicio,

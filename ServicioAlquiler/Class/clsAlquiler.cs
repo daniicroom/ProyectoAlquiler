@@ -8,7 +8,7 @@ namespace ServicioAlquiler.Class
 {
     public class clsAlquiler
     {
-        private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
+        private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblAlquiler alquiler { get; set; }
 
         public tblAlquiler Consultar(string Documento)
@@ -30,6 +30,7 @@ namespace ServicioAlquiler.Class
                 throw ex;
             }
         }
+
         public string GrabarAlquiler()
         {
             try
@@ -47,10 +48,12 @@ namespace ServicioAlquiler.Class
                 throw ex;
             }
         }
+
         private int ConsultarCodigoAlquiler()
         {
             return dbAlquiler.tblAlquilers.Select(p => p.Codigo).DefaultIfEmpty(0).Max();
         }
+
         private void UpdateEstadoVehiculo(string placa)
         {
             try
@@ -64,6 +67,7 @@ namespace ServicioAlquiler.Class
                 throw ex;
             }
         }
+
         public string GrabarEmpleado()
         {
             dbAlquiler.tblAlquilers.Add(alquiler);
@@ -79,6 +83,7 @@ namespace ServicioAlquiler.Class
 
             _alquiler.CedulaCliente = alquiler.CedulaCliente;
             _alquiler.IDEmpleado = alquiler.IDEmpleado;
+            _alquiler.IDTipoVehiculo = alquiler.IDTipoVehiculo;
             _alquiler.PlacaVehiculo = alquiler.PlacaVehiculo;
             _alquiler.FechaInicio = alquiler.FechaInicio;
             _alquiler.FechaFin = alquiler.FechaFin;

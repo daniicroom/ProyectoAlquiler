@@ -8,7 +8,7 @@ namespace ServicioAlquiler.Class
 {
     public class clsGama
     {
-        private DBAlquilerVehiculoEntities1 dbAlquiler = new DBAlquilerVehiculoEntities1();
+        private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
 
         public List<viewCombo> ListarGama()
         {
