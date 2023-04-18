@@ -27,11 +27,17 @@ namespace ServicioAlquiler.Class
             return dbAlquiler.tblReservars.Select(p => p.Codigo).DefaultIfEmpty(0).Max();
         }
 
-        // CRUDr
+        // CRUD
         public tblReservar Consultar(int Codigo)
         {
             return dbAlquiler.tblReservars.Where(x => x.Codigo == Codigo)
                 .FirstOrDefault();
+
+        }
+
+        public List<tblReservar> ConsultarByCliente(string CedulaCliente)
+        {
+            return dbAlquiler.tblReservars.Where(x => x.CedulaCliente == CedulaCliente).ToList();
 
         }
 
@@ -41,11 +47,11 @@ namespace ServicioAlquiler.Class
             {
                 //Consultar el número de factura
                 reserva.Codigo = ConsultarCodigoReserva() + 1;
-                UpdateEstadoVehiculo(reserva.PlacaVehiculo);
+                UpdateEstadoVehiculo(reserva.PlacaVehiculo, "RESERVADO");
                 reserva.EstadoReserva = "ACTIVO";
                 dbAlquiler.tblReservars.Add(reserva);
                 dbAlquiler.SaveChanges();
-                return reserva.Codigo.ToString();
+                return "SE REGISTRÓ LA RESERVA CON CON CODIGO N° : " + reserva.Codigo.ToString();
             }
             catch (Exception ex)
             {
@@ -55,13 +61,13 @@ namespace ServicioAlquiler.Class
 
        
 
-        private void UpdateEstadoVehiculo(string placa)
+        private void UpdateEstadoVehiculo(string placa, string estado)
         {
             try
             {
                 tblVehiculo vehiculo = dbAlquiler.tblVehiculoes.Where(x => x.Placa == placa).FirstOrDefault();
 
-                vehiculo.Estado = "RESERVADO";
+                vehiculo.Estado = estado;
             }
             catch (Exception ex)
             {
@@ -89,11 +95,12 @@ namespace ServicioAlquiler.Class
 
         public string Eliminar(int Codigo)
         {
-            tblReservar alquiler = dbAlquiler.tblReservars
+            tblReservar _reserva = dbAlquiler.tblReservars
                         .Where(p => p.Codigo == Codigo)
                         .FirstOrDefault();
 
-            dbAlquiler.tblReservars.Remove(reserva);
+            UpdateEstadoVehiculo(_reserva.PlacaVehiculo, "DISPONIBLE");
+            dbAlquiler.tblReservars.Remove(_reserva);
             dbAlquiler.SaveChanges();
             return "SE ELIMINÓ LA RESERVA";
         }

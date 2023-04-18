@@ -64,6 +64,15 @@ function LlenarComboVehiculo() {
     }
 }
 
+function LlenarComboVehiculoAll() {
+
+    let Codigo = $("#cboTipoVehiculo").val();
+    if (Codigo >= 0) {
+        let sURL = "http://localhost:62556/Api/Vehiculo";
+        LlenarComboServicio(sURL, "#cboVehiculo", "", false);
+    }
+}
+
 // Fucion para manipular los datos de las filas
 function EditarFila(DatosFila) {
     $("#txtCodigoReserva").val(DatosFila.find('td:eq(0)').text());
@@ -71,6 +80,7 @@ function EditarFila(DatosFila) {
     $("#txtFechaFin").val(DatosFila.find('td:eq(7)').text().split('T')[0]);
     $("#cboEmpleado").val(DatosFila.find('td:eq(2)').text());
     $("#cboTipoVehiculo").val(DatosFila.find('td:eq(3)').text());
+    LlenarComboVehiculoAll();
     $("#cboVehiculo").val(DatosFila.find('td:eq(4)').text());
     $("#txtDocumentoCliente").val(DatosFila.find('td:eq(1)').text());
     ConsultarCliente();
@@ -98,34 +108,43 @@ function ConsultarCliente() {
 
 
 function Consultar() {
-    let CodigoReserva = $("#txtCodigoReserva").val();
+    let CedulaCliente = $("#txtDocumentoCliente").val();
+    LlenaTablaServicio("http://localhost:62556/Api/Reserva?CedulaCliente=" + CedulaCliente, "#tblReserva");
 
+    $("#txtCodigoReserva").val("");
+    $("#txtFechaInicio").val("");
+    $("#txtFechaFin").val("");
+
+    /*
     $.ajax({
         type: "GET",
-        url: "http://localhost:62556/Api/Reserva?CodigoReserva=" + CodigoReserva,
+        url: "http://localhost:62556/Api/Reserva?CedulaCliente=" + CedulaCliente,
         contentType: "application/json",
         data: null,
         dataType: "json",
         success: function (Reserva) {
 
+            
+            $("#cboTipoVehiculo").val(Reserva.IDTipoVehiculo);
+            LlenarComboVehiculo();
             $("#txtCodigoReserva").val(Reserva.Codigo);
             $("#txtFechaInicio").val(Reserva.FechaInicio.split('T')[0]);
             $("#txtFechaFin").val(Reserva.FechaFin.split('T')[0]);
             $("#cboEmpleado").val(Reserva.IDEmpleado);
-            ConsultarEmpleado();
+            ConsultarCliente();
 
-            $("#cboTipoVehiculo").val(Reserva.IDTipoVehiculo);
             $("#cboVehiculo").val(Reserva.PlacaVehiculo);
             $("#txtDocumentoCliente").val(Reserva.CedulaCliente);
             ConsultarCliente();
             $("#txtEstadoReserva").val(Reserva.EstadoReserva);
-
+            
+            
         },
         error: function (errReserva) {
             $("#dvMensaje").addClass("alert alert-danger");
             $("#dvMensaje").html(errReserva.html);
         }
-    });
+    });*/
 }
 
 
@@ -148,7 +167,7 @@ function Procesar(Comando) {
         PlacaVehiculo: PlacaVehiculo,
         EstadoReserva: EstadoReserva,
         FechaInicio: FechaInicio,
-        FechaFin: FechaFin,
+        FechaFin: FechaFin
 
 
     }

@@ -20,10 +20,17 @@ namespace ServicioAlquiler.Controllers
         }
 
         // CRUD
-        public tblReservar Get(int Codigo)
+        /*public tblReservar Get(int Codigo)
         {
             clsReserva reserva = new clsReserva();
             return reserva.Consultar(Codigo);
+        }*/
+
+        // Devolver la lista de reservas de un cliente
+        public List<tblReservar> Get(string CedulaCliente)
+        {
+            clsReserva reserva = new clsReserva();
+            return reserva.ConsultarByCliente(CedulaCliente);
         }
 
         public string Post([FromBody] tblReservar reserva)

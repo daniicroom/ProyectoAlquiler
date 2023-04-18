@@ -30,16 +30,7 @@ namespace ServicioAlquiler.Controllers
             return vehiculo.LlenarTablaVehiculos();
 
         }
-
-        //Se obtiene combo de vehiculos en estado disponible
-        [HttpGet]
-        [Route("GetComboVehiculosDisponibles")]
-        public IQueryable<viewCombo> GetComboVehiculosDisponibles()
-        {
-            clsVehiculo vehiculo = new clsVehiculo();
-            return vehiculo.LlenarComboVehiculosDisponibles();
-
-        }
+        
 
         //Se obtiene la lista de vehiculos por el tipo seleccionado (PARA ALQUILER)
         [HttpGet]
@@ -58,6 +49,7 @@ namespace ServicioAlquiler.Controllers
             return vehiculo.LlenarComboVehiculosXTipo(Codigo);
         }
 
+        
         public IQueryable<viewComboVehiculo> Get()
         {
             clsVehiculo vehiculo = new clsVehiculo();

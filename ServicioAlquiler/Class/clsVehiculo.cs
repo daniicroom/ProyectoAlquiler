@@ -34,23 +34,7 @@ namespace ServicioAlquiler.Class
                    };
         }
 
-        public IQueryable<viewCombo> LlenarComboVehiculosDisponibles()
-        {
-            return from veh in dbAlquiler.Set<tblVehiculo>()
-                   join marca in dbAlquiler.Set<tblMarca>() on veh.IDMarca equals marca.Codigo
-                   join gama in dbAlquiler.Set<tblGama>() on veh.IDGama equals gama.Codigo
-                   join color in dbAlquiler.Set<tblColor>() on veh.IDColor equals color.Codigo
-                   join tipo in dbAlquiler.Set<tblTipoVehiculo>() on veh.IDTipoVehiculo equals tipo.Codigo
-                   where veh.Estado == "DISPONIBLE"
-                   orderby tipo.Nombre + " " + marca.Nombre
-                   select new viewCombo
-                   {
-                       Codigo = veh.IDTipoVehiculo,
-
-                       Nombre = marca.Nombre + " " + veh.Descripcion + "  " + color.Nombre + "         | GAMA: " + gama.Nombre
-                   };
-        }
-
+   
         public IQueryable<viewDataTableVehiculos> LlenarTablaVehiculos()
         {
             return from veh in dbAlquiler.Set<tblVehiculo>()
@@ -93,7 +77,7 @@ namespace ServicioAlquiler.Class
         public List<viewComboVehiculo> LlenarComboVehiculosXTipo(int Codigo)
         {
             return dbAlquiler.tblVehiculoes
-                    .Where(x => x.IDTipoVehiculo == Codigo)
+                    .Where(x => x.IDTipoVehiculo == Codigo && x.Estado == "DISPONIBLE")
                     .Select(p => new viewComboVehiculo
                     {
                         Codigo = p.Placa,
