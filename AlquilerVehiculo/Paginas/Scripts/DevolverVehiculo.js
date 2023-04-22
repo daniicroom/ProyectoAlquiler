@@ -41,8 +41,6 @@ $(document).ready(function () {
 });
 
 
-
-
 // Fucion para manipular los datos de las filas
 function EditarFila(DatosFila) {
     $("#txtCodigoDevolucion").val(DatosFila.find('td:eq(0)').text());
@@ -50,7 +48,9 @@ function EditarFila(DatosFila) {
     $("#txtFechaDevolucion").val(DatosFila.find('td:eq(3)').text().split('T')[0]);
     $("#txtDocumentoEmpleado").val(DatosFila.find('td:eq(2)').text());
     ConsultarEmpleado();
-    $("#txtTotalPagar").val(DatosFila.find('td:eq(4)').text());
+
+    let TotalPagar = DatosFila.find('td:eq(4)').text();
+    $("#txtTotalPagar").val(FormatoMiles(TotalPagar));
 }
 
 // Aquí se realiza la consulta del cliente a traves del documento
@@ -91,8 +91,9 @@ function Consultar() {
             $("#txtDocumentoEmpleado").val(Devolucion.IDEmpleadoRecibe);
 
             ConsultarEmpleado();
-            $("#txtTotalPagar").val(Devolucion.TotalPagar);
-
+            
+            $("#txtTotalPagar").val(FormatoMiles(Devolucion.TotalPagar));
+           
         },
         error: function (errDevolucion) {
             $("#dvMensaje").addClass("alert alert-danger");
@@ -152,7 +153,7 @@ function CalcularTotalPagar() {
             let now = new Date();
             FechaInicial = new Date(Rpta.FechaInicial);
             var dias = parseInt((now - FechaInicial) / (24 * 3600 * 1000))
-            $("#txtTotalPagar").val(valorDia * dias);
+            $("#txtTotalPagar").val(FormatoMiles(valorDia * dias));
         },
         error: function (Error) {
             $("#dvMensaje").addClass("alert alert-danger");
