@@ -78,20 +78,19 @@ function Consultar() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:62556/Api/Devolucion?CodigoAlquiler=" + CodigoAlquiler,
+        url: "http://localhost:62556/api/Devolucion/GetDevolucionByAlquiler?idAlquiler=" + CodigoAlquiler,
         contentType: "application/json",
         data: null,
         dataType: "json",
+        async: false,
         success: function (Devolucion) {
 
             $("#txtCodigoDevolucion").val(Devolucion.Codigo);
             $("#txtCodigoAlquiler").val(Devolucion.CodigoAlquiler);
             $("#txtFechaDevolucion").val(Devolucion.FechaDevolucion.split('T')[0]);
-            $("#txtDocumentoEmpleado").val(Devolucion.Documento);
+            $("#txtDocumentoEmpleado").val(Devolucion.IDEmpleadoRecibe);
 
             ConsultarEmpleado();
-
-            $("#txtNombreEmpleado").val(Devolucion.IDEmpleadoRecibe);
             $("#txtTotalPagar").val(Devolucion.TotalPagar);
 
         },

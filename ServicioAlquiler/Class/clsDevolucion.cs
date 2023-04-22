@@ -68,6 +68,7 @@ namespace ServicioAlquiler.Class
                 throw ex;
             }
         }
+        
         public IQueryable<viewDatosAlquiler> GetDatosAlquiler(int idAlquiler)
         {
             return from ve in dbAlquiler.Set<tblVehiculo>()
@@ -80,6 +81,13 @@ namespace ServicioAlquiler.Class
                        Precio = ve.Precio,
                        FechaInicial = al.FechaInicio
                    };
+
+        }
+        public tblDevolucion GetDevolucionByAlquiler(int idAlquiler)
+        {
+            return dbAlquiler.tblDevolucions
+                       .Where(p => p.CodigoAlquiler == idAlquiler)
+                       .FirstOrDefault();
 
         }
 

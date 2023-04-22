@@ -13,11 +13,19 @@ namespace ServicioAlquiler.Controllers
     public class AlquilerController : ApiController
     {
 
+        public List<tblAlquiler> Get(string Documento)
+        {
+            clsAlquiler reserva = new clsAlquiler();
+            return reserva.ConsultarByCliente(Documento);
+        }
+
+        /*
         public tblAlquiler Get(string Documento)
         {
             clsAlquiler alquiler = new clsAlquiler();
             return alquiler.Consultar(Documento);
-        }
+        }*/
+
 
         public string Post([FromBody] tblAlquiler alquiler)
         {

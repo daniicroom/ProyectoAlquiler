@@ -41,7 +41,14 @@ namespace ServicioAlquiler.Controllers
 
             return vehiculo.LlenarComboVehiculosXTipo(Codigo);
         }
+        [HttpGet]
+        [Route("GetAllComboVehiculosXTipo")]
+        public List<viewComboVehiculo> GetAllComboVehiculosXTipo(int Codigo, string Placa)
+        {
+            clsVehiculo vehiculo = new clsVehiculo();
 
+            return vehiculo.LlenarAllComboVehiculosXTipo(Codigo, Placa);
+        }
         public List<viewComboVehiculo> Get(int Codigo)
         {
             clsVehiculo vehiculo = new clsVehiculo();

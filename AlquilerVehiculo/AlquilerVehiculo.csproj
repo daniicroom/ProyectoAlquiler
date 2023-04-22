@@ -133,6 +133,7 @@
     <Content Include="Paginas\Estilos\dataTables.bootstrap4.css" />
     <Content Include="Paginas\Estilos\dataTables.bootstrap4.min.css" />
     <Content Include="Paginas\Estilos\dataTables.min.css" />
+    <Content Include="Paginas\Estilos\select.dataTables.min.css" />
     <Content Include="Paginas\ReservarVehiculo.html" />
     <Content Include="Paginas\Scripts\AlquilerVehiculo.js" />
     <Content Include="Paginas\Scripts\Clientes.js" />
@@ -163,6 +164,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\dataTables.bootstrap4.js" />
     <Content Include="Scripts\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\dataTables.select.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />

@@ -6,11 +6,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using System.Web.Mvc;
 
 namespace ServicioAlquiler.Controllers
 {
     [EnableCors(origins: "http://localhost:54777", headers: "*", methods: "*")]
+    [RoutePrefix("api/Devolucion")]
     public class DevolucionController : ApiController
     {
         public string Post([FromBody] tblDevolucion devolucion)
@@ -23,6 +23,13 @@ namespace ServicioAlquiler.Controllers
         {
             clsDevolucion oDevolucion = new clsDevolucion();
             return oDevolucion.GetDatosAlquiler(idAlquiler).FirstOrDefault();
+        }
+        [HttpGet]
+        [Route("GetDevolucionByAlquiler")]
+        public tblDevolucion GetDevolucionByAlquiler(int idAlquiler)
+        {
+            clsDevolucion oDevolucion = new clsDevolucion();
+            return oDevolucion.GetDevolucionByAlquiler(idAlquiler);
         }
         public string Put([FromBody] tblDevolucion devolucion)
         {

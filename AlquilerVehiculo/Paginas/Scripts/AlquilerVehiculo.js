@@ -11,9 +11,9 @@ $(document).ready(function () {
             EditarFila($(this).closest('tr'));
         }
     });
-    // Obtiene la fecha del sistema y la presenta en el txt
+    /* Obtiene la fecha del sistema y la presenta en el txt
     let now = new Date();
-    $("#txtFechaInicio").val(now.toISOString().split('T')[0]);
+    $("#txtFechaInicio").val(now.toISOString().split('T')[0]);*/
 
     //Registrar los botones para responder al evento click
     $("#btnBuscar").click(function () {
@@ -94,7 +94,12 @@ function ConsultarCliente() {
 // Fucion para manipular los datos de las filas
 function EditarFila(DatosFila) {
     $("#cboTipoVehiculo").val(DatosFila.find('td:eq(3)').text());
-    LlenarComboVehiculo();
+    //LlenarComboVehiculo();
+
+    let Codigo = $("#cboTipoVehiculo").val();
+    let Placa = DatosFila.find('td:eq(4)').text();
+    
+    LlenarComboServicio("http://localhost:62556/Api/Vehiculo/GetAllComboVehiculosXTipo?Codigo=" + Codigo+"&Placa="+Placa, "#cboVehiculo", "", false);
 
     $("#txtCodigoAlquiler").val(DatosFila.find('td:eq(0)').text());
     $("#txtDocumentoCliente").val(DatosFila.find('td:eq(1)').text());
@@ -109,7 +114,14 @@ function EditarFila(DatosFila) {
 
 function Consultar() {
     let Documento = $("#txtDocumentoCliente").val();
+    LlenaTablaServicio("http://localhost:62556/Api/Alquiler?Documento=" + Documento, "#tblAlquiler");
+    ConsultarCliente();
 
+    $("#txtCodigoAlquiler").val("");
+    $("#txtFechaInicio").val("");
+    $("#txtFechaFin").val("");
+
+    /*
     $.ajax({
         type: "GET",
         url: "http://localhost:62556/Api/Alquiler?Documento=" + Documento,
@@ -135,7 +147,7 @@ function Consultar() {
             $("#dvMensaje").addClass("alert alert-danger");
             $("#dvMensaje").html(errAlquiler.html);
         }
-    });
+    });*/
 }
 
 
@@ -145,7 +157,7 @@ function Procesar(Comando) {
     let DocumentoCliente = $("#txtDocumentoCliente").val();
     ConsultarCliente();
     let Empleado = $("#cboEmpleado").val();
-    let IDTipoVehiculo = $("cboTipoVehiculo").val();
+    let IDTipoVehiculo = $("#cboTipoVehiculo").val();
     let Vehiculo = $("#cboVehiculo").val();
     let Estado = $("#txtEstado").val();
     let FechaInicio = $("#txtFechaInicio").val();

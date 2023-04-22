@@ -88,6 +88,20 @@ namespace ServicioAlquiler.Class
                     .ToList();
 
         }
+        public List<viewComboVehiculo> LlenarAllComboVehiculosXTipo(int Codigo, string Placa)
+        {
+            return dbAlquiler.tblVehiculoes
+                    .Where(x => x.IDTipoVehiculo == Codigo && (x.Estado == "DISPONIBLE" || x.Placa == Placa))
+                    .Select(p => new viewComboVehiculo
+                    {
+                        Codigo = p.Placa,
+                        Nombre = p.tblMarca.Nombre + " " + p.Descripcion
+                    }
+                    )
+                    .OrderBy(x => x.Nombre)
+                    .ToList();
+
+        }
 
         public tblVehiculo GetByIdAlquiler(int idAlquiler)
         {

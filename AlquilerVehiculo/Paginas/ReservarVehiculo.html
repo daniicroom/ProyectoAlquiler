@@ -13,6 +13,7 @@
     <link href="Estilos/adminlte.min.css" rel="stylesheet" />
     <!-- Estilos para el datatable -->
     <link href="Estilos/dataTables.min.css" rel="stylesheet" />
+    <link href="Estilos/select.dataTables.min.css" rel="stylesheet" />
     <link href="Estilos/dataTables.bootstrap4.min.css" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini">
@@ -145,11 +146,11 @@
                                         <button type="button" id="btnConsultar" class="btn-block btn-lg btn-primary">CONSULTAR</button>
                                     </div>
                                 </div><br />
-  
+
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <table id="tblReserva" class="display" style="width:100%">
+                                        <table id="tblReserva" class="table table-bordered table-striped" style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th>Código Reserva</th>
@@ -180,6 +181,8 @@
     <script src="../Scripts/jquery.min.js"></script>
     <script src="../Scripts/bootstrap.bundle.min.js"></script>
     <script src="../Scripts/jquery.dataTables.min.js"></script>
+    <!-- datatables extension SELECT -->
+    <script src="../Scripts/dataTables.select.min.js"></script>
     <script src="../Scripts/dataTables.bootstrap4.min.js"></script>
     <script src="Scripts/Comunes/Combos.js"></script>
     <script src="Scripts/Comunes/Tablas.js"></script>
