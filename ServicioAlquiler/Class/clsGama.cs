@@ -10,6 +10,7 @@ namespace ServicioAlquiler.Class
     {
         private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
 
+        // DEVUELVE EL COMBO DE GAMA DE VEHICULOS
         public List<viewCombo> ListarGama()
         {
             return dbAlquiler.tblGamas

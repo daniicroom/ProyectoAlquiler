@@ -10,6 +10,7 @@ namespace ServicioAlquiler.Class
     {
         private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblDevolucion devolucion { get; set; }
+
         public List<tblDevolucion> GetAll()
         {
             try
@@ -21,25 +22,29 @@ namespace ServicioAlquiler.Class
                 throw ex;
             }
         }
-        public string GrabarDevolucion()
-        {
-            //Consultar el número de factura
-            devolucion.Codigo = ConsultarCodigoDevolucion() + 1;
-            UpdateEstadoAlquiler();
-            dbAlquiler.tblDevolucions.Add(devolucion);
-            dbAlquiler.SaveChanges();
-            return devolucion.Codigo.ToString();
-        }
+
+        // SE OBTIENE EL ULTIMO CÓDIGO DE DEVOLUCIÓN REGISTRADO EN LA BASE DE DATOS
         private int ConsultarCodigoDevolucion()
         {
             return dbAlquiler.tblDevolucions.Select(p => p.Codigo).DefaultIfEmpty(0).Max();
         }
 
 
-        private tblAlquiler ConsultarAlquiler()
+        //SE ACTUALIZA EL ESTADO DEL VEHICULO UNA VEZ EL CLIENTE LO DEVUELVE
+        private void UpdateEstadoVehiculo(string placa)
         {
-            return dbAlquiler.tblAlquilers.Where(p => p.Codigo == devolucion.CodigoAlquiler).FirstOrDefault();
+            try
+            {
+                tblVehiculo vehiculo = dbAlquiler.tblVehiculoes.Where(x => x.Placa == placa).FirstOrDefault();
+                vehiculo.Estado = "DISPONIBLE";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+
+        //SE ACTUALIZA EL ESTADO DEL ALQUILER UNA VEZ EL CLIENTE DEVUELVE EL VEHICULO
         private void UpdateEstadoAlquiler()
         {
             try
@@ -56,19 +61,8 @@ namespace ServicioAlquiler.Class
                 throw ex;
             }
         }
-        private void UpdateEstadoVehiculo(string placa)
-        {
-            try
-            {
-                tblVehiculo vehiculo = dbAlquiler.tblVehiculoes.Where(x => x.Placa == placa).FirstOrDefault();
-                vehiculo.Estado = "DISPONIBLE";
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        
+
+        // SE OBTIENEN LOS DATOS DE LA TABLA ALQUILER PARA CALCULAR EL TOTAL A PAGAR
         public IQueryable<viewDatosAlquiler> GetDatosAlquiler(int idAlquiler)
         {
             return from ve in dbAlquiler.Set<tblVehiculo>()
@@ -83,12 +77,33 @@ namespace ServicioAlquiler.Class
                    };
 
         }
+
+
+
+
+        //CRUD
+
+        private tblAlquiler ConsultarAlquiler()
+        {
+            return dbAlquiler.tblAlquilers.Where(p => p.Codigo == devolucion.CodigoAlquiler).FirstOrDefault();
+        }
+
+        public string GrabarDevolucion()
+        {
+            //Consultar el número de factura
+            devolucion.Codigo = ConsultarCodigoDevolucion() + 1;
+            UpdateEstadoAlquiler();
+            dbAlquiler.tblDevolucions.Add(devolucion);
+            dbAlquiler.SaveChanges();
+            return "SE REGISTRÓ LA DEVOLUCIÓN CON EL N°: " + devolucion.Codigo.ToString();
+        }
+
+
         public tblDevolucion GetDevolucionByAlquiler(int idAlquiler)
         {
             return dbAlquiler.tblDevolucions
                        .Where(p => p.CodigoAlquiler == idAlquiler)
                        .FirstOrDefault();
-
         }
 
         public string Actualizar()
@@ -103,7 +118,7 @@ namespace ServicioAlquiler.Class
             _devolucion.TotalPagar = devolucion.TotalPagar;
 
             dbAlquiler.SaveChanges();
-            return "Se actualizó la devolucion";
+            return "SE ACTUALIZÓ LA DEVOLUCIÓN";
         }
 
         public string Eliminar(int Codigo)
@@ -114,7 +129,7 @@ namespace ServicioAlquiler.Class
 
             dbAlquiler.tblDevolucions.Remove(devolucion);
             dbAlquiler.SaveChanges();
-            return "Se eliminó la devolucion";
+            return "SE ELIMINÓ LA DEVOLUCIÓN";
         }
     }
 }

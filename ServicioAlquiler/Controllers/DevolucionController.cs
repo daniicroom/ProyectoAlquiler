@@ -13,17 +13,13 @@ namespace ServicioAlquiler.Controllers
     [RoutePrefix("api/Devolucion")]
     public class DevolucionController : ApiController
     {
-        public string Post([FromBody] tblDevolucion devolucion)
-        {
-            clsDevolucion oDevolucion = new clsDevolucion();
-            oDevolucion.devolucion = devolucion;
-            return oDevolucion.GrabarDevolucion();
-        }
+        // OBTIENE LOS DATOS DEL ALQUILER PARA CALCULAR EL TOTAL A PAGAR EN LA DEVOLUCIÓN
         public viewDatosAlquiler GetDatosAlquiler(int idAlquiler)
         {
             clsDevolucion oDevolucion = new clsDevolucion();
             return oDevolucion.GetDatosAlquiler(idAlquiler).FirstOrDefault();
         }
+
         [HttpGet]
         [Route("GetDevolucionByAlquiler")]
         public tblDevolucion GetDevolucionByAlquiler(int idAlquiler)
@@ -31,6 +27,22 @@ namespace ServicioAlquiler.Controllers
             clsDevolucion oDevolucion = new clsDevolucion();
             return oDevolucion.GetDevolucionByAlquiler(idAlquiler);
         }
+
+
+        public List<tblDevolucion> GetAll()
+        {
+            clsDevolucion oDevolucion = new clsDevolucion();
+            return oDevolucion.GetAll();
+        }
+
+        public string Post([FromBody] tblDevolucion devolucion)
+        {
+            clsDevolucion oDevolucion = new clsDevolucion();
+            oDevolucion.devolucion = devolucion;
+            return oDevolucion.GrabarDevolucion();
+        }
+       
+        
         public string Put([FromBody] tblDevolucion devolucion)
         {
             clsDevolucion oDevolucion = new clsDevolucion();
@@ -42,10 +54,6 @@ namespace ServicioAlquiler.Controllers
             clsDevolucion oDevolucion = new clsDevolucion();
             return oDevolucion.Eliminar(devolucion.Codigo);
         }
-        public List<tblDevolucion> GetAll()
-        {
-            clsDevolucion oDevolucion = new clsDevolucion();
-            return oDevolucion.GetAll();
-        }
+        
     }
 }

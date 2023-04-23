@@ -13,19 +13,18 @@ namespace ServicioAlquiler.Controllers
     public class AlquilerController : ApiController
     {
 
+        public List<tblAlquiler> GetAll()
+        {
+            clsAlquiler oAlquiler = new clsAlquiler();
+            return oAlquiler.GetAll();
+        }
+
+
         public List<tblAlquiler> Get(string Documento)
         {
             clsAlquiler reserva = new clsAlquiler();
             return reserva.ConsultarByCliente(Documento);
         }
-
-        /*
-        public tblAlquiler Get(string Documento)
-        {
-            clsAlquiler alquiler = new clsAlquiler();
-            return alquiler.Consultar(Documento);
-        }*/
-
 
         public string Post([FromBody] tblAlquiler alquiler)
         {
@@ -33,11 +32,8 @@ namespace ServicioAlquiler.Controllers
             oAlquiler.alquiler = alquiler;
             return oAlquiler.GrabarAlquiler();
         }
-        public List<tblAlquiler> GetAll()
-        {
-            clsAlquiler oAlquiler = new clsAlquiler();
-            return oAlquiler.GetAll();
-        }
+
+        
         public string Put([FromBody] tblAlquiler alquiler)
         {
             clsAlquiler oAlquiler = new clsAlquiler();

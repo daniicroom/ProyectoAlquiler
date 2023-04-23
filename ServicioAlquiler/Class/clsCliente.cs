@@ -10,18 +10,24 @@ namespace ServicioAlquiler.Class
     {
         private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblCliente cliente { get; set; }
+
+
+        //CRUD
+        public string Grabarcliente()
+        {
+            dbAlquiler.tblClientes.Add(cliente);
+            dbAlquiler.SaveChanges();
+            return "SE REGISTRÓ EL CLIENTE CON NÚMERO DE DOCUMENTO: " + cliente.Documento.ToString();
+        }
+
         public tblCliente Consultar(string Documento)
         {
             return dbAlquiler.tblClientes
                     .Where(x => x.Documento == Documento)
                     .FirstOrDefault();
         }
-        public string Grabarcliente()
-        {
-            dbAlquiler.tblClientes.Add(cliente);
-            dbAlquiler.SaveChanges();
-            return "Se ingresó el cliente" + cliente.Documento.ToString();
-        }
+
+        
         public string Actualizar()
         {
             tblCliente _cliente = dbAlquiler.tblClientes
@@ -37,8 +43,9 @@ namespace ServicioAlquiler.Class
             _cliente.Direccion = cliente.Direccion;
 
             dbAlquiler.SaveChanges();
-            return "Se actualizó el cliente";
+            return "SE ACTUALIZARÓN LOS DATOS DEL CLIENTE";
         }
+
         public string Eliminar(string Documento)
         {
             tblCliente _cliente = dbAlquiler.tblClientes
@@ -47,7 +54,7 @@ namespace ServicioAlquiler.Class
 
             dbAlquiler.tblClientes.Remove(_cliente);
             dbAlquiler.SaveChanges();
-            return "Se eliminó el cliente";
+            return "SE ELIMINÓ EL CLIENTE";
         }
     }
 }

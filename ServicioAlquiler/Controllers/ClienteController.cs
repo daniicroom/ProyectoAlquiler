@@ -13,7 +13,6 @@ namespace ServicioAlquiler.Controllers
     [EnableCors(origins: "http://localhost:54777", headers: "*", methods: "*")]
     public class ClienteController : ApiController
     {
-        [EnableCors(origins: "http://localhost:54777", headers: "*", methods: "*")]
         public tblCliente Get(string Documento)
         {
             clsCliente cliente = new clsCliente();

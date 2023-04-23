@@ -10,17 +10,14 @@ namespace ServicioAlquiler.Class
     {
         private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblVehiculo vehiculo { get; set; }
-        public tblVehiculo Consultar(string placa)
-        {
-            return dbAlquiler.tblVehiculoes
-                    .Where(x => x.Placa == placa)
-                    .FirstOrDefault();
-        }
+
         public IQueryable<tblVehiculo> GetAll()
         {
             return dbAlquiler.tblVehiculoes
                     .Where(x => x.Placa != "");
         }
+
+        // DEVUELVE EL COMBO DE VEHICULOS EN LA FORMA: MARCA - NOMBRE DEL VEHICULO
         public IQueryable<viewComboVehiculo> LlenarComboVehiculo()
         {
             return from ve in dbAlquiler.Set<tblVehiculo>()
@@ -34,7 +31,7 @@ namespace ServicioAlquiler.Class
                    };
         }
 
-   
+        // LLENA EL DATATABLE DE VEHICULOS
         public IQueryable<viewDataTableVehiculos> LlenarTablaVehiculos()
         {
             return from veh in dbAlquiler.Set<tblVehiculo>()
@@ -63,17 +60,9 @@ namespace ServicioAlquiler.Class
                        Precio = veh.Precio
 
                    };
-
         }
 
-        public List<tblVehiculo> ListarVehiculos(int Codigo)
-        {
-            return dbAlquiler.tblVehiculoes
-                    .Where(x => x.IDTipoVehiculo == Codigo)
-                    .OrderBy(x => x.Placa)
-                    .ToList();
-        }
-
+        // DEVUELVE EL COMBO DE VEHICULOS CORRESPONDIENTES UN TIPO Y QUE A DEMÁS ESTÁN EN ESTADO DISPONIBLE
         public List<viewComboVehiculo> LlenarComboVehiculosXTipo(int Codigo)
         {
             return dbAlquiler.tblVehiculoes
@@ -86,23 +75,11 @@ namespace ServicioAlquiler.Class
                     )
                     .OrderBy(x => x.Nombre)
                     .ToList();
-
         }
+
+        // DEVUELVE EL COMBO DE VEHICULOS DONDE EL ESTADO SEA DISPONIBLE, O QUE TENGA UNA RESERVA RELACIONADA AL DOCUMENTO DEL CLIENTE PARA EL ALQUILER
         public List<viewComboVehiculo> LlenarComboVehiculosXTipoCliente(int Codigo, string Cedula)
         {
-            /*var a = from ve in dbAlquiler.Set<tblVehiculo>()
-                    join mar in dbAlquiler.Set<tblMarca>()
-                    on ve.IDMarca equals mar.Codigo
-                    join re in dbAlquiler.Set<tblReservar>()
-                    on ve.Placa equals re.PlacaVehiculo
-                    orderby mar.Nombre + " " + ve.Descripcion
-                    where ve.IDTipoVehiculo == Codigo && (ve.Estado == "DISPONIBLE" || re.CedulaCliente == Cedula)
-                    select new viewComboVehiculo
-                    {
-                        Codigo = ve.Placa,
-                        Nombre = mar.Nombre + " - " + ve.Descripcion
-                    };*/
-
             return dbAlquiler.tblVehiculoes
                     .Where(x => x.IDTipoVehiculo == Codigo && (x.Estado == "DISPONIBLE" || (x.Estado == "RESERVADO" && x.tblReservars.Any(y => y.CedulaCliente == Cedula))))
                     .Select(p => new viewComboVehiculo
@@ -114,6 +91,8 @@ namespace ServicioAlquiler.Class
                     .OrderBy(x => x.Nombre)
                     .ToList();
         }
+
+        // DEVUELVE EL COMBO DE VEHICULOS CORRESPONDIENTES UN TIPO Y QUE A DEMÁS ESTÁN EN ESTADO DISPONIBLE O DONDE EL NÚMERO DE PLACA SEA IGUAL A LA REGISTRADA EN LA DB
         public List<viewComboVehiculo> LlenarAllComboVehiculosXTipo(int Codigo, string Placa)
         {
             return dbAlquiler.tblVehiculoes
@@ -135,12 +114,24 @@ namespace ServicioAlquiler.Class
                     .Where(x => x.tblAlquilers.FirstOrDefault().Codigo == idAlquiler)
                     .FirstOrDefault();
         }
+
+
+        // CRUD
+        public tblVehiculo Consultar(string placa)
+        {
+            return dbAlquiler.tblVehiculoes
+                    .Where(x => x.Placa == placa)
+                    .FirstOrDefault();
+        }
+
+
         public string Grabarvehiculo()
         {
             dbAlquiler.tblVehiculoes.Add(vehiculo);
             dbAlquiler.SaveChanges();
-            return "Se ingresó el vehiculo" + vehiculo.Placa.ToString();
+            return "SE REGISTRÓ EL VEHÍCULO CON PLACA: " + vehiculo.Placa.ToString();
         }
+
         public string Actualizar()
         {
             tblVehiculo _vehiculo = dbAlquiler.tblVehiculoes
@@ -157,8 +148,9 @@ namespace ServicioAlquiler.Class
             _vehiculo.IDTipoVehiculo = vehiculo.IDTipoVehiculo;
 
             dbAlquiler.SaveChanges();
-            return "Se actualizó el vehiculo";
+            return "SE ACTUALIZÓ LA INFORMACIÓN DEL VEHÍCULO";
         }
+
         public string Eliminar(string Placa)
         {
             tblVehiculo _vehiculo = dbAlquiler.tblVehiculoes
@@ -167,8 +159,9 @@ namespace ServicioAlquiler.Class
 
             dbAlquiler.tblVehiculoes.Remove(_vehiculo);
             dbAlquiler.SaveChanges();
-            return "Se eliminó el vehiculo";
+            return "SE ELIMINÓ LA INFORMACIÓN DEL VEHÍCULO";
         }
+
         public string Deshabilitar(string Placa)
         {
             tblVehiculo _vehiculo = dbAlquiler.tblVehiculoes
@@ -177,7 +170,7 @@ namespace ServicioAlquiler.Class
 
             _vehiculo.Estado = "NO DISPONIBLE";
             dbAlquiler.SaveChanges();
-            return "Se eliminó el vehiculo";
+            return "SE PUSO EL VEHÍCULO EN ESTADO NO DISPONIBLE";
         }
     }
 }

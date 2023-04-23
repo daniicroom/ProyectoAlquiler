@@ -11,11 +11,8 @@ namespace ServicioAlquiler.Class
         private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblAlquiler alquiler { get; set; }
 
-        private string ultimaAccion;
-
-
-
-        public List<tblAlquiler> GetAll()
+       
+        public List<tblAlquiler>GetAll()
         {
             try
             {
@@ -42,24 +39,7 @@ namespace ServicioAlquiler.Class
             }
         }
 
-        /*
-        // ACTUALIZA EL ESTADO DEL VEHICULO EN LA TABLA DE VEHICULOS
-        private void UpdateEstadoVehiculo(string placa)
-        {
-            try
-            {
-                tblVehiculo vehiculo = dbAlquiler.tblVehiculoes.Where(x => x.Placa == placa).FirstOrDefault();
-
-                vehiculo.Estado = "EN ALQUILER";
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        */
-
-
+ 
 
         // CONSULTA EL ULTIMO CODIGO DE ALQUILER DE LA BASE DE DATOS Y LO INCREMENTA EN 1 PARA EL NUEVO CODIGO DE ALQUILER
         private int ConsultarCodigoAlquiler()
@@ -89,9 +69,6 @@ namespace ServicioAlquiler.Class
         {
             try
             {
-                //ultimaAccion = "GrabarAlquiler";
-
-                //Consultar el número de factura
                 alquiler.Codigo = ConsultarCodigoAlquiler() + 1;
                 UpdateEstadoVehiculo(alquiler.PlacaVehiculo, "EN ALQUILER");
                 alquiler.EstadoAlquiler = "ACTIVO";
@@ -99,8 +76,6 @@ namespace ServicioAlquiler.Class
                 dbAlquiler.SaveChanges();
 
                 return "SE REGISTRÓ EL ALQUILER CON CÓDIGO N°: " + alquiler.Codigo.ToString();
-
-
             }
             catch (Exception ex)
             {
@@ -108,24 +83,18 @@ namespace ServicioAlquiler.Class
             }
         }
 
-
-        public string GrabarEmpleado()
-        {
-            dbAlquiler.tblAlquilers.Add(alquiler);
-            dbAlquiler.SaveChanges();
-            return "Se ingresó el registro de alquiler con código: " + alquiler.Codigo.ToString();
-        }
-
         public string Actualizar()
         {
             tblAlquiler _alquiler = dbAlquiler.tblAlquilers
                         .Where(p => p.Codigo == alquiler.Codigo)
                         .FirstOrDefault();
+
             if(_alquiler.PlacaVehiculo != alquiler.PlacaVehiculo)
             {
                 UpdateEstadoVehiculo(_alquiler.PlacaVehiculo, "DISPONIBLE");
                 UpdateEstadoVehiculo(alquiler.PlacaVehiculo, "EN ALQUILER");
             }
+
             _alquiler.CedulaCliente = alquiler.CedulaCliente;
             _alquiler.IDEmpleado = alquiler.IDEmpleado;
             _alquiler.IDTipoVehiculo = alquiler.IDTipoVehiculo;
@@ -139,8 +108,6 @@ namespace ServicioAlquiler.Class
 
         public string Eliminar(int Codigo)
         {
-            //ultimaAccion = "EliminarAlquiler";
-
             tblAlquiler alquiler = dbAlquiler.tblAlquilers
                         .Where(p => p.Codigo == Codigo)
                         .FirstOrDefault();

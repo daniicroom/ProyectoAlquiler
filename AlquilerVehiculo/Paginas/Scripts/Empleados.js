@@ -18,7 +18,7 @@ $(document).ready(function () {
 });
 
 function LlenarComboCargo() {
-    LlenarComboServicio("http://localhost:62556/api/Cargo", "#cboCargo", "", false);
+    LlenarComboServicio("http://localhost:62556/Api/Cargo", "#cboCargo", "", false);
 }
 
 
@@ -27,7 +27,7 @@ function Consultar() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:62556/api/Empleado?Documento=" + Documento,
+        url: "http://localhost:62556/Api/Empleado?Documento=" + Documento,
         contentType: "application/json",
         data: null,
         dataType: "json",
@@ -63,7 +63,7 @@ function Procesar(Comando) {
     }
     $.ajax({
         type: Comando,
-        url: "http://localhost:62556/api/Empleado",
+        url: "http://localhost:62556/Api/Empleado",
         contentType: "application/json",
         data: JSON.stringify(DatosEmpleado),
         dataType: "json",

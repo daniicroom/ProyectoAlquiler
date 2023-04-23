@@ -10,6 +10,8 @@ namespace ServicioAlquiler.Class
     public class clsColor
     {
         private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
+
+        // DEVUELVE EL COMBO DE COLORES DE VEHICULOS
         public List<viewCombo> ListarColorVehiculo()
         {
             return dbAlquiler.tblColors

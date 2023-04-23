@@ -12,7 +12,7 @@ namespace ServicioAlquiler.Controllers
     [EnableCors(origins: "http://localhost:54777", headers: "*", methods: "*")]
     public class ReservaController : ApiController
     {
-        //Se obtiene todo de la tabla Reservar
+        //SE OBTIENE TODO DE LA TABLA RESERVA
         public List<tblReservar> GetAll()
         {
             clsReserva oReserva = new clsReserva();
@@ -20,13 +20,7 @@ namespace ServicioAlquiler.Controllers
         }
 
         // CRUD
-        /*public tblReservar Get(int Codigo)
-        {
-            clsReserva reserva = new clsReserva();
-            return reserva.Consultar(Codigo);
-        }*/
-
-        // Devolver la lista de reservas de un cliente
+        // DEVUELVE LA LISTA DE RESERVAS DE UN CLIENTE
         public List<tblReservar> Get(string CedulaCliente)
         {
             clsReserva reserva = new clsReserva();

@@ -22,6 +22,14 @@ namespace ServicioAlquiler.Controllers
             return vehiculo.GetAll();
         }
 
+        // PARA LA CONSULTA POR ID DE ALQUILER EN LA DEVOLUCION DEL VEHÍCULO
+        public tblVehiculo GetByIdAlquiler(int idAlquiler)
+        {
+            clsVehiculo vehiculo = new clsVehiculo();
+            return vehiculo.GetByIdAlquiler(idAlquiler);
+        }
+
+        // PARA EL LLENADO DE LA DATATABLE EN LA PAGINA VEHICULO
         [HttpGet]
         [Route("GetTable")]
         public IQueryable<viewDataTableVehiculos> GetTable()
@@ -31,7 +39,22 @@ namespace ServicioAlquiler.Controllers
 
         }
 
-        //Se obtiene la lista de vehiculos por el tipo seleccionado (PARA ALQUILER)
+        // DEVUELVE EL COMBO DE VEHICULOS EN LA FORMA: MARCA - NOMBRE DEL VEHICULO
+        public IQueryable<viewComboVehiculo> Get()
+        {
+            clsVehiculo vehiculo = new clsVehiculo();
+            return vehiculo.LlenarComboVehiculo();
+        }
+
+        // DEVUELVE EL COMBO DE VEHICULOS CORRESPONDIENTES UN TIPO Y QUE A DEMÁS ESTÁN EN ESTADO DISPONIBLE
+        public List<viewComboVehiculo> Get(int Codigo)
+        {
+            clsVehiculo vehiculo = new clsVehiculo();
+
+            return vehiculo.LlenarComboVehiculosXTipo(Codigo);
+        }
+
+        //SE OBTIENE LA LISTA DE VEHICULOS DISPONIBLES DE ACUERDO AL TIPO SELECCIONADO Y AL DOCUMENTO DEL CLIENTE SI TIENE ALGUNA RESERVA (PARA ALQUILER)
         [HttpGet]
         [Route("GetComboVehiculosXTipoCliente")]
         public List<viewComboVehiculo> GetComboVehiculosXTipoCliente(int Codigo, string Cedula)
@@ -40,7 +63,9 @@ namespace ServicioAlquiler.Controllers
 
             return vehiculo.LlenarComboVehiculosXTipoCliente(Codigo, Cedula);
         }
-        //Se obtiene la lista de vehiculos por el tipo seleccionado (PARA ALQUILER)
+
+
+        //SE OBTIENE LA LISTA DE VEHICULOS DISPONIBLES DE ACUERDO AL TIPO SELECCIONADO (PARA ALQUILER)
         [HttpGet]
         [Route("GetComboVehiculosXTipo")]
         public List<viewComboVehiculo> GetComboVehiculosXTipo(int Codigo)
@@ -49,6 +74,8 @@ namespace ServicioAlquiler.Controllers
 
             return vehiculo.LlenarComboVehiculosXTipo(Codigo);
         }
+
+        //DEVUELVE EL COMBO DE VEHICULOS CORRESPONDIENTES UN TIPO Y QUE A DEMÁS ESTÁN EN ESTADO DISPONIBLE O DONDE EL NÚMERO DE PLACA SEA IGUAL A LA REGISTRADA EN LA DB
         [HttpGet]
         [Route("GetAllComboVehiculosXTipo")]
         public List<viewComboVehiculo> GetAllComboVehiculosXTipo(int Codigo, string Placa)
@@ -57,30 +84,16 @@ namespace ServicioAlquiler.Controllers
 
             return vehiculo.LlenarAllComboVehiculosXTipo(Codigo, Placa);
         }
-        public List<viewComboVehiculo> Get(int Codigo)
-        {
-            clsVehiculo vehiculo = new clsVehiculo();
-
-            return vehiculo.LlenarComboVehiculosXTipo(Codigo);
-        }
 
         
-        public IQueryable<viewComboVehiculo> Get()
-        {
-            clsVehiculo vehiculo = new clsVehiculo();
-            return vehiculo.LlenarComboVehiculo();
-        }
 
         public tblVehiculo Get(string placa)
         {
             clsVehiculo vehiculo = new clsVehiculo();
             return vehiculo.Consultar(placa);
         }
-        public tblVehiculo GetByIdAlquiler(int idAlquiler)
-        {
-            clsVehiculo vehiculo = new clsVehiculo();
-            return vehiculo.GetByIdAlquiler(idAlquiler);
-        }
+
+        
         public string Post([FromBody] tblVehiculo vehiculo)
         {
             clsVehiculo oVehiculo = new clsVehiculo();

@@ -10,10 +10,7 @@ $(document).ready(function () {
             $(this).addClass('selected');
             EditarFila($(this).closest('tr'));
         }
-    });
-    /* Obtiene la fecha del sistema y la presenta en el txt
-    let now = new Date();
-    $("#txtFechaInicio").val(now.toISOString().split('T')[0]);*/
+    }); 
 
     //Registrar los botones para responder al evento click
     $("#btnBuscar").click(function () {
@@ -29,9 +26,6 @@ $(document).ready(function () {
     })
     $("#btnConsultar").click(function () {
         Consultar();
-    });
-    $("#btnCancelar").click(function () {
-        Cancelar();
     });
 
     $("#btnEliminar").click(function () {
@@ -92,10 +86,9 @@ function ConsultarCliente() {
 
 
 
-// Fucion para manipular los datos de las filas
+// Funcion para manipular los datos de las filas
 function EditarFila(DatosFila) {
     $("#cboTipoVehiculo").val(DatosFila.find('td:eq(3)').text());
-    //LlenarComboVehiculo();
 
     let Codigo = $("#cboTipoVehiculo").val();
     let Placa = DatosFila.find('td:eq(4)').text();
@@ -121,34 +114,6 @@ function Consultar() {
     $("#txtCodigoAlquiler").val("");
     $("#txtFechaInicio").val("");
     $("#txtFechaFin").val("");
-
-    /*
-    $.ajax({
-        type: "GET",
-        url: "http://localhost:62556/Api/Alquiler?Documento=" + Documento,
-        contentType: "application/json",
-        data: null,
-        dataType: "json",
-        success: function (Alquiler) {
-            LlenarComboTipoVehiculo();
-            $("#txtCodigoAlquiler").val(Alquiler.Codigo);
-            $("#txtDocumentoCliente").val(Alquiler.CedulaCliente);
-
-            ConsultarCliente();
-
-            $("#cboEmpleado").val(Alquiler.IDEmpleado);
-            $("#cboTipoVehiculo").val(Alquiler.IDTipoVehiculo);
-            $("#cboVehiculo").val(Alquiler.PlacaVehiculo);
-            $("#txtEstado").val(Alquiler.Estado);
-            $("#txtFechaInicio").val(Alquiler.FechaInicio.split('T')[0]);
-            $("#txtFechaFin").val(Alquiler.FechaFin.split('T')[0]);
-
-        },
-        error: function (errAlquiler) {
-            $("#dvMensaje").addClass("alert alert-danger");
-            $("#dvMensaje").html(errAlquiler.html);
-        }
-    });*/
 }
 
 
@@ -164,8 +129,6 @@ function Procesar(Comando) {
     let FechaInicio = $("#txtFechaInicio").val();
     let FechaFin = $("#txtFechaFin").val();
 
-
-
     DatosAlquiler = {
         Codigo: Codigo,
         CedulaCliente: DocumentoCliente,
@@ -175,7 +138,6 @@ function Procesar(Comando) {
         EstadoAlquiler: Estado,
         FechaInicio: FechaInicio,
         FechaFin: FechaFin,
-
     }
     $.ajax({
         type: Comando,

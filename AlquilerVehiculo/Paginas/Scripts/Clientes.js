@@ -19,11 +19,11 @@ $(document).ready(function () {
 });
 
 function LlenarComboTipoDocumento() {
-    LlenarComboServicio("http://localhost:62556/api/TipoDocumento", "#cboTipoDocumento", "", false);
+    LlenarComboServicio("http://localhost:62556/Api/TipoDocumento", "#cboTipoDocumento", "", false);
 }
 
 function LlenarCategoriaLicencia() {
-    LlenarComboServicio("http://localhost:62556/api/CategoriaLicencia", "#cboCategoriaLicencia", "", false);
+    LlenarComboServicio("http://localhost:62556/Api/CategoriaLicencia", "#cboCategoriaLicencia", "", false);
 }
 
 
@@ -33,7 +33,7 @@ function Consultar() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:62556/api/Cliente?Documento=" + Documento,
+        url: "http://localhost:62556/Api/Cliente?Documento=" + Documento,
         contentType: "application/json",
         data: null,
         dataType: "json",
@@ -47,7 +47,7 @@ function Consultar() {
             $("#cboCategoriaLicencia").val(Cliente.IDLicencia);
             $("#txtNumeroLicencia").val(Cliente.NumeroLicencia);
         },
-        error: function (errPaises) {
+        error: function (errClientes) {
             $("#dvMensaje").addClass("alert alert-danger");
             $("#dvMensaje").html(errClientes.html);
         }
@@ -80,7 +80,7 @@ function Procesar(Comando) {
     }
     $.ajax({
         type: Comando,
-        url: "http://localhost:62556/api/Cliente",
+        url: "http://localhost:62556/Api/Cliente",
         contentType: "application/json",
         data: JSON.stringify(DatosCliente),
         dataType: "json",

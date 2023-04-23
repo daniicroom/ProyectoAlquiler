@@ -1,7 +1,6 @@
 ﻿var oTabla = $("#tblReserva").DataTable();
 
 $(document).ready(function () {
-    // Obtiene la fecha del sistema y la presenta en el txt
     
     //Registrar los botones para responder al evento click
     $("#btnBuscar").click(function () {
@@ -15,7 +14,7 @@ $(document).ready(function () {
     $("#btnActualizar").click(function () {
         Procesar('PUT');
     })
-    $("#btnEliminar").click(function () {
+    $("#btnCancelar").click(function () {
         Procesar('DELETE');
     });
 
@@ -56,10 +55,17 @@ function LlenarComboTipoVehiculo() {
 }
 
 function LlenarComboVehiculo() {
-
+    /*
     let Codigo = $("#cboTipoVehiculo").val();
     if (Codigo >= 0) {
         let sURL = "http://localhost:62556/Api/Vehiculo/GetComboVehiculosXTipo?Codigo=" + Codigo
+        LlenarComboServicio(sURL, "#cboVehiculo", "", false);
+    }*/
+
+    let Codigo = $("#cboTipoVehiculo").val();
+    let Cedula = $("#txtDocumentoCliente").val();
+    if (Codigo >= 0) {
+        let sURL = "http://localhost:62556/Api/Vehiculo/GetComboVehiculosXTipoCliente?Codigo=" + Codigo + "&Cedula=" + Cedula
         LlenarComboServicio(sURL, "#cboVehiculo", "", false);
     }
 }
@@ -80,7 +86,9 @@ function EditarFila(DatosFila) {
     $("#txtFechaFin").val(DatosFila.find('td:eq(7)').text().split('T')[0]);
     $("#cboEmpleado").val(DatosFila.find('td:eq(2)').text());
     $("#cboTipoVehiculo").val(DatosFila.find('td:eq(3)').text());
+
     LlenarComboVehiculoAll();
+
     $("#cboVehiculo").val(DatosFila.find('td:eq(4)').text());
     $("#txtDocumentoCliente").val(DatosFila.find('td:eq(1)').text());
     ConsultarCliente();
@@ -115,36 +123,6 @@ function Consultar() {
     $("#txtFechaInicio").val("");
     $("#txtFechaFin").val("");
 
-    /*
-    $.ajax({
-        type: "GET",
-        url: "http://localhost:62556/Api/Reserva?CedulaCliente=" + CedulaCliente,
-        contentType: "application/json",
-        data: null,
-        dataType: "json",
-        success: function (Reserva) {
-
-            
-            $("#cboTipoVehiculo").val(Reserva.IDTipoVehiculo);
-            LlenarComboVehiculo();
-            $("#txtCodigoReserva").val(Reserva.Codigo);
-            $("#txtFechaInicio").val(Reserva.FechaInicio.split('T')[0]);
-            $("#txtFechaFin").val(Reserva.FechaFin.split('T')[0]);
-            $("#cboEmpleado").val(Reserva.IDEmpleado);
-            ConsultarCliente();
-
-            $("#cboVehiculo").val(Reserva.PlacaVehiculo);
-            $("#txtDocumentoCliente").val(Reserva.CedulaCliente);
-            ConsultarCliente();
-            $("#txtEstadoReserva").val(Reserva.EstadoReserva);
-            
-            
-        },
-        error: function (errReserva) {
-            $("#dvMensaje").addClass("alert alert-danger");
-            $("#dvMensaje").html(errReserva.html);
-        }
-    });*/
 }
 
 
@@ -168,8 +146,6 @@ function Procesar(Comando) {
         EstadoReserva: EstadoReserva,
         FechaInicio: FechaInicio,
         FechaFin: FechaFin
-
-
     }
     $.ajax({
         type: Comando,
@@ -183,9 +159,9 @@ function Procesar(Comando) {
             //Vuelve y presenta la tabla con los cambios realizados
             LlenarTablaReserva();
         },
-        error: function (errReserva) {
+        error: function (errReservaVehiculo) {
             $("#dvMensaje").addClass("alert alert-danger");
-            $("#dvMensaje").html(errReserva.html);
+            $("#dvMensaje").html(errReservaVehiculo.html);
         }
     });
 }

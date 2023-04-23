@@ -35,35 +35,29 @@ $(document).ready(function () {
     LlenarComboTipoVehiculo();
 
     //Llenar la tabla con la informacion de los vehiculos
-    LlenaTablaServicio("http://localhost:62556/api/Vehiculo/GetTable", "#tblVehiculo");
-
-
-    //REVISAR
-    //LlenarTablaVehiculoServ();
-
-
+    LlenaTablaServicio("http://localhost:62556/Api/Vehiculo/GetTable", "#tblVehiculo");
 });
 
 
 
 function LlenarComboSede() {
-    LlenarComboServicio("http://localhost:62556/api/Sede", "#cboSede", "", true);
+    LlenarComboServicio("http://localhost:62556/Api/Sede", "#cboSede", "", true);
 }
 
 function LlenarComboMarca() {
-    LlenarComboServicio("http://localhost:62556/api/Marca", "#cboMarca", "", true);
+    LlenarComboServicio("http://localhost:62556/Api/Marca", "#cboMarca", "", true);
 }
 
 function LlenarComboGama() {
-    LlenarComboServicio("http://localhost:62556/api/Gama", "#cboGama", "", true);
+    LlenarComboServicio("http://localhost:62556/Api/Gama", "#cboGama", "", true);
 }
 
 function LlenarComboColor() {
-    LlenarComboServicio("http://localhost:62556/api/Color", "#cboColor", "", false);
+    LlenarComboServicio("http://localhost:62556/Api/Color", "#cboColor", "", false);
 }
 
 function LlenarComboTipoVehiculo() {
-    LlenarComboServicio("http://localhost:62556/api/TipoVehiculo", "#cboTipoVehiculo", "", false);
+    LlenarComboServicio("http://localhost:62556/Api/TipoVehiculo", "#cboTipoVehiculo", "", false);
 }
 
 
@@ -150,8 +144,9 @@ function Procesar(Comando) {
         success: function (Rpta) {
             $("#dvMensaje").addClass("alert alert-success");
             $("#dvMensaje").html(Rpta);
+
             //Vuelve y presenta la tabla con los cambios realizados
-            LlenaTablaServicio("http://localhost:62556/api/Vehiculo/GetTable", "#tblVehiculo");
+            LlenaTablaServicio("http://localhost:62556/Api/Vehiculo/GetTable", "#tblVehiculo");
         },
         error: function (errVehiculo) {
             $("#dvMensaje").addClass("alert alert-danger");

@@ -10,6 +10,8 @@ namespace ServicioAlquiler.Class
     {
         private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblLicencia licencia { get; set; }
+
+
         public List<viewCombo> GetAll()
         {
             return dbAlquiler.tblLicencias

@@ -10,6 +10,7 @@ namespace ServicioAlquiler.Class
     {
         private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblCargoEmpleado cargoEmpleado { get; set; }
+
         public List<tblCargoEmpleado> GetAll()
         {
             return dbAlquiler.tblCargoEmpleadoes.OrderBy(x => x.Nombre).ToList();

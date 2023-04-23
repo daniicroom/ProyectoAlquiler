@@ -66,8 +66,8 @@ function ConsultarEmpleado() {
             $("#txtNombreEmpleado").val(Empleado.Nombres + " " +
                 Empleado.Apellidos);
         },
-        error: function (errEmpleado) {
-            $("#txtNombreEmpleado").val(errEmpleados);
+        error: function (errEmpleados) {
+            $("#txtNombreEmpleado").val(errEmpleados.html);
         }
     });
 }
@@ -95,9 +95,9 @@ function Consultar() {
             $("#txtTotalPagar").val(FormatoMiles(Devolucion.TotalPagar));
            
         },
-        error: function (errDevolucion) {
+        error: function (errDevolverVehiculo) {
             $("#dvMensaje").addClass("alert alert-danger");
-            $("#dvMensaje").html(errDevolucion.html);
+            $("#dvMensaje").html(errDevolverVehiculo.html);
         }
     });
 }
@@ -111,7 +111,7 @@ function Procesar(Comando) {
     let IDEmpleadoRecibe = $("#txtDocumentoEmpleado").val();
     ConsultarEmpleado();
     let FechaDevolucion = $("#txtFechaDevolucion").val();
-    let TotalPagar = $("#txtTotalPagar").val();
+    let TotalPagar = $("#txtTotal").val();
 
 
     DatosDevolucion = {
@@ -120,8 +120,6 @@ function Procesar(Comando) {
         IDEmpleadoRecibe: IDEmpleadoRecibe,
         FechaDevolucion: FechaDevolucion,
         TotalPagar: TotalPagar,
- 
-
     }
     $.ajax({
         type: Comando,
@@ -153,7 +151,10 @@ function CalcularTotalPagar() {
             let now = new Date();
             FechaInicial = new Date(Rpta.FechaInicial);
             var dias = parseInt((now - FechaInicial) / (24 * 3600 * 1000))
-            $("#txtTotalPagar").val(FormatoMiles(valorDia * dias));
+            let totalPagar = valorDia * dias;
+            $("#txtTotalPagar").val(FormatoMiles(totalPagar));
+            $("#txtTotal").val(totalPagar);
+
         },
         error: function (Error) {
             $("#dvMensaje").addClass("alert alert-danger");
@@ -162,16 +163,6 @@ function CalcularTotalPagar() {
     });
 }
 
-
-
-
-function Eliminar() {
-    //Borra una fila de la tabla
-    let DatosFila = oTabla.row('.selected').data();
-
-    oTabla.row('.selected').remove().draw(false);
-    //MostrarActualizar(false);
-}
 
 
 

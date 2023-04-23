@@ -10,6 +10,8 @@ namespace ServicioAlquiler.Class
     {
         private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblReservar reserva { get; set; }
+
+
         public List<tblReservar> GetAll()
         {
             try
@@ -22,45 +24,7 @@ namespace ServicioAlquiler.Class
             }
         }
 
-        private int ConsultarCodigoReserva()
-        {
-            return dbAlquiler.tblReservars.Select(p => p.Codigo).DefaultIfEmpty(0).Max();
-        }
-
-        // CRUD
-        public tblReservar Consultar(int Codigo)
-        {
-            return dbAlquiler.tblReservars.Where(x => x.Codigo == Codigo)
-                .FirstOrDefault();
-
-        }
-
-        public List<tblReservar> ConsultarByCliente(string CedulaCliente)
-        {
-            return dbAlquiler.tblReservars.Where(x => x.CedulaCliente == CedulaCliente).ToList();
-
-        }
-
-        public string GrabarReserva()
-        {
-            try
-            {
-                //Consultar el número de factura
-                reserva.Codigo = ConsultarCodigoReserva() + 1;
-                UpdateEstadoVehiculo(reserva.PlacaVehiculo, "RESERVADO");
-                reserva.EstadoReserva = "ACTIVO";
-                dbAlquiler.tblReservars.Add(reserva);
-                dbAlquiler.SaveChanges();
-                return "SE REGISTRÓ LA RESERVA CON CON CODIGO N° : " + reserva.Codigo.ToString();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-       
-
+        //SE ACTUALIZA EL ESTADO DEL VEHICULO EN LA TABLA DE VEHICULOS
         private void UpdateEstadoVehiculo(string placa, string estado)
         {
             try
@@ -75,11 +39,52 @@ namespace ServicioAlquiler.Class
             }
         }
 
+        // SE CONSULTA EL ÚLTIMO CODIGO DE RESERVA REGISTRADO EN LA BASE DE DATOS
+        private int ConsultarCodigoReserva()
+        {
+            return dbAlquiler.tblReservars.Select(p => p.Codigo).DefaultIfEmpty(0).Max();
+        }
+
+
+   
+        // CRUD
+
+        // DEVUELVE LA LISTA DE RESERVAS ASOCIADAS A UN CLIENTE
+        public List<tblReservar> ConsultarByCliente(string CedulaCliente)
+        {
+            return dbAlquiler.tblReservars.Where(x => x.CedulaCliente == CedulaCliente).ToList();
+
+        }
+
+        public string GrabarReserva()
+        {
+            try
+            {
+                reserva.Codigo = ConsultarCodigoReserva() + 1;
+                UpdateEstadoVehiculo(reserva.PlacaVehiculo, "RESERVADO");
+                reserva.EstadoReserva = "ACTIVO";
+                dbAlquiler.tblReservars.Add(reserva);
+                dbAlquiler.SaveChanges();
+                return "SE REGISTRÓ LA RESERVA CON CODIGO N° : " + reserva.Codigo.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public string Actualizar()
         {
             tblReservar _reserva = dbAlquiler.tblReservars
                         .Where(p => p.Codigo == reserva.Codigo)
                         .FirstOrDefault();
+
+            if (_reserva.PlacaVehiculo != reserva.PlacaVehiculo)
+            {
+                UpdateEstadoVehiculo(_reserva.PlacaVehiculo, "DISPONIBLE");
+                UpdateEstadoVehiculo(reserva.PlacaVehiculo, "RESERVADO");
+            }
+
 
             _reserva.CedulaCliente = reserva.CedulaCliente;
             _reserva.IDEmpleado = reserva.IDEmpleado;
@@ -104,6 +109,7 @@ namespace ServicioAlquiler.Class
             dbAlquiler.SaveChanges();
             return "SE ELIMINÓ LA RESERVA";
         }
+
         public string Cancelar(int Codigo)
         {
             tblReservar _reserva = dbAlquiler.tblReservars

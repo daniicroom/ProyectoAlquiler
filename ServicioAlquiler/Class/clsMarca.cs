@@ -10,6 +10,8 @@ namespace ServicioAlquiler.Class
     {
         private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblMarca marca { get; set; }
+
+        //DEVUELVE EL COMBO DE MARCAS DE VEHICULOS
         public List<viewCombo> ListarMarcas()
         {
             return dbAlquiler.tblMarcas
