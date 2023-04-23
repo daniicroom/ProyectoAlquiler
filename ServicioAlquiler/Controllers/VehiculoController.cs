@@ -30,8 +30,16 @@ namespace ServicioAlquiler.Controllers
             return vehiculo.LlenarTablaVehiculos();
 
         }
-        
 
+        //Se obtiene la lista de vehiculos por el tipo seleccionado (PARA ALQUILER)
+        [HttpGet]
+        [Route("GetComboVehiculosXTipoCliente")]
+        public List<viewComboVehiculo> GetComboVehiculosXTipoCliente(int Codigo, string Cedula)
+        {
+            clsVehiculo vehiculo = new clsVehiculo();
+
+            return vehiculo.LlenarComboVehiculosXTipoCliente(Codigo, Cedula);
+        }
         //Se obtiene la lista de vehiculos por el tipo seleccionado (PARA ALQUILER)
         [HttpGet]
         [Route("GetComboVehiculosXTipo")]

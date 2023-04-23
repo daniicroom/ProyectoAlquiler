@@ -58,14 +58,14 @@ function LlenarTablaAlquiler() {
 function LlenarComboTipoVehiculo() {
 
     LlenarComboServicio("http://localhost:62556/Api/TipoVehiculo", "#cboTipoVehiculo", "", false);
-    LlenarComboVehiculo();
 }
 
 function LlenarComboVehiculo() {
 
     let Codigo = $("#cboTipoVehiculo").val();
+    let Cedula = $("#txtDocumentoCliente").val();
     if (Codigo >= 0) {
-        let sURL = "http://localhost:62556/Api/Vehiculo/GetComboVehiculosXTipo?Codigo=" + Codigo
+        let sURL = "http://localhost:62556/Api/Vehiculo/GetComboVehiculosXTipoCliente?Codigo=" + Codigo + "&Cedula="+Cedula
         LlenarComboServicio(sURL, "#cboVehiculo", "", false);
     }
 }
@@ -82,6 +82,7 @@ function ConsultarCliente() {
         success: function (Cliente) {
             $("#txtNombreCliente").val(Cliente.Nombres + " " +
                 Cliente.Apellidos);
+            LlenarComboVehiculo();
         },
         error: function (errCliente) {
             $("#txtNombreCliente").val(errCliente);

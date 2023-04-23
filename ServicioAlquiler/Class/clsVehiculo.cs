@@ -88,6 +88,32 @@ namespace ServicioAlquiler.Class
                     .ToList();
 
         }
+        public List<viewComboVehiculo> LlenarComboVehiculosXTipoCliente(int Codigo, string Cedula)
+        {
+            /*var a = from ve in dbAlquiler.Set<tblVehiculo>()
+                    join mar in dbAlquiler.Set<tblMarca>()
+                    on ve.IDMarca equals mar.Codigo
+                    join re in dbAlquiler.Set<tblReservar>()
+                    on ve.Placa equals re.PlacaVehiculo
+                    orderby mar.Nombre + " " + ve.Descripcion
+                    where ve.IDTipoVehiculo == Codigo && (ve.Estado == "DISPONIBLE" || re.CedulaCliente == Cedula)
+                    select new viewComboVehiculo
+                    {
+                        Codigo = ve.Placa,
+                        Nombre = mar.Nombre + " - " + ve.Descripcion
+                    };*/
+
+            return dbAlquiler.tblVehiculoes
+                    .Where(x => x.IDTipoVehiculo == Codigo && (x.Estado == "DISPONIBLE" || x.tblReservars.Any(y => y.CedulaCliente == Cedula)))
+                    .Select(p => new viewComboVehiculo
+                    {
+                        Codigo = p.Placa,
+                        Nombre = p.tblMarca.Nombre + " " + p.Descripcion
+                    }
+                    )
+                    .OrderBy(x => x.Nombre)
+                    .ToList();
+        }
         public List<viewComboVehiculo> LlenarAllComboVehiculosXTipo(int Codigo, string Placa)
         {
             return dbAlquiler.tblVehiculoes
