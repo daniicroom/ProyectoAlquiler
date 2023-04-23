@@ -104,7 +104,7 @@ namespace ServicioAlquiler.Class
                     };*/
 
             return dbAlquiler.tblVehiculoes
-                    .Where(x => x.IDTipoVehiculo == Codigo && (x.Estado == "DISPONIBLE" || x.tblReservars.Any(y => y.CedulaCliente == Cedula)))
+                    .Where(x => x.IDTipoVehiculo == Codigo && (x.Estado == "DISPONIBLE" || (x.Estado == "RESERVADO" && x.tblReservars.Any(y => y.CedulaCliente == Cedula))))
                     .Select(p => new viewComboVehiculo
                     {
                         Codigo = p.Placa,
