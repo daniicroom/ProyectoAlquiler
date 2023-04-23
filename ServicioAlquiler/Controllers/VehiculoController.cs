@@ -88,7 +88,7 @@ namespace ServicioAlquiler.Controllers
         public string Delete([FromBody] tblVehiculo vehiculo)
         {
             clsVehiculo oVehiculo = new clsVehiculo();
-            return oVehiculo.Eliminar(vehiculo.Placa);
+            return oVehiculo.Deshabilitar(vehiculo.Placa);
         }
     }
 }

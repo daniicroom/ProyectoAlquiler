@@ -49,7 +49,7 @@ namespace ServicioAlquiler.Controllers
         public string Delete([FromBody] tblReservar reserva)
         {
             clsReserva oReserva = new clsReserva();
-            return oReserva.Eliminar(reserva.Codigo);
+            return oReserva.Cancelar(reserva.Codigo);
         }
 
     }

@@ -143,5 +143,15 @@ namespace ServicioAlquiler.Class
             dbAlquiler.SaveChanges();
             return "Se eliminó el vehiculo";
         }
+        public string Deshabilitar(string Placa)
+        {
+            tblVehiculo _vehiculo = dbAlquiler.tblVehiculoes
+                        .Where(p => p.Placa == Placa)
+                        .FirstOrDefault();
+
+            _vehiculo.Estado = "NO DISPONIBLE";
+            dbAlquiler.SaveChanges();
+            return "Se eliminó el vehiculo";
+        }
     }
 }

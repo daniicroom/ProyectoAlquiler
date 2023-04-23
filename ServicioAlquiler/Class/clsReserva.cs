@@ -104,5 +104,16 @@ namespace ServicioAlquiler.Class
             dbAlquiler.SaveChanges();
             return "SE ELIMINÓ LA RESERVA";
         }
+        public string Cancelar(int Codigo)
+        {
+            tblReservar _reserva = dbAlquiler.tblReservars
+                        .Where(p => p.Codigo == Codigo)
+                        .FirstOrDefault();
+
+            UpdateEstadoVehiculo(_reserva.PlacaVehiculo, "DISPONIBLE");
+            _reserva.EstadoReserva = "CANCELADA";
+            dbAlquiler.SaveChanges();
+            return "SE CANCELÓ LA RESERVA";
+        }
     }
 }
