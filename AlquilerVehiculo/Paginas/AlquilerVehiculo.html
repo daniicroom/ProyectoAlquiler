@@ -53,7 +53,7 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="txtFechaInicio">Fecha Inicio</label>
-                                            <input type="date" class="form-control" id="txtFechaInicio" name="txtFechaInicio" min="">
+                                            <input type="date" class="form-control" id="txtFechaInicio" name="txtFechaInicio" min="<?= date('Y-m-d') ?>">
                                         </div>
                                     </div>
 
@@ -71,6 +71,8 @@
                                         startDateInput.addEventListener("input", (event) => {
                                             endDateInput.min = event.target.value;
                                         });
+
+                                        startDateInput.min = new Date().toISOString().split("T")[0];
                                     </script>
 
 
