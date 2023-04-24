@@ -29,6 +29,7 @@ namespace ServicioAlquiler.Controllers
             return vehiculo.GetByIdAlquiler(idAlquiler);
         }
 
+
         // PARA EL LLENADO DE LA DATATABLE EN LA PAGINA VEHICULO
         [HttpGet]
         [Route("GetTable")]

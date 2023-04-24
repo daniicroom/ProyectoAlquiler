@@ -55,19 +55,19 @@ function LlenarComboTipoVehiculo() {
 }
 
 function LlenarComboVehiculo() {
-    /*
+    
     let Codigo = $("#cboTipoVehiculo").val();
     if (Codigo >= 0) {
         let sURL = "http://localhost:62556/Api/Vehiculo/GetComboVehiculosXTipo?Codigo=" + Codigo
         LlenarComboServicio(sURL, "#cboVehiculo", "", false);
-    }*/
-
+    }
+    /*
     let Codigo = $("#cboTipoVehiculo").val();
     let Cedula = $("#txtDocumentoCliente").val();
     if (Codigo >= 0) {
         let sURL = "http://localhost:62556/Api/Vehiculo/GetComboVehiculosXTipoCliente?Codigo=" + Codigo + "&Cedula=" + Cedula
         LlenarComboServicio(sURL, "#cboVehiculo", "", false);
-    }
+    }*/
 }
 
 function LlenarComboVehiculoAll() {

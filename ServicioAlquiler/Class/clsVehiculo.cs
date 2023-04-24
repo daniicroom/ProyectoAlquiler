@@ -62,7 +62,7 @@ namespace ServicioAlquiler.Class
                    };
         }
 
-        // DEVUELVE EL COMBO DE VEHICULOS CORRESPONDIENTES UN TIPO Y QUE A DEMÁS ESTÁN EN ESTADO DISPONIBLE
+        // DEVUELVE EL COMBO DE VEHICULOS CORRESPONDIENTES A UN TIPO Y QUE A DEMÁS ESTÁN EN ESTADO DISPONIBLE
         public List<viewComboVehiculo> LlenarComboVehiculosXTipo(int Codigo)
         {
             return dbAlquiler.tblVehiculoes
@@ -77,7 +77,7 @@ namespace ServicioAlquiler.Class
                     .ToList();
         }
 
-        // DEVUELVE EL COMBO DE VEHICULOS DONDE EL ESTADO SEA DISPONIBLE, O QUE TENGA UNA RESERVA RELACIONADA AL DOCUMENTO DEL CLIENTE PARA EL ALQUILER
+        // DEVUELVE EL COMBO DE VEHICULOS DONDE EL ESTADO SEA DISPONIBLE, O QUE TENGA UNA RESERVA RELACIONADA AL DOCUMENTO DEL CLIENTE PARA LA RESERVA
         public List<viewComboVehiculo> LlenarComboVehiculosXTipoCliente(int Codigo, string Cedula)
         {
             return dbAlquiler.tblVehiculoes
