@@ -90,6 +90,11 @@ namespace ServicioAlquiler.Class
 
         public string GrabarDevolucion()
         {
+            IQueryable<tblDevolucion> devoluciones = dbAlquiler.tblDevolucions.Where(x => x.CodigoAlquiler == devolucion.CodigoAlquiler);
+            if (devoluciones != null)
+            {
+                return "NO SE PUEDE REGISTRAR OTRA DEVOLUCIÓN A ESTE ALQUILER";
+            }
             //Consultar el número de factura
             devolucion.Codigo = ConsultarCodigoDevolucion() + 1;
             UpdateEstadoAlquiler();
