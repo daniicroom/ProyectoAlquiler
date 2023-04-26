@@ -91,7 +91,7 @@ namespace ServicioAlquiler.Class
         public string GrabarDevolucion()
         {
             IQueryable<tblDevolucion> devoluciones = dbAlquiler.tblDevolucions.Where(x => x.CodigoAlquiler == devolucion.CodigoAlquiler);
-            if (devoluciones != null)
+            if (devoluciones.Count() != 0)
             {
                 return "NO SE PUEDE REGISTRAR OTRA DEVOLUCIÓN A ESTE ALQUILER";
             }
