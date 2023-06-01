@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppAlquiler.fGestionarReserva"
+             Title="Gestionar Reserva">
+    <ContentPage.Content>
+
+        <StackLayout Padding="12">
+
+            <!-- Agregar un espacio de 15 puntos al inicio -->
+            <BoxView HeightRequest="15" Color="Black" />
+
+            <Label 
+                Text="RESERVAR VEHÍCULO" TextColor="White" FontAttributes="Bold"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="18"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+
+            <!-- Agregar un espacio de 30 puntos entre Label1 y el Grid -->
+            <BoxView HeightRequest="30" Color="Black" />
+
+
+
+            <Grid ColumnDefinitions="12,60,10,*,10,*,12">
+
+                <Entry x:Name="txtCodigo" Grid.Column="1" Placeholder="Codigo" IsEnabled="False" ></Entry>
+                <Entry x:Name="txtDocumentoCliente" Grid.Column="3" Placeholder="Documento Cliente"></Entry>
+                <Entry x:Name="txtNombre" Grid.Column="5" Placeholder="Nombre"></Entry>
+
+            </Grid>
+
+            <BoxView HeightRequest="10" Color="Black" />
+
+            <Grid ColumnDefinitions="12,*,10,*,20,12">
+                <Label Text="Fecha inicio:" Grid.Column="1" VerticalOptions="Center" />
+                <DatePicker Grid.Column="3" x:Name="dtpFechaInicio" Margin="30, 0, 0, 0" DateSelected="dtpFechaInicio_DateSelected" />
+
+            </Grid>
+
+            <Grid ColumnDefinitions="12,*,10,*,20,12">
+               
+                <Label Text="Fecha fin:" Grid.Column="1" VerticalOptions="Center" />
+                <DatePicker Grid.Column="3" x:Name="dtpFechaFin" Margin="30, 0, 0, 0" DateSelected="dtpFechaFin_DateSelected" />
+            </Grid>
+
+
+
+            <BoxView HeightRequest="18" Color="Black" />
+
+            <Grid ColumnDefinitions="12,*,10,*,10,*,12">
+
+                <Picker Title="Tipo Vehículo" x:Name="cboTipoVehiculo"  Grid.Column="1" ItemDisplayBinding="{Binding Nombre}" SelectedIndexChanged="cboTipoVehiculo_SelectedIndexChanged"/>
+                <Picker Title="Vehículo" x:Name="cboVehiculo"  Grid.Column="3" ItemDisplayBinding="{Binding Nombre}" SelectedIndexChanged="cboVehiculo_SelectedIndexChanged"/>
+                <Entry x:Name="txtEmpleado" Grid.Column="5" Placeholder="Empleado" IsVisible="false"></Entry>
+
+            </Grid>
+
+
+            <BoxView HeightRequest="30" Color="Black" />
+
+            <Grid ColumnDefinitions= "100, *, 100">
+
+                <Button x:Name="btnGrabar" Grid.Column="1" Text="REGISTRAR"  Clicked="btnGrabar_Clicked" />
+
+            </Grid>
+
+            <BoxView HeightRequest="10" Color="Black" />
+
+            <Grid ColumnDefinitions="*">
+
+                <Label x:Name="lblMensaje" TextColor="White" FontSize="15" FontAttributes="None" HorizontalOptions="Center"></Label>
+
+            </Grid>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

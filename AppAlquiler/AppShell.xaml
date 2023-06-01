@@ -6,9 +6,25 @@
     xmlns:local="clr-namespace:AppAlquiler"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
+    <Tab>
+        
+        <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+
+        <ShellContent
+        Title="Inicio Reserva"
+        ContentTemplate="{DataTemplate local:fInicioReserva}"
+        Route="fInicioResrva" />
+
+        <ShellContent
+        Title="Registro Cliente"
+        ContentTemplate="{DataTemplate local:fRegistroCliente}"
+        Route="fRegistroCliente" />
+
+    </Tab>
+
+    
 
 </Shell>

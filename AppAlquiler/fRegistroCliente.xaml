@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppAlquiler.fRegistroCliente"
+             Title="Registro Cliente">
+             
+    <ContentPage.Content>
+
+        <StackLayout Padding="12">
+
+            <!-- Agregar un espacio de 15 puntos al inicio -->
+            <BoxView HeightRequest="15" Color="Black" />
+
+            <Label 
+                Text="DATOS DEL CLIENTE" TextColor="White" FontAttributes="Bold"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="18"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+
+            <!-- Agregar un espacio de 30 puntos entre Label1 y el Grid -->
+            <BoxView HeightRequest="30" Color="Black" />
+
+            <Grid ColumnDefinitions="12,*,10,*,12">
+
+                <Label Text ="Tipo Documento" Grid.Column="1" />
+            </Grid>
+
+            <BoxView HeightRequest="5" Color="Black" />
+
+            <!--Aquí se realiza la distribución de la pantalla los * son los espacios que ocupan los txt -->
+            <Grid ColumnDefinitions="12,*,10,*,12">
+
+                <Picker x:Name="cboTipoDocumento"  Grid.Column="1" ItemDisplayBinding="{Binding Nombre}"/>
+                <Entry x:Name="txtDocumento" Grid.Column="3" Placeholder="Documento" ></Entry>
+
+            </Grid>
+
+            <BoxView HeightRequest="10" Color="Black" />
+
+            <Grid ColumnDefinitions="12,*,10,*,12">
+
+                <Entry x:Name="txtNombres" Grid.Column="1" Placeholder="Nombres"></Entry>
+                <Entry x:Name="txtApellidos" Grid.Column="3" Placeholder="Apellidos"></Entry>
+
+            </Grid>
+
+            <BoxView HeightRequest="10" Color="Black" />
+
+            <Grid ColumnDefinitions="12,*,10,*,12">
+
+                <Entry x:Name="txtDireccion" Grid.Column="1" Placeholder="Direccion"></Entry>
+                <Entry x:Name="txtEdad" Grid.Column="3" Placeholder="Edad"></Entry>
+
+            </Grid>
+
+            <BoxView HeightRequest="15" Color="Black" />
+            
+
+            <Grid ColumnDefinitions="12,*,10,*,12">
+
+                <Label Text ="Categoria Licencia" Grid.Column="1" />
+            </Grid>
+
+            <BoxView HeightRequest="5" Color="Black" />
+
+            <!--Aquí se realiza la distribución de la pantalla los * son los espacios que ocupan los txt -->
+            <Grid ColumnDefinitions="12,*,10,*,12">
+
+                <Picker x:Name="cboCategoriaLicencia"  Grid.Column="1" ItemDisplayBinding="{Binding Nombre}"/>
+                <Entry x:Name="txtNumeroLicencia" Grid.Column="3" Placeholder="Número Licencia" ></Entry>
+
+            </Grid>
+
+
+            <BoxView HeightRequest="30" Color="Black" />
+
+            <Grid ColumnDefinitions= "100, *, 100">
+
+                <Button x:Name="btnRegistrar" Grid.Column="1" Text="REGISTRAR"  Clicked="btnRegistrar_Clicked" />
+
+            </Grid>
+
+            <BoxView HeightRequest="10" Color="Black" />
+
+            <Grid ColumnDefinitions="*">
+
+                <Label x:Name="lblMensaje" TextColor="White" FontSize="15" FontAttributes="None" HorizontalOptions="Center"></Label>
+
+            </Grid>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
