@@ -2,13 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppAlquiler.fInicioReserva"
-             Title="Inicio Reserva">
+             Title="Reserva de Vehículos">
     <ContentPage.Content>
 
         <StackLayout Padding="12" HorizontalOptions="Center">
 
-            <!-- Agregar un espacio de 10 puntos al inicio -->
-            <BoxView HeightRequest="10" Color="Black" />
+            <!-- Agregar un espacio de 40 puntos al inicio -->
+            <BoxView HeightRequest="40" Color="Black" />
 
             <Label 
                 Text="VERIFICACIÓN DEL CLIENTE" TextColor="White" FontAttributes="Bold"

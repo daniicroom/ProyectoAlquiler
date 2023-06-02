@@ -7,8 +7,8 @@
 
         <StackLayout Padding="12">
 
-            <!-- Agregar un espacio de 15 puntos al inicio -->
-            <BoxView HeightRequest="15" Color="Black" />
+            
+            <BoxView HeightRequest="20" Color="Black" />
 
             <Label 
                 Text="RESERVAR VEHÍCULO" TextColor="White" FontAttributes="Bold"
@@ -17,17 +17,46 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
+            <!-- Agregar un espacio de 10 puntos al inicio -->
+            <BoxView HeightRequest="10" Color="Black" />
 
-            <!-- Agregar un espacio de 30 puntos entre Label1 y el Grid -->
+            <Grid ColumnDefinitions="*">
+
+                <Label x:Name="lblMensaje" TextColor="White" FontSize="18" FontAttributes="None" HorizontalOptions="Center"></Label>
+
+            </Grid>
+
             <BoxView HeightRequest="30" Color="Black" />
 
+            <Grid ColumnDefinitions="12,100,10,*,12">
 
+                <Label Text ="Cod. Reserva" Grid.Column="1" />
 
-            <Grid ColumnDefinitions="12,60,10,*,10,*,12">
+            </Grid>
+
+            <BoxView HeightRequest="2" Color="Black" />
+
+            <Grid ColumnDefinitions="12,80,10,*,12">
 
                 <Entry x:Name="txtCodigo" Grid.Column="1" Placeholder="Codigo" IsEnabled="False" ></Entry>
-                <Entry x:Name="txtDocumentoCliente" Grid.Column="3" Placeholder="Documento Cliente"></Entry>
-                <Entry x:Name="txtNombre" Grid.Column="5" Placeholder="Nombre"></Entry>
+
+            </Grid>
+
+            <BoxView HeightRequest="7" Color="Black" />
+
+            <Grid ColumnDefinitions="12,92,10,*,12">
+
+                <Label Text ="Documento" Grid.Column="1" />
+                <Label Text ="Nombre" Grid.Column="3" />
+
+            </Grid>
+
+            <BoxView HeightRequest="2" Color="Black" />
+
+            <Grid ColumnDefinitions="12,92,10,*,12">
+
+                <Entry x:Name="txtDocumentoCliente" Grid.Column="1" Placeholder="Documento"></Entry>
+                <Entry x:Name="txtNombre" Grid.Column="3" Placeholder="Nombre"></Entry>
 
             </Grid>
 
@@ -60,19 +89,22 @@
 
             <BoxView HeightRequest="30" Color="Black" />
 
-            <Grid ColumnDefinitions= "100, *, 100">
+            <Grid ColumnDefinitions= "60,*,10,*,60">
 
                 <Button x:Name="btnGrabar" Grid.Column="1" Text="REGISTRAR"  Clicked="btnGrabar_Clicked" />
+                <Button x:Name="btnConsultar" Grid.Column="3" Text="CONSULTAR"  Clicked="btnConsultar_Clicked" />
 
             </Grid>
 
-            <BoxView HeightRequest="10" Color="Black" />
+            <BoxView HeightRequest="7" Color="Black" />
 
-            <Grid ColumnDefinitions="*">
+            <Grid ColumnDefinitions= "60,*,60">
 
-                <Label x:Name="lblMensaje" TextColor="White" FontSize="15" FontAttributes="None" HorizontalOptions="Center"></Label>
+                <Button x:Name="btnCancelar" Grid.Column="1" Text="CANCELAR" HorizontalOptions="Center" Clicked="btnCancelar_Clicked" />
 
             </Grid>
+
+
         </StackLayout>
 
     </ContentPage.Content>

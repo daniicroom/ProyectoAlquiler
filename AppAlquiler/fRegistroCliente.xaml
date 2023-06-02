@@ -11,6 +11,15 @@
             <!-- Agregar un espacio de 15 puntos al inicio -->
             <BoxView HeightRequest="15" Color="Black" />
 
+           
+            <Grid ColumnDefinitions="*">
+
+                <Label x:Name="lblMensaje" TextColor="White" FontSize="15" FontAttributes="None" HorizontalOptions="Center"></Label>
+
+            </Grid>
+
+            <BoxView HeightRequest="25" Color="Black" />
+            
             <Label 
                 Text="DATOS DEL CLIENTE" TextColor="White" FontAttributes="Bold"
                 SemanticProperties.HeadingLevel="Level1"
@@ -25,6 +34,7 @@
             <Grid ColumnDefinitions="12,*,10,*,12">
 
                 <Label Text ="Tipo Documento" Grid.Column="1" />
+                <Label Text ="Documento" Grid.Column="3" />
             </Grid>
 
             <BoxView HeightRequest="5" Color="Black" />
@@ -76,19 +86,14 @@
 
             <BoxView HeightRequest="30" Color="Black" />
 
-            <Grid ColumnDefinitions= "100, *, 100">
+            <Grid ColumnDefinitions= "60,*,10,*,60">
 
                 <Button x:Name="btnRegistrar" Grid.Column="1" Text="REGISTRAR"  Clicked="btnRegistrar_Clicked" />
+                <Button x:Name="btnAtras" Grid.Column="3" Text="ATRAS"  Clicked="btnAtras_Clicked" />
 
             </Grid>
 
-            <BoxView HeightRequest="10" Color="Black" />
-
-            <Grid ColumnDefinitions="*">
-
-                <Label x:Name="lblMensaje" TextColor="White" FontSize="15" FontAttributes="None" HorizontalOptions="Center"></Label>
-
-            </Grid>
+            
         </StackLayout>
 
     </ContentPage.Content>
