@@ -10,6 +10,8 @@
             Routing.RegisterRoute(nameof(fValidacionCliente), typeof(fValidacionCliente));
             Routing.RegisterRoute(nameof(fValidacionEmpleado), typeof(fValidacionEmpleado));
             Routing.RegisterRoute(nameof(fGestionarDevolucion), typeof(fGestionarDevolucion));
+            Routing.RegisterRoute(nameof(fIndex), typeof(fIndex));
+
         }
     }
 }

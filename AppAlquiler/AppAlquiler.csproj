@@ -49,6 +49,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\casa.png" />
+	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\vehiculo.png" />
 	</ItemGroup>
 
@@ -76,10 +78,6 @@
 	  <MauiXaml Update="fValidacionEmpleado.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Imagenes\" />
 	</ItemGroup>
 
 	<ItemGroup>

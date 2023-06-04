@@ -1,15 +1,31 @@
 using System.Web;
+using System.Windows.Input;
+
 
 namespace AppAlquiler;
 
 public partial class fGestionarReserva : ContentPage, IQueryAttributable
 {
-	public fGestionarReserva()
+    public ICommand HomeCommand { get; }
+
+    public fGestionarReserva()
 	{
 		InitializeComponent();
 
         // Se establece la fecha actual como la fecha mínima del DatePicker de fecha inicio
         dtpFechaInicio.MinimumDate = DateTime.Today;
+
+        // Establecer el BindingContext en la página
+        BindingContext = this;
+
+        // Asignar el comando al botón de navegación
+        HomeCommand = new Command(HomeCommandExecute);
+    }
+
+    private async void HomeCommandExecute()
+    {
+        //Navegar a la pagina de Inicio
+        await Shell.Current.GoToAsync("//fIndex");
     }
 
     private void dtpFechaInicio_DateSelected(object sender, DateChangedEventArgs e)
