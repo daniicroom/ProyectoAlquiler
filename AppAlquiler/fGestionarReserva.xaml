@@ -2,13 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppAlquiler.fGestionarReserva"
-             Title="Gestionar Reserva">
+             Title="">
     <ContentPage.Content>
 
         <StackLayout Padding="12">
 
             
-            <BoxView HeightRequest="20" Color="Black" />
+            <BoxView HeightRequest="60" Color="Black" />
 
             <Label 
                 Text="RESERVAR VEHÍCULO" TextColor="White" FontAttributes="Bold"
@@ -18,7 +18,7 @@
                 HorizontalOptions="Center" />
 
             <!-- Agregar un espacio de 10 puntos al inicio -->
-            <BoxView HeightRequest="10" Color="Black" />
+            <BoxView HeightRequest="20" Color="Black" />
 
             <Grid ColumnDefinitions="*">
 
@@ -26,7 +26,7 @@
 
             </Grid>
 
-            <BoxView HeightRequest="30" Color="Black" />
+            <BoxView HeightRequest="35" Color="Black" />
 
             <Grid ColumnDefinitions="12,100,10,*,12">
 
@@ -38,7 +38,7 @@
 
             <Grid ColumnDefinitions="12,80,10,*,12">
 
-                <Entry x:Name="txtCodigo" Grid.Column="1" Placeholder="Codigo" IsEnabled="False" ></Entry>
+                <Entry x:Name="txtCodigo" Grid.Column="1" IsEnabled="False" ></Entry>
 
             </Grid>
 
@@ -55,8 +55,8 @@
 
             <Grid ColumnDefinitions="12,92,10,*,12">
 
-                <Entry x:Name="txtDocumentoCliente" Grid.Column="1" Placeholder="Documento"></Entry>
-                <Entry x:Name="txtNombre" Grid.Column="3" Placeholder="Nombre"></Entry>
+                <Entry x:Name="txtDocumentoCliente" Grid.Column="1" IsEnabled="False"></Entry>
+                <Entry x:Name="txtNombre" Grid.Column="3" IsEnabled="False"></Entry>
 
             </Grid>
 
@@ -68,15 +68,15 @@
 
             </Grid>
 
+            <BoxView HeightRequest="10" Color="Black" />
+
             <Grid ColumnDefinitions="12,*,10,*,20,12">
-               
+
                 <Label Text="Fecha fin:" Grid.Column="1" VerticalOptions="Center" />
                 <DatePicker Grid.Column="3" x:Name="dtpFechaFin" Margin="30, 0, 0, 0" DateSelected="dtpFechaFin_DateSelected" />
             </Grid>
 
-
-
-            <BoxView HeightRequest="18" Color="Black" />
+            <BoxView HeightRequest="10" Color="Black" />
 
             <Grid ColumnDefinitions="12,*,10,*,10,*,12">
 
@@ -87,7 +87,7 @@
             </Grid>
 
 
-            <BoxView HeightRequest="30" Color="Black" />
+            <BoxView HeightRequest="40" Color="Black" />
 
             <Grid ColumnDefinitions= "60,*,10,*,60">
 

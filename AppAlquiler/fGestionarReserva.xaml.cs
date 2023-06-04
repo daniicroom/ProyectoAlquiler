@@ -7,10 +7,15 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
 	public fGestionarReserva()
 	{
 		InitializeComponent();
-	}
+
+        // Se establece la fecha actual como la fecha mínima del DatePicker de fecha inicio
+        dtpFechaInicio.MinimumDate = DateTime.Today;
+    }
 
     private void dtpFechaInicio_DateSelected(object sender, DateChangedEventArgs e)
     {
+        // Una vez seleccionada la fecha inicio se actualiza la fecha mínima del DatePicker de fecha fin
+        dtpFechaFin.MinimumDate = dtpFechaInicio.Date.AddDays(1);
 
     }
 
@@ -45,6 +50,7 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
 
             txtDocumentoCliente.Text = Documento;
             txtNombre.Text = Nombres + " " + Apellidos;
+            txtEmpleado.Text = "ADMINISTRADOR";
         }
     }
 

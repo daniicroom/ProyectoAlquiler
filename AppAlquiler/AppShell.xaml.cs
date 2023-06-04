@@ -7,7 +7,9 @@
             InitializeComponent();
             Routing.RegisterRoute(nameof(fRegistroCliente), typeof(fRegistroCliente));
             Routing.RegisterRoute(nameof(fGestionarReserva), typeof(fGestionarReserva));
-            Routing.RegisterRoute(nameof(fInicioReserva), typeof(fInicioReserva));
+            Routing.RegisterRoute(nameof(fValidacionCliente), typeof(fValidacionCliente));
+            Routing.RegisterRoute(nameof(fValidacionEmpleado), typeof(fValidacionEmpleado));
+            Routing.RegisterRoute(nameof(fGestionarDevolucion), typeof(fGestionarDevolucion));
         }
     }
 }

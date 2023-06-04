@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppAlquiler.fGestionarDevolucion"
+             Title="">
+    <ContentPage.Content>
+
+        <StackLayout Padding="12">
+
+
+            <BoxView HeightRequest="60" Color="Black" />
+
+            <Label 
+                Text="DEVOLVER VEHÍCULO" TextColor="White" FontAttributes="Bold"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="18"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <!-- Agregar un espacio de 10 puntos al inicio -->
+            <BoxView HeightRequest="15" Color="Black" />
+
+            <Grid ColumnDefinitions="*">
+
+                <Label x:Name="lblMensaje" TextColor="White" FontSize="18" FontAttributes="None" HorizontalOptions="Center"></Label>
+
+            </Grid>
+
+            <BoxView HeightRequest="40" Color="Black" />
+
+            <Grid ColumnDefinitions="12,120,10,*,12">
+
+                <Label Text ="Cod. Devolución" Grid.Column="1" />
+
+            </Grid>
+
+            <BoxView HeightRequest="2" Color="Black" />
+
+            <Grid ColumnDefinitions="12,80,10,*,12">
+
+                <Entry x:Name="txtCodigo" Grid.Column="1"  IsEnabled="False" ></Entry>
+
+            </Grid>
+
+            <BoxView HeightRequest="10" Color="Black" />
+
+            <Grid ColumnDefinitions="12,92,10,*,12">
+
+                <Label Text ="ID Alquiler" Grid.Column="1" />
+                <Label Text ="Documento Empleado" Grid.Column="3" />
+
+            </Grid>
+
+            <BoxView HeightRequest="2" Color="Black" />
+
+            <Grid ColumnDefinitions="12,92,10,*,12">
+
+                <Entry x:Name="txtIdAlquiler" Grid.Column="1"  ></Entry>
+                <Entry x:Name="txtDocumentoEmpleado" Grid.Column="3" IsEnabled="False"></Entry>
+
+            </Grid>
+
+            <BoxView HeightRequest="10" Color="Black" />
+
+
+            <Grid ColumnDefinitions="12,*,10,*,20,12">
+
+                <Label Text="Fecha finalización:" Grid.Column="1" VerticalOptions="Center" />
+                <DatePicker Grid.Column="3" x:Name="dtpFechaFin" Margin="30, 0, 0, 0" DateSelected="dtpFechaFin_DateSelected" IsEnabled="False"/>
+            </Grid>
+
+
+
+            <BoxView HeightRequest="18" Color="Black" />
+
+            <Grid ColumnDefinitions="12,*,10,*,10,*,12">
+
+                <Label Text ="Total a Pagar" Grid.Column="1" />
+
+            </Grid>
+
+            <BoxView HeightRequest="2" Color="Black" />
+
+            <Grid ColumnDefinitions="12,*,10,*,10,*,12">
+                
+                <Entry x:Name="txtTotalPagar" Grid.Column="1"  IsEnabled="false"></Entry>
+
+            </Grid>
+
+
+            <BoxView HeightRequest="30" Color="Black" />
+
+            <Grid ColumnDefinitions= "60,*,10,*,60">
+
+                <Button x:Name="btnGrabar" Grid.Column="1" Text="REGISTRAR"  Clicked="btnGrabar_Clicked" />
+                <Button x:Name="btnConsultar" Grid.Column="3" Text="CONSULTAR"  Clicked="btnConsultar_Clicked"/>
+
+            </Grid>
+
+
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

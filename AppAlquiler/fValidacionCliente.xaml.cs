@@ -3,9 +3,9 @@ using AppAlquiler.Broker;
 
 namespace AppAlquiler;
 
-public partial class fInicioReserva : ContentPage
+public partial class fValidacionCliente : ContentPage
 {
-	public fInicioReserva()
+	public fValidacionCliente()
 	{
 		InitializeComponent();
 	}
@@ -32,8 +32,6 @@ public partial class fInicioReserva : ContentPage
 
             //Navegar a la pagina de Gestionar Reserva
             await Shell.Current.GoToAsync($"fGestionarReserva?Documento={_cliente.Documento}&Nombres={_cliente.Nombres}&Apellidos={_cliente.Apellidos}");
-
-
 
 
         }

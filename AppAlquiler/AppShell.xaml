@@ -6,12 +6,9 @@
     xmlns:local="clr-namespace:AppAlquiler"
     Shell.FlyoutBehavior="Disabled">
 
-        
-        <ShellContent
-        Title="Reserva de Vehículos"
-        ContentTemplate="{DataTemplate local:fInicioReserva}"
-        Route="fInicioResrva" />
-
+    <ShellContent
+        Title="Alquiler de Vehículos"
+        ContentTemplate="{DataTemplate local:fIndex}"
+        Route="fIndex" />
  
-
 </Shell>

@@ -20,4 +20,14 @@ namespace AppAlquiler.Models
 
     }
 
+    public class Empleado
+    {
+        public string Documento { get; set; }
+        public string Nombres { get; set; }
+        public string Apellidos { get; set; }
+        public int IDCargoEmpleado { get; set; }
+
+
+    }
+
 }

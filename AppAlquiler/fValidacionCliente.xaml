@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppAlquiler.fValidacionCliente"
+             Title="">
+    <ContentPage.Content>
+
+        <StackLayout Padding="12" HorizontalOptions="Center">
+
+            <!-- Agregar un espacio de 40 puntos al inicio -->
+            <BoxView HeightRequest="100" Color="Black" />
+
+            <Label 
+                Text="VERIFICACIÓN DEL CLIENTE" TextColor="White" FontAttributes="Bold"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="18"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+
+            <!-- Agregar un espacio de 35 puntos entre Label1 y el Grid -->
+            <BoxView HeightRequest="35" Color="Black" />
+
+            <!--Aquí se realiza la distribución de la pantalla los * son los espacios que ocupan los txt -->
+            <Grid ColumnDefinitions="50, *, 50">
+
+                <Entry x:Name="txtDocumento" Grid.Column="1" Placeholder="Documento Cliente" HorizontalOptions="Center" ></Entry>
+
+            </Grid>
+
+            <BoxView HeightRequest="20" Color="Black" />
+
+
+            <Grid ColumnDefinitions= "80, *, 80">
+
+                <Button x:Name="btnSiguiente" Grid.Column="1" Text="SIGUIENTE" Clicked="btnSiguiente_Clicked" HorizontalOptions="Center" />
+
+            </Grid>
+
+            <BoxView HeightRequest="10" Color="Black" />
+
+            <Grid ColumnDefinitions="*">
+
+                <Label x:Name="lblMensaje" TextColor="White" FontSize="15" FontAttributes="None" HorizontalOptions="Center"></Label>
+
+            </Grid>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

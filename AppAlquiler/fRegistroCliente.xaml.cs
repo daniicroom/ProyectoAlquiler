@@ -30,6 +30,6 @@ public partial class fRegistroCliente : ContentPage, IQueryAttributable
     private async void btnAtras_Clicked(object sender, EventArgs e)
     {
         // Navega a la pagína de inicio
-        await Shell.Current.GoToAsync($"fInicioReserva");
+        await Shell.Current.GoToAsync($"fValidacionCliente");
     }
 }
