@@ -11,7 +11,7 @@ namespace AppAlquiler.Broker
 {
     internal class bCliente
     {
-        private string BaseServicio = "http://jhonmateus-001-site1.ftempurl.com";
+        private string BaseServicio = "http://madasolutions-001-site1.etempurl.com";
         private string BaseLocal = "http://localhost:62556";
         private string RutaServicio = "/Api/Cliente?Documento=";
         private bool Local;
@@ -23,12 +23,12 @@ namespace AppAlquiler.Broker
         public bCliente()
         {
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
-            Local = true;
+            Local = false;
         }
 
         public Cliente Consultar(string Documento)
         {
-            //Recupera del servicio "http://jhonmateus-001-site1.ftempurl.com/api/Cliente" la lista de los productos
+            //Recupera del servicio "http://madasolutions-001-site1.etempurl.com/api/Cliente" la lista de los productos
             try
             {
                 //Variable con la ruta del serviicio a consumir

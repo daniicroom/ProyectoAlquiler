@@ -369,6 +369,8 @@
     <Content Include="Models\DBAlquiler.edmx.diagram">
       <DependentUpon>DBAlquiler.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\madasolutions-001-site1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\madasolutions-001-site1 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
