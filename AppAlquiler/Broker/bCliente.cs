@@ -40,7 +40,7 @@ namespace AppAlquiler.Broker
             //Asignamos la conexión
             _connection = new SQLiteAsyncConnection(rutaDB);
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
-            Local = true;
+            Local = false;
         }
         
         public Cliente Consultar(string Documento)

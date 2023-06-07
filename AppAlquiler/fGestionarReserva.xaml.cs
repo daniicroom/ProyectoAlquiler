@@ -10,6 +10,10 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
 {
     private bReserva _bReserva = new bReserva(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dbAppAlquiler2023.db3"));
 
+    private bTipoVehiculo _bTipoVehiculo = new bTipoVehiculo();
+    private bVehiculo _bVehiculo = new bVehiculo();
+
+
     public ICommand HomeCommand { get; }
 
     public fGestionarReserva()
@@ -45,20 +49,30 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
     }
 
 
-    /*Llenado de los combos tipo vehiculo y vehiculo
+    /*
+    // Llenado de los combos tipo vehiculo y vehiculo
     private void ListadoTipoVehiculos()
     {
         List<TipoVehiculo> lista = new List<TipoVehiculo>();
-        cboTipoVehiculo.ItemsSource = bTipoVehiculo.GetTiposVehiculos().result;
+        cboTipoVehiculo.ItemsSource = _bTipoVehiculo.GetTiposVehiculos().Result;
         cboTipoVehiculo.ItemDisplayBinding = new Binding("Nombre");
-    }*/
+    }
 
-
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        cboTipoVehiculo.ItemsSource = _bTipoVehiculo.GetTiposVehiculos().Result;
+    }
+    */
 
 
     private void cboTipoVehiculo_SelectedIndexChanged(object sender, EventArgs e)
     {
+        TipoVehiculo Valor = (TipoVehiculo)cboTipoVehiculo.SelectedItem;
 
+        int Codigo = Valor.Codigo;
+
+        cboVehiculo.ItemsSource = _bVehiculo.GetVehiculosXTipo(Codigo);
     }
 
     private void cboVehiculo_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,6 +124,8 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
             txtDocumentoCliente.Text = Documento;
             txtNombre.Text = Nombres + " " + Apellidos;
             txtEmpleado.Text = "ADMINISTRADOR";
+            cboTipoVehiculo.ItemsSource = _bTipoVehiculo.GetTiposVehiculos(); 
+        
         }
     }
 

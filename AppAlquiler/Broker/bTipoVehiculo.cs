@@ -16,7 +16,7 @@ namespace AppAlquiler.Broker
         private string BaseLocal = "http://localhost:62556";
         private string RutaServicio = "/api/TipoVehiculo";
         private bool Local;
-        public string Documento { get; set; }
+       
 
         public string Error { get; set; }
 
@@ -24,7 +24,7 @@ namespace AppAlquiler.Broker
         public bTipoVehiculo()
         {
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
-            Local = true;
+            Local = false;
         }
 
 
