@@ -1,3 +1,5 @@
+using AppAlquiler.Broker;
+using AppAlquiler.Models;
 using System.Web;
 using System.Windows.Input;
 
@@ -6,6 +8,8 @@ namespace AppAlquiler;
 
 public partial class fGestionarReserva : ContentPage, IQueryAttributable
 {
+    private bReserva _bReserva = new bReserva(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dbAppAlquiler2023.db3"));
+
     public ICommand HomeCommand { get; }
 
     public fGestionarReserva()
@@ -50,9 +54,33 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
 
     }
 
-    private void btnGrabar_Clicked(object sender, EventArgs e)
+    private async void btnGrabar_Clicked(object sender, EventArgs e)
     {
+        string documentoCliente = txtDocumentoCliente.Text;
+        string empleado = txtEmpleado.Text;
+        string nombre = txtNombre.Text;
+        DateTime fechaInicio = dtpFechaInicio.Date;
+        DateTime fechaFin = dtpFechaFin.Date;
+        int tipoVehiculo = cboTipoVehiculo.SelectedIndex;
+        int vehiculo = cboVehiculo.SelectedIndex;
+        string placa = "";
+        if (cboVehiculo.SelectedItem != null)
+        {
+            placa = cboVehiculo.SelectedItem.ToString();
 
+        }
+
+        Reservar reservar = new Reservar();
+        reservar.CedulaCliente = documentoCliente;
+        reservar.IDEmpleado = documentoCliente;
+        reservar.IDTipoVehiculo = tipoVehiculo;
+        reservar.PlacaVehiculo = placa;
+        reservar.EstadoReserva = "ACTIVO";
+        reservar.FechaInicio = fechaInicio;
+        reservar.FechaFin = fechaFin;
+
+        await _bReserva.GrabarReserva(reservar);
+        lblMensaje.Text = "Se grabó la reserva";
     }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
