@@ -7,25 +7,30 @@ using System.Threading.Tasks;
 using AppAlquiler.Models;
 using Newtonsoft.Json;
 
+
 namespace AppAlquiler.Broker
 {
-    public class bTipoDocumento
+    public class bTipoVehiculo
     {
         private string BaseServicio = "http://madasolutions-001-site1.etempurl.com";
         private string BaseLocal = "http://localhost:62556";
-        private string RutaServicio = "/api/TipoDocumento";
+        private string RutaServicio = "/api/TipoVehiculo";
         private bool Local;
         public string Documento { get; set; }
 
         public string Error { get; set; }
-        public bTipoDocumento()
+
+
+        public bTipoVehiculo()
         {
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
             Local = true;
         }
-        public List<TipoDocumento> GetTiposDocumentos()
+
+
+        public List<TipoVehiculo> GetTiposVehiculos()
         {
-            //Recupera del servicio "http://madasolutions-001-site1.etempurl.com/api/TipoDocumento" la lista de los productos
+            //Recupera del servicio "http://madasolutions-001-site1.etempurl.com/api/TipoVehiculo" la lista de los productos
             try
             {
                 //Variable con la ruta del serviicio a consumir
@@ -47,9 +52,9 @@ namespace AppAlquiler.Broker
                 string Respuesta = httpClient.GetStringAsync(sURL).Result;
 
                 //Procesa la respuesta de tipo string y la convierte en una clase con JsonConvert 
-                List<TipoDocumento> tipoDocumento = JsonConvert.DeserializeObject<List<TipoDocumento>>(Respuesta);
+                List<TipoVehiculo> tipoVehiculo = JsonConvert.DeserializeObject<List<TipoVehiculo>>(Respuesta);
 
-                return tipoDocumento;
+                return tipoVehiculo;
 
             }
             catch (Exception ex)

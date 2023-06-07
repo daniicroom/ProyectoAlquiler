@@ -44,6 +44,18 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
 
     }
 
+
+    /*Llenado de los combos tipo vehiculo y vehiculo
+    private void ListadoTipoVehiculos()
+    {
+        List<TipoVehiculo> lista = new List<TipoVehiculo>();
+        cboTipoVehiculo.ItemsSource = bTipoVehiculo.GetTiposVehiculos().result;
+        cboTipoVehiculo.ItemDisplayBinding = new Binding("Nombre");
+    }*/
+
+
+
+
     private void cboTipoVehiculo_SelectedIndexChanged(object sender, EventArgs e)
     {
 
@@ -53,6 +65,9 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
     {
 
     }
+
+
+
 
     private async void btnGrabar_Clicked(object sender, EventArgs e)
     {

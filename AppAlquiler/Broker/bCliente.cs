@@ -21,6 +21,8 @@ namespace AppAlquiler.Broker
         public string Documento { get; set; }
 
         public string Error { get; set; }
+
+
         public int GetFromServicio()
         {
             //Eliminar los clientes en la base de datos
