@@ -30,11 +30,12 @@ namespace AppAlquiler.Models
 
 
     }*/
-    public class TipoDocumento
+    public class ViewCombo
     {
         public int Codigo { get; set; }
         public string Nombre { get; set; }
-    }/*
+    }
+    /*
     public class Reservar
     {
         public int Codigo { get; set; }
