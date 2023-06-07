@@ -14,7 +14,7 @@ namespace AppAlquiler.Broker
         
         private string BaseServicio = "http://madasolutions-001-site1.etempurl.com";
         private string BaseLocal = "http://localhost:62556";
-        private string RutaServicio = "/api/Vehiculo/GetAllComboVehiculosXTipo?Codigo=";
+        private string RutaServicio = "/api/Vehiculo/GetComboVehiculosXTipo?Codigo=";
         private bool Local;
 
         
@@ -30,7 +30,7 @@ namespace AppAlquiler.Broker
 
         public List<Vehiculo> GetVehiculosXTipo(int Codigo)
         {
-            //Recupera del servicio "http://madasolutions-001-site1.etempurl.com/api/Vehiculo/GetAllComboVehiculosXTipo?Codigo=" la lista de los productos
+            //Recupera del servicio "http://madasolutions-001-site1.etempurl.com/api/Vehiculo/GetComboVehiculosXTipo?Codigo=" la lista de los productos
             try
             {
                 //Variable con la ruta del serviicio a consumir

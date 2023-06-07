@@ -24,7 +24,10 @@ namespace AppAlquiler.Models
 
     public class Vehiculo
     {
-        public string Placa { get; set; }
+        public string Codigo { get; set; }
+        public string Nombre { get; set; }
+
+       /* public string Placa { get; set; }
         public string Descripcion { get; set; }
         public string Estado { get; set; }
         public int IDSede { get; set; }
@@ -32,7 +35,7 @@ namespace AppAlquiler.Models
         public int IDGama { get; set; }
         public int IDColor { get; set; }
         public int Precio { get; set; }
-        public int IDTipoVehiculo { get; set; }
+        public int IDTipoVehiculo { get; set; }*/
     }
 
 
