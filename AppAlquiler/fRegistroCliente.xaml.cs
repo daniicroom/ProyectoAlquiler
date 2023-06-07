@@ -10,6 +10,7 @@ public partial class fRegistroCliente : ContentPage, IQueryAttributable
     private bCliente _bCliente = new bCliente(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dbAppAlquiler2023.db3"));
 
     private bTipoDocumento _bTipoDocumento = new bTipoDocumento();
+    private bCategoriaLicencia _bCategoriaLicencia = new bCategoriaLicencia();
     public fRegistroCliente()
     {
         InitializeComponent();
@@ -20,27 +21,31 @@ public partial class fRegistroCliente : ContentPage, IQueryAttributable
     private async void btnRegistrar_Clicked(object sender, EventArgs e)
     {
         string documento;
-        if (string.IsNullOrEmpty(txtDocumento.Text)) 
-        { 
-            documento = ""; 
+        if (string.IsNullOrEmpty(txtDocumento.Text))
+        {
+            documento = "";
         }
-        else 
-        { 
-            documento = txtDocumento.Text; 
+        else
+        {
+            documento = txtDocumento.Text;
         }
+        int categoriaLicencia = Convert.ToInt32(cboCategoriaLicencia.SelectedIndex);
         string nombre = txtNombres.Text;
         string apellidos = txtApellidos.Text;
         string direccion = txtDireccion.Text;
         int edad = Convert.ToInt32(txtEdad.Text);
         string numeroLicencia = txtNumeroLicencia.Text;
+        int tipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedIndex);
 
         Cliente cliente = new Cliente();
         cliente.Documento = documento;
+        cliente.TipoDocumento = tipoDocumento;
         cliente.Nombres = nombre;
         cliente.Apellidos = apellidos;
         cliente.Direccion = direccion;
         cliente.Edad = edad;
         cliente.NumeroLicencia = numeroLicencia;
+        cliente.IDLicencia = categoriaLicencia;
 
         await _bCliente.GrabarCliente(cliente);
         lblMensaje.Text = "Se grabó el cliente";
@@ -55,6 +60,7 @@ public partial class fRegistroCliente : ContentPage, IQueryAttributable
             lblMensaje.Text = "No se encontró el cliente con N° de documento '" + Documento + "' debe diligenciar el formulario de registro.";
             txtDocumento.Text = Documento;
             cboTipoDocumento.ItemsSource = _bTipoDocumento.GetTiposDocumentos();
+            cboCategoriaLicencia.ItemsSource = _bCategoriaLicencia.GetCategoriasLicencias();
         }
     }
 

@@ -9,23 +9,21 @@ using Newtonsoft.Json;
 
 namespace AppAlquiler.Broker
 {
-    public class bTipoDocumento
+    public class bCategoriaLicencia
     {
         private string BaseServicio = "http://madasolutions-001-site1.etempurl.com";
         private string BaseLocal = "http://localhost:62556";
-        private string RutaServicio = "/api/TipoDocumento";
+        private string RutaServicio = "/api/CategoriaLicencia";
         private bool Local;
-        public string Documento { get; set; }
 
         public string Error { get; set; }
-        public bTipoDocumento()
+        public bCategoriaLicencia()
         {
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
             Local = false;
         }
-        public List<ViewCombo> GetTiposDocumentos()
+        public List<ViewCombo> GetCategoriasLicencias()
         {
-            //Recupera del servicio "http://madasolutions-001-site1.etempurl.com/api/TipoDocumento" la lista de los productos
             try
             {
                 //Variable con la ruta del serviicio a consumir
@@ -47,9 +45,9 @@ namespace AppAlquiler.Broker
                 string Respuesta = httpClient.GetStringAsync(sURL).Result;
 
                 //Procesa la respuesta de tipo string y la convierte en una clase con JsonConvert 
-                List<ViewCombo> tipoDocumento = JsonConvert.DeserializeObject<List<ViewCombo>>(Respuesta);
+                List<ViewCombo> categorialicencia = JsonConvert.DeserializeObject<List<ViewCombo>>(Respuesta);
 
-                return tipoDocumento;
+                return categorialicencia;
 
             }
             catch (Exception ex)

@@ -66,9 +66,13 @@ namespace AppAlquiler.Models
         public int IDCargoEmpleado { get; set; }
 
 
+    }*/
+    public class ViewCombo
+    {
+        public int Codigo { get; set; }
+        public string Nombre { get; set; }
     }
- 
-  
+    /*
     public class Reservar
     {
         public int Codigo { get; set; }
