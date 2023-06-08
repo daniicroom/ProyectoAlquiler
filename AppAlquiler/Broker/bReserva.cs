@@ -11,7 +11,7 @@ namespace AppAlquiler.Broker
 {
     public class bReserva
     {
-        private string BaseServicio = "http://jhonmateus-001-site1.ftempurl.com";
+        private string BaseServicio = "http://madasolutions-001-site1.etempurl.com";
         private string BaseLocal = "http://localhost:62556";
         private bool Local;
 

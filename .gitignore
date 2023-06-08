@@ -413,3 +413,15 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/ServicioAlquiler/bin/
+/AlquilerVehiculo/.vs/
+/AlquilerVehiculo/obj/
+/AlquilerVehiculo/Debug/
+/AlquilerVehiculo/.vs/AlquilerVehiculo/config/applicationhost.config
+/ServicioAlquiler/bin/ServicioAlquiler.dll
+/ServicioAlquiler/bin/ServicioAlquiler.pdb
+/ServicioAlquiler/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/ServicioAlquiler/obj/Debug/ServicioAlquiler.csproj.AssemblyReference.cache
+/ServicioAlquiler/obj/Debug/ServicioAlquiler.csproj.CoreCompileInputs.cache
+/ServicioAlquiler/obj/Debug/ServicioAlquiler.dll
+/ServicioAlquiler/obj/Debug/ServicioAlquiler.pdb

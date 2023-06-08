@@ -20,6 +20,13 @@ namespace AppAlquiler.Models
         public string Nombre { get; set; }
     }
 
+    public class Alquiler
+    {
+        public int CodigoAlquiler { get; set; }
+        public int Precio { get; set; }
+        public DateTime FechaInicial { get; set; }
+        public DateTime FechaFinal { get; set; }
+    }
 
 
     public class Vehiculo
@@ -37,14 +44,6 @@ namespace AppAlquiler.Models
         public int Precio { get; set; }
         public int IDTipoVehiculo { get; set; }*/
     }
-
-
-
-
-
-
-
-
 
     /*
     public class Cliente

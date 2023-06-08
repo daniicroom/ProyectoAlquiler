@@ -46,7 +46,7 @@
 
             <Grid ColumnDefinitions="12,92,10,*,12">
 
-                <Label Text ="ID Alquiler" Grid.Column="1" />
+                <Label Text ="Placa" Grid.Column="1" />
                 <Label Text ="Documento Empleado" Grid.Column="3" />
 
             </Grid>
@@ -54,8 +54,8 @@
             <BoxView HeightRequest="2" Color="Black" />
 
             <Grid ColumnDefinitions="12,92,10,*,12">
-
-                <Entry x:Name="txtIdAlquiler" Grid.Column="1"  ></Entry>
+                <Entry x:Name="txtIdAlquiler" Grid.Column="2"  IsVisible="False"></Entry>
+                <Entry x:Name="txtPlaca" Grid.Column="1"  ></Entry>
                 <Entry x:Name="txtDocumentoEmpleado" Grid.Column="3" TextColor="White" IsEnabled="False"></Entry>
 
             </Grid>

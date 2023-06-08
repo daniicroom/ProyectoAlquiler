@@ -7,11 +7,12 @@ namespace AppAlquiler;
 public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
 {
     private bDevolucion _bDevolucion = new bDevolucion(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dbAppAlquiler2023.db3"));
+    private bAlquiler _bAlquiler = new bDevolucion(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dbAppAlquiler2023.db3"));
     public fGestionarDevolucion()
 	{
 		InitializeComponent();
 
-        // Se establece la fecha actual como la fecha mínima del DatePicker de fecha inicio
+        // Se establece la fecha actual como la fecha mï¿½nima del DatePicker de fecha inicio
         dtpFechaFin.MinimumDate = DateTime.Today;
     }
 
@@ -42,11 +43,26 @@ public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
         devolucion.TotalPagar = totalPagar;
 
         await _bDevolucion.GrabarDevolucion(devolucion);
-        lblMensaje.Text = "Se grabó la devolucion";
+        lblMensaje.Text = "Se grabï¿½ la devolucion";
     }
 
     private void btnConsultar_Clicked(object sender, EventArgs e)
     {
 
+        string placa = txtPlaca.Text;
+        if(!string.IsNullOrEmpty(placa)){
+            Alquiler alquiler = await _bAlquiler.GetAlquilerByPlaca(placa);
+            if(alquiler == null){
+                lblMensaje.Text = "No hay reservar asignadas a esta placa";
+            }
+            DateTime now = dtpFechaFin.Date;
+            DateTime FechaInicial = new DateTime(alquiler.FechaInicial);
+            int dias = parseInt((now - FechaInicial) / (24 * 3600 * 1000));
+            int totalPagar = alquiler.Precio * dias;
+            txtIdAlquiler.Text = alquiler.CodigoAlquiler;
+            txtTotalPagar.Text = totalPagar;
+        }else{
+            lblMensaje.Text = "La placa debe tener algÃºn valor para realizar la consulta";
+        }
     }
 }

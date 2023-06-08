@@ -11,7 +11,7 @@ namespace AppAlquiler.Broker
 {
     public class bDevolucion
     {
-        private string BaseServicio = "http://jhonmateus-001-site1.ftempurl.com";
+        private string BaseServicio = "http://madasolutions-001-site1.etempurl.com";
         private string BaseLocal = "http://localhost:62556";
         private bool Local;
 
@@ -22,14 +22,14 @@ namespace AppAlquiler.Broker
         public bDevolucion()
         {
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
-            Local = true;
+            Local = false;
         }
         public bDevolucion(string rutaDB)
         {
             //Asignamos la conexión
             _connection = new SQLiteAsyncConnection(rutaDB);
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
-            Local = true;
+            Local = false;
         }
         public async Task<int> GrabarDevolucion(Devolucion devolucion)
         {
