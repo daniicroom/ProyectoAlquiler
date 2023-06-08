@@ -25,6 +25,11 @@ namespace ServicioAlquiler.Controllers
             clsAlquiler reserva = new clsAlquiler();
             return reserva.ConsultarByCliente(Documento);
         }
+        public tblAlquiler GetByPlaca(string Placa)
+        {
+            clsAlquiler reserva = new clsAlquiler();
+            return reserva.ConsultarByPlaca(Placa);
+        }
 
         public string Post([FromBody] tblAlquiler alquiler)
         {

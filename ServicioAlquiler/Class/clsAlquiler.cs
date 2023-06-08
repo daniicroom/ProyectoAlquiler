@@ -63,6 +63,12 @@ namespace ServicioAlquiler.Class
             return dbAlquiler.tblAlquilers.Where(x => x.CedulaCliente == Documento).ToList();
 
         }
+        //Consulta alquiler por placa
+        public tblAlquiler ConsultarByPlaca(string placa)
+        {
+            return dbAlquiler.tblAlquilers.Where(x => x.PlacaVehiculo == placa).FirstOrDefault();
+
+        }
 
 
         public string GrabarAlquiler()
