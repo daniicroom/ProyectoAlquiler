@@ -11,8 +11,8 @@ namespace ServicioAlquiler.Class
         private DBAlquilerVehiculoEntities5 dbAlquiler = new DBAlquilerVehiculoEntities5();
         public tblAlquiler alquiler { get; set; }
 
-       
-        public List<tblAlquiler>GetAll()
+
+        public List<tblAlquiler> GetAll()
         {
             try
             {
@@ -39,7 +39,7 @@ namespace ServicioAlquiler.Class
             }
         }
 
- 
+
 
         // CONSULTA EL ULTIMO CODIGO DE ALQUILER DE LA BASE DE DATOS Y LO INCREMENTA EN 1 PARA EL NUEVO CODIGO DE ALQUILER
         private int ConsultarCodigoAlquiler()
@@ -64,9 +64,19 @@ namespace ServicioAlquiler.Class
 
         }
         //Consulta alquiler por placa
-        public tblAlquiler ConsultarByPlaca(string placa)
+        public viewDatosAlquiler ConsultarByPlaca(string placa)
         {
-            return dbAlquiler.tblAlquilers.Where(x => x.PlacaVehiculo == placa).FirstOrDefault();
+            IQueryable<viewDatosAlquiler> alquiler = from ve in dbAlquiler.Set<tblVehiculo>()
+                                                     join al in dbAlquiler.Set<tblAlquiler>()
+                                                     on ve.Placa equals al.PlacaVehiculo
+                                                     where al.PlacaVehiculo == placa && al.EstadoAlquiler == "ACTIVO"
+                                                     select new viewDatosAlquiler
+                                                     {
+                                                         CodigoAlquiler = al.Codigo,
+                                                         Precio = ve.Precio,
+                                                         FechaInicial = al.FechaInicio
+                                                     };
+            return alquiler.FirstOrDefault();
 
         }
 
@@ -95,7 +105,7 @@ namespace ServicioAlquiler.Class
                         .Where(p => p.Codigo == alquiler.Codigo)
                         .FirstOrDefault();
 
-            if(_alquiler.PlacaVehiculo != alquiler.PlacaVehiculo)
+            if (_alquiler.PlacaVehiculo != alquiler.PlacaVehiculo)
             {
                 UpdateEstadoVehiculo(_alquiler.PlacaVehiculo, "DISPONIBLE");
                 UpdateEstadoVehiculo(alquiler.PlacaVehiculo, "EN ALQUILER");
