@@ -33,14 +33,14 @@ namespace AppAlquiler.Broker
         public bCliente()
         {
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
-            Local = false;
+            Local = true;
         }
         public bCliente(string rutaDB)
         {
             //Asignamos la conexión
             _connection = new SQLiteAsyncConnection(rutaDB);
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
-            Local = false;
+            Local = true;
         }
         
         public Cliente Consultar(string Documento)

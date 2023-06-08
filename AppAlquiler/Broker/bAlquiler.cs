@@ -23,14 +23,14 @@ namespace AppAlquiler.Broker
         public bAlquiler()
         {
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
-            Local = true;
+            Local = false;
         }
         public bAlquiler(string rutaDB)
         {
             //Asignamos la conexión
             _connection = new SQLiteAsyncConnection(rutaDB);
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
-            Local = true;
+            Local = false;
         }
         public async Task<Alquiler> GetAlquilerByPlaca(string placa)
         {
@@ -52,7 +52,7 @@ namespace AppAlquiler.Broker
                 HttpClient httpClient = new();
 
                 //Invoca el servicio y lleva la respuesta a una variable de tipo string
-                string Respuesta = httpClient.GetStringAsync(sURL).Result;
+                string Respuesta = await httpClient.GetStringAsync(sURL);
 
                 //Procesa la respuesta de tipo string y la convierte en una clase con JsonConvert 
                 Alquiler alquiler = JsonConvert.DeserializeObject<Alquiler>(Respuesta);

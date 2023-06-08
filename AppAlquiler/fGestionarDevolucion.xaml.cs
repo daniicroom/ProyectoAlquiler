@@ -7,7 +7,7 @@ namespace AppAlquiler;
 public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
 {
     private bDevolucion _bDevolucion = new bDevolucion(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dbAppAlquiler2023.db3"));
-    private bAlquiler _bAlquiler = new bDevolucion(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dbAppAlquiler2023.db3"));
+    private bAlquiler _bAlquiler = new bAlquiler(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dbAppAlquiler2023.db3"));
     public fGestionarDevolucion()
 	{
 		InitializeComponent();
@@ -43,7 +43,7 @@ public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
         devolucion.TotalPagar = totalPagar;
 
         await _bDevolucion.GrabarDevolucion(devolucion);
-        lblMensaje.Text = "Se grab� la devolucion";
+        lblMensaje.Text = "Se grabó la devolucion";
     }
 
     private void btnConsultar_Clicked(object sender, EventArgs e)
@@ -51,16 +51,18 @@ public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
 
         string placa = txtPlaca.Text;
         if(!string.IsNullOrEmpty(placa)){
-            Alquiler alquiler = await _bAlquiler.GetAlquilerByPlaca(placa);
+            Alquiler alquiler = _bAlquiler.GetAlquilerByPlaca(placa).Result;
             if(alquiler == null){
                 lblMensaje.Text = "No hay reservar asignadas a esta placa";
             }
             DateTime now = dtpFechaFin.Date;
-            DateTime FechaInicial = new DateTime(alquiler.FechaInicial);
-            int dias = parseInt((now - FechaInicial) / (24 * 3600 * 1000));
+            DateTime FechaInicial = alquiler.FechaInicial;
+            TimeSpan time = now - FechaInicial;
+            int diferencia = int.Parse(time.ToString());
+            int dias = ((diferencia) / (24 * 3600 * 1000));
             int totalPagar = alquiler.Precio * dias;
-            txtIdAlquiler.Text = alquiler.CodigoAlquiler;
-            txtTotalPagar.Text = totalPagar;
+            txtIdAlquiler.Text = alquiler.CodigoAlquiler.ToString();
+            txtTotalPagar.Text = totalPagar.ToString();
         }else{
             lblMensaje.Text = "La placa debe tener algún valor para realizar la consulta";
         }

@@ -21,13 +21,13 @@ public partial class fRegistroCliente : ContentPage, IQueryAttributable
     private async void btnRegistrar_Clicked(object sender, EventArgs e)
     {
         string documento;
-        if (string.IsNullOrEmpty(txtDocumento.Text))
-        {
-            documento = "";
+        if (string.IsNullOrEmpty(txtDocumento.Text)) 
+        { 
+            documento = ""; 
         }
-        else
-        {
-            documento = txtDocumento.Text;
+        else 
+        { 
+            documento = txtDocumento.Text; 
         }
         int categoriaLicencia = Convert.ToInt32(cboCategoriaLicencia.SelectedIndex);
         string nombre = txtNombres.Text;
