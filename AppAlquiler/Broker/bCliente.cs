@@ -40,7 +40,7 @@ namespace AppAlquiler.Broker
             //Asignamos la conexión
             _connection = new SQLiteAsyncConnection(rutaDB);
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
-            Local = true;
+            Local = false;
         }
         
         public Cliente Consultar(string Documento)
@@ -96,6 +96,42 @@ namespace AppAlquiler.Broker
             {
                 Error = ex.Message;
                 return -1;
+            }
+        }
+        public async Task<string> GrabarClienteServicio(Cliente cliente)
+        {
+            try
+            {
+                //Variable con la ruta del serviicio a consumir
+                string sURL;
+
+                if (Local)
+                {
+                    sURL = BaseLocal + "/Api/Cliente";
+                }
+                else
+                {
+                    sURL = BaseServicio + "/Api/Cliente";
+                }
+
+                //Clase para invocar el servicio rest
+                HttpClient httpClient = new(); 
+                string jsonCliente = JsonConvert.SerializeObject(cliente);
+                HttpContent content = new StringContent(jsonCliente, Encoding.UTF8, "application/json");
+
+                // Realizar la solicitud POST y obtener la respuesta
+                HttpResponseMessage response = await httpClient.PostAsync(sURL, content);
+
+                // Leer el contenido de la respuesta como una cadena
+                string responseContent = await response.Content.ReadAsStringAsync();
+
+                return responseContent;
+
+            }
+            catch (Exception ex)
+            {
+                string Error = ex.Message;
+                return null;
             }
         }
         public async Task<int> GrabarCliente(Cliente cliente)

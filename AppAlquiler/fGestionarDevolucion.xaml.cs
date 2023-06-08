@@ -38,7 +38,7 @@ public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
 
         Devolucion devolucion = new Devolucion();
         devolucion.CodigoAlquiler = idAlquiler;
-        devolucion.FechaDevolucion = DateTime.Now;
+        devolucion.FechaDevolucion = dtpFechaFin.Date;
         devolucion.IDEmpleadoRecibe = documentoEmpleado;
         devolucion.TotalPagar = totalPagar;
 

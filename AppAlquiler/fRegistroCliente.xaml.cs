@@ -46,8 +46,11 @@ public partial class fRegistroCliente : ContentPage, IQueryAttributable
         cliente.Edad = edad;
         cliente.NumeroLicencia = numeroLicencia;
         cliente.IDLicencia = categoriaLicencia;
-
-        await _bCliente.GrabarCliente(cliente);
+        var response = await _bCliente.GrabarClienteServicio(cliente);
+        if (response == null)
+        {
+            await _bCliente.GrabarCliente(cliente);
+        }
         lblMensaje.Text = "Se grabó el cliente";
     }
 
