@@ -89,10 +89,11 @@
 
             <BoxView HeightRequest="10" Color="Black" />
 
+
             <Grid ColumnDefinitions="12,*,10,*,10,*,12">
 
-                <Picker Title="Tipo Vehículo" x:Name="cboTipoVehiculo"  Grid.Column="1" ItemDisplayBinding="{Binding Nombre}" SelectedIndexChanged="cboTipoVehiculo_SelectedIndexChanged"/>
-                <Picker Title="Vehículo" x:Name="cboVehiculo"  Grid.Column="3" ItemDisplayBinding="{Binding Nombre}" SelectedIndexChanged="cboVehiculo_SelectedIndexChanged"/>
+                <Picker Title="Tipo Vehículo" x:Name="cboTipoVehiculo"  Grid.Column="1" FontSize="10" ItemDisplayBinding="{Binding Nombre}"  SelectedIndexChanged="cboTipoVehiculo_SelectedIndexChanged"/>
+                <Picker Title="Vehículo" x:Name="cboVehiculo"  Grid.Column="3" FontSize="10" ItemDisplayBinding="{Binding Nombre}" SelectedIndexChanged="cboVehiculo_SelectedIndexChanged"/>
                 <Entry x:Name="txtEmpleado" Grid.Column="5" Placeholder="Empleado" IsVisible="false"></Entry>
 
             </Grid>

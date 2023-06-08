@@ -42,7 +42,7 @@
             <!--Aquí se realiza la distribución de la pantalla los * son los espacios que ocupan los txt -->
             <Grid ColumnDefinitions="12,*,10,*,12">
 
-                <Picker x:Name="cboTipoDocumento"  Grid.Column="1" ItemDisplayBinding="{Binding Nombre}"/>
+                <Picker x:Name="cboTipoDocumento"  Grid.Column="1" FontSize="10" ItemDisplayBinding="{Binding Nombre}"/>
                 <Entry x:Name="txtDocumento" Grid.Column="3" Placeholder="Documento" TextColor="White" IsEnabled="False" ></Entry>
 
             </Grid>
@@ -78,7 +78,7 @@
             <!--Aquí se realiza la distribución de la pantalla los * son los espacios que ocupan los txt -->
             <Grid ColumnDefinitions="12,*,10,*,12">
 
-                <Picker x:Name="cboCategoriaLicencia"  Grid.Column="1" ItemDisplayBinding="{Binding Nombre}"/>
+                <Picker x:Name="cboCategoriaLicencia"  Grid.Column="1" FontSize="10" ItemDisplayBinding="{Binding Nombre}"/>
                 <Entry x:Name="txtNumeroLicencia" Grid.Column="3" Placeholder="Número Licencia" ></Entry>
 
             </Grid>
