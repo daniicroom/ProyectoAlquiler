@@ -82,6 +82,7 @@
 
             <BoxView HeightRequest="10" Color="Black" />
 
+
             <Grid ColumnDefinitions="12,*,10,*,10,*,12">
 
                 <Picker Title="Tipo Vehículo" x:Name="cboTipoVehiculo"  Grid.Column="1" ItemDisplayBinding="{Binding Nombre}" SelectedIndexChanged="cboTipoVehiculo_SelectedIndexChanged"/>
