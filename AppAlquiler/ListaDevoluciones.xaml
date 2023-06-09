@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppAlquiler.ListaDevoluciones"
              Title="ListaDevoluciones">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="home.png" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <Grid HorizontalOptions="Center" >
             <StackLayout Padding="9">

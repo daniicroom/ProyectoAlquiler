@@ -2,14 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppAlquiler.fGestionarReserva"
+             xmlns:local="clr-namespace:AppAlquiler"
              Title="">
-
+    
     <ContentPage.ToolbarItems>
-        <ToolbarItem
-            IconImageSource="home.png"
-            Command="{Binding HomeCommand}"/>
+        <ToolbarItem IconImageSource="home.png" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
-  
+
     <ContentPage.Content>
              
         <StackLayout Padding="12">
@@ -121,9 +120,5 @@
         </StackLayout>
 
     </ContentPage.Content>
-    <ContentPage.ToolbarItems>
-        <ToolbarItem
-            IconImageSource="home.png"
-            Command="{Binding HomeCommand}"/>
-    </ContentPage.ToolbarItems>
+    
 </ContentPage>

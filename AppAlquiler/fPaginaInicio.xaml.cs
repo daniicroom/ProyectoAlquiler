@@ -3,12 +3,11 @@ using AppAlquiler.Broker;
 using Microsoft.Maui.Controls;
 using System;
 
-
 namespace AppAlquiler;
 
-public partial class fIndex : ContentPage
+public partial class fPaginaInicio : ContentPage
 {
-	public fIndex()
+	public fPaginaInicio()
 	{
 		InitializeComponent();
 	}

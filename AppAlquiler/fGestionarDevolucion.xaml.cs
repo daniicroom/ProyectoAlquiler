@@ -2,6 +2,7 @@ using AppAlquiler.Broker;
 using AppAlquiler.Models;
 using System.Web;
 
+
 namespace AppAlquiler;
 
 public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
@@ -96,6 +97,9 @@ public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
         await Navigation.PushAsync(new ListaDevoluciones());
     }
 
-
-
+    private void ToolbarItem_Clicked(object sender, EventArgs e)
+    {
+        // Navega a la pagina de inicio
+        Shell.Current.GoToAsync("fIndex");
+    }
 }

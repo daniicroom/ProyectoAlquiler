@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppAlquiler.fRegistroCliente"
              Title="">
-             
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="home.png" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
 
         <StackLayout Padding="12">

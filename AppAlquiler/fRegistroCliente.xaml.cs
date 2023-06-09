@@ -54,6 +54,7 @@ public partial class fRegistroCliente : ContentPage, IQueryAttributable
             await _bCliente.GrabarCliente(cliente);
         }
         lblMensaje.Text = "Se grabó el cliente";
+        await Shell.Current.GoToAsync($"fGestionarReserva");
     }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -73,5 +74,11 @@ public partial class fRegistroCliente : ContentPage, IQueryAttributable
     {
         // Navega a la pagína de inicio
         await Shell.Current.GoToAsync($"fValidacionCliente");
+    }
+
+    private void ToolbarItem_Clicked(object sender, EventArgs e)
+    {
+        // Navega a la pagina de inicio
+        Shell.Current.GoToAsync("fIndex");
     }
 }

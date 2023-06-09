@@ -15,33 +15,15 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
     private bTipoVehiculo _bTipoVehiculo = new bTipoVehiculo();
     private bVehiculo _bVehiculo = new bVehiculo();
 
-
-    public ICommand HomeCommand { get;  }
-
     public fGestionarReserva()
 	{
 		InitializeComponent();
 
         // Se establece la fecha actual como la fecha mínima del DatePicker de fecha inicio
         dtpFechaInicio.MinimumDate = DateTime.Today;
-
-        // Establecer el BindingContext en la página
-        BindingContext = this;
-
-        // Asignar el comando al botón de navegación
-        HomeCommand = new Command(HomeCommandExecute);
-
-        ListadoTipoVehiculos();
   
     }
 
-    private async void HomeCommandExecute()
-    {
-        //Navegar a la pagina de Inicio
-        //await Shell.Current.GoToAsync(fIndex);
-        await Shell.Current.GoToAsync("///fIndex");
-
-    }
     private void dtpFechaInicio_DateSelected(object sender, DateChangedEventArgs e)
     {
         // Una vez seleccionada la fecha inicio se actualiza la fecha mínima del DatePicker de fecha fin
@@ -55,21 +37,6 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
     }
 
 
-    // Llenado de los combos tipo vehiculo y vehiculo
-    private void ListadoTipoVehiculos()
-    {
-        List<TipoVehiculo> lista = new List<TipoVehiculo>();
-        cboTipoVehiculo.ItemsSource = _bTipoVehiculo.GetTiposVehiculos();
-        cboTipoVehiculo.ItemDisplayBinding = new Binding("Nombre");
-    }
-
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-        cboTipoVehiculo.ItemsSource = _bTipoVehiculo.GetTiposVehiculos();
-    }
-    
-
     private void cboTipoVehiculo_SelectedIndexChanged(object sender, EventArgs e)
     {
         TipoVehiculo Valor = (TipoVehiculo)cboTipoVehiculo.SelectedItem;
@@ -78,7 +45,7 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
         cboVehiculo.ItemsSource = null;
         cboVehiculo.ItemsSource = _bVehiculo.GetVehiculosXTipo(Codigo);
         cboVehiculo.ItemsSource = cboVehiculo.GetItemsAsList();
-
+    }
     private void cboVehiculo_SelectedIndexChanged(object sender, EventArgs e)
     {
 
@@ -143,9 +110,17 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
 
     }
 
-    private void btnCancelar_Clicked(object sender, EventArgs e)
+    private async void btnCancelar_Clicked(object sender, EventArgs e)
     {
-
+        // Navega a la pagína de inicio
+        await Shell.Current.GoToAsync($"fIndex");
+       
     }
 
+    private void ToolbarItem_Clicked(object sender, EventArgs e)
+    {
+            // Navega a la pagina de inicio
+            Shell.Current.GoToAsync("fIndex");
+        
+    }
 }

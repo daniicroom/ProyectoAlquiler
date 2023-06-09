@@ -32,4 +32,10 @@ public partial class fValidacionEmpleado : ContentPage
            
         }
     }
+
+    private void ToolbarItem_Clicked(object sender, EventArgs e)
+    {
+        // Navega a la pagina de inicio
+        Shell.Current.GoToAsync("fIndex");
+    }
 }

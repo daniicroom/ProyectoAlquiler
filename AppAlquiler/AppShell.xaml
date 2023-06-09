@@ -8,7 +8,7 @@
 
     <ShellContent
         Title="Alquiler de Vehículos"
-        ContentTemplate="{DataTemplate local:fIndex}"
-        Route="fIndex" />
+        ContentTemplate="{DataTemplate local:fPaginaInicio}"
+        Route="fPaginaInicio" />
  
 </Shell>
