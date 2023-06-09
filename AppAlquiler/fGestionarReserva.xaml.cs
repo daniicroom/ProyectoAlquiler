@@ -14,7 +14,7 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
     private bVehiculo _bVehiculo = new bVehiculo();
 
 
-    public ICommand HomeCommand { get; }
+    public ICommand HomeCommand { get;  }
 
     public fGestionarReserva()
 	{
@@ -28,6 +28,9 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
 
         // Asignar el comando al botón de navegación
         HomeCommand = new Command(HomeCommandExecute);
+
+        ListadoTipoVehiculos();
+  
     }
 
     private async void HomeCommandExecute()
@@ -49,22 +52,20 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
     }
 
 
-    /*
     // Llenado de los combos tipo vehiculo y vehiculo
     private void ListadoTipoVehiculos()
     {
         List<TipoVehiculo> lista = new List<TipoVehiculo>();
-        cboTipoVehiculo.ItemsSource = _bTipoVehiculo.GetTiposVehiculos().Result;
+        cboTipoVehiculo.ItemsSource = _bTipoVehiculo.GetTiposVehiculos();
         cboTipoVehiculo.ItemDisplayBinding = new Binding("Nombre");
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        cboTipoVehiculo.ItemsSource = _bTipoVehiculo.GetTiposVehiculos().Result;
+        cboTipoVehiculo.ItemsSource = _bTipoVehiculo.GetTiposVehiculos();
     }
-    */
-
+    
 
     private void cboTipoVehiculo_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -77,7 +78,7 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
 
     private void cboVehiculo_SelectedIndexChanged(object sender, EventArgs e)
     {
-
+       
     }
 
 
@@ -124,8 +125,7 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
             txtDocumentoCliente.Text = Documento;
             txtNombre.Text = Nombres + " " + Apellidos;
             txtEmpleado.Text = "ADMINISTRADOR";
-            cboTipoVehiculo.ItemsSource = _bTipoVehiculo.GetTiposVehiculos(); 
-        
+            cboTipoVehiculo.ItemsSource = _bTipoVehiculo.GetTiposVehiculos();          
         }
     }
 
@@ -138,4 +138,5 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
     {
 
     }
+
 }

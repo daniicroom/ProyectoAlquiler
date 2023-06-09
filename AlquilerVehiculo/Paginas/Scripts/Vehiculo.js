@@ -35,29 +35,29 @@ $(document).ready(function () {
     LlenarComboTipoVehiculo();
 
     //Llenar la tabla con la informacion de los vehiculos
-    LlenaTablaServicio("http://localhost:62556/Api/Vehiculo/GetTable", "#tblVehiculo");
+    LlenaTablaServicio("http://madasolutions-001-site1.etempurl.com/Api/Vehiculo/GetTable", "#tblVehiculo");
 });
 
 
 
 function LlenarComboSede() {
-    LlenarComboServicio("http://localhost:62556/Api/Sede", "#cboSede", "", true);
+    LlenarComboServicio("http://madasolutions-001-site1.etempurl.com/Api/Sede", "#cboSede", "", true);
 }
 
 function LlenarComboMarca() {
-    LlenarComboServicio("http://localhost:62556/Api/Marca", "#cboMarca", "", true);
+    LlenarComboServicio("http://madasolutions-001-site1.etempurl.com/Api/Marca", "#cboMarca", "", true);
 }
 
 function LlenarComboGama() {
-    LlenarComboServicio("http://localhost:62556/Api/Gama", "#cboGama", "", true);
+    LlenarComboServicio("http://madasolutions-001-site1.etempurl.com/Api/Gama", "#cboGama", "", true);
 }
 
 function LlenarComboColor() {
-    LlenarComboServicio("http://localhost:62556/Api/Color", "#cboColor", "", false);
+    LlenarComboServicio("http://madasolutions-001-site1.etempurl.com/Api/Color", "#cboColor", "", false);
 }
 
 function LlenarComboTipoVehiculo() {
-    LlenarComboServicio("http://localhost:62556/Api/TipoVehiculo", "#cboTipoVehiculo", "", false);
+    LlenarComboServicio("http://madasolutions-001-site1.etempurl.com/Api/TipoVehiculo", "#cboTipoVehiculo", "", false);
 }
 
 
@@ -81,7 +81,7 @@ function Consultar() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:62556/Api/Vehiculo?Placa=" + Placa,
+        url: "http://madasolutions-001-site1.etempurl.com/Api/Vehiculo?Placa=" + Placa,
         contentType: "application/json",
         data: null,
         dataType: "json",
@@ -137,7 +137,7 @@ function Procesar(Comando) {
     }
     $.ajax({
         type: Comando,
-        url: "http://localhost:62556/Api/Vehiculo",
+        url: "http://madasolutions-001-site1.etempurl.com/Api/Vehiculo",
         contentType: "application/json",
         data: JSON.stringify(DatosVehiculo),
         dataType: "json",
@@ -146,7 +146,7 @@ function Procesar(Comando) {
             $("#dvMensaje").html(Rpta);
 
             //Vuelve y presenta la tabla con los cambios realizados
-            LlenaTablaServicio("http://localhost:62556/Api/Vehiculo/GetTable", "#tblVehiculo");
+            LlenaTablaServicio("http://madasolutions-001-site1.etempurl.com/Api/Vehiculo/GetTable", "#tblVehiculo");
         },
         error: function (errVehiculo) {
             $("#dvMensaje").addClass("alert alert-danger");

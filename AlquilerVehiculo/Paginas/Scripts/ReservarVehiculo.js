@@ -41,16 +41,16 @@ $(document).ready(function () {
 
 
 function LlenarComboEmpleado() {
-    LlenarComboServicio("http://localhost:62556/Api/Empleado", "#cboEmpleado", "", false);
+    LlenarComboServicio("http://madasolutions-001-site1.etempurl.com/Api/Empleado", "#cboEmpleado", "", false);
 }
 
 function LlenarTablaReserva() {
-    LlenaTablaServicio("http://localhost:62556/Api/Reserva", "#tblReserva");
+    LlenaTablaServicio("http://madasolutions-001-site1.etempurl.com/Api/Reserva", "#tblReserva");
 }
 
 function LlenarComboTipoVehiculo() {
 
-    LlenarComboServicio("http://localhost:62556/Api/TipoVehiculo", "#cboTipoVehiculo", "", false);
+    LlenarComboServicio("http://madasolutions-001-site1.etempurl.com/Api/TipoVehiculo", "#cboTipoVehiculo", "", false);
     LlenarComboVehiculo();
 }
 
@@ -58,14 +58,14 @@ function LlenarComboVehiculo() {
     
     let Codigo = $("#cboTipoVehiculo").val();
     if (Codigo >= 0) {
-        let sURL = "http://localhost:62556/Api/Vehiculo/GetComboVehiculosXTipo?Codigo=" + Codigo
+        let sURL = "http://madasolutions-001-site1.etempurl.com/Api/Vehiculo/GetComboVehiculosXTipo?Codigo=" + Codigo
         LlenarComboServicio(sURL, "#cboVehiculo", "", false);
     }
     /*
     let Codigo = $("#cboTipoVehiculo").val();
     let Cedula = $("#txtDocumentoCliente").val();
     if (Codigo >= 0) {
-        let sURL = "http://localhost:62556/Api/Vehiculo/GetComboVehiculosXTipoCliente?Codigo=" + Codigo + "&Cedula=" + Cedula
+        let sURL = "http://madasolutions-001-site1.etempurl.com/Api/Vehiculo/GetComboVehiculosXTipoCliente?Codigo=" + Codigo + "&Cedula=" + Cedula
         LlenarComboServicio(sURL, "#cboVehiculo", "", false);
     }*/
 }
@@ -74,7 +74,7 @@ function LlenarComboVehiculoAll() {
 
     let Codigo = $("#cboTipoVehiculo").val();
     if (Codigo >= 0) {
-        let sURL = "http://localhost:62556/Api/Vehiculo";
+        let sURL = "http://madasolutions-001-site1.etempurl.com/Api/Vehiculo";
         LlenarComboServicio(sURL, "#cboVehiculo", "", false);
     }
 }
@@ -100,7 +100,7 @@ function ConsultarCliente() {
     let Documento = $("#txtDocumentoCliente").val();
     $.ajax({
         type: "GET",
-        url: "http://localhost:62556/Api/Cliente?Documento=" + Documento,
+        url: "http://madasolutions-001-site1.etempurl.com/Api/Cliente?Documento=" + Documento,
         contentType: "application/json",
         data: null,
         dataType: "json",
@@ -117,7 +117,7 @@ function ConsultarCliente() {
 
 function Consultar() {
     let CedulaCliente = $("#txtDocumentoCliente").val();
-    LlenaTablaServicio("http://localhost:62556/Api/Reserva?CedulaCliente=" + CedulaCliente, "#tblReserva");
+    LlenaTablaServicio("http://madasolutions-001-site1.etempurl.com/Api/Reserva?CedulaCliente=" + CedulaCliente, "#tblReserva");
 
     $("#txtCodigoReserva").val("");
     $("#txtFechaInicio").val("");
@@ -149,7 +149,7 @@ function Procesar(Comando) {
     }
     $.ajax({
         type: Comando,
-        url: "http://localhost:62556/Api/Reserva",
+        url: "http://madasolutions-001-site1.etempurl.com/Api/Reserva",
         contentType: "application/json",
         data: JSON.stringify(DatosReserva),
         dataType: "json",

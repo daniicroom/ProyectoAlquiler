@@ -19,11 +19,11 @@ $(document).ready(function () {
 });
 
 function LlenarComboTipoDocumento() {
-    LlenarComboServicio("http://localhost:62556/Api/TipoDocumento", "#cboTipoDocumento", "", false);
+    LlenarComboServicio("http://madasolutions-001-site1.etempurl.com/Api/TipoDocumento", "#cboTipoDocumento", "", false);
 }
 
 function LlenarCategoriaLicencia() {
-    LlenarComboServicio("http://localhost:62556/Api/CategoriaLicencia", "#cboCategoriaLicencia", "", false);
+    LlenarComboServicio("http://madasolutions-001-site1.etempurl.com/Api/CategoriaLicencia", "#cboCategoriaLicencia", "", false);
 }
 
 
@@ -33,7 +33,7 @@ function Consultar() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:62556/Api/Cliente?Documento=" + Documento,
+        url: "http://madasolutions-001-site1.etempurl.com/Api/Cliente?Documento=" + Documento,
         contentType: "application/json",
         data: null,
         dataType: "json",
@@ -80,7 +80,7 @@ function Procesar(Comando) {
     }
     $.ajax({
         type: Comando,
-        url: "http://localhost:62556/Api/Cliente",
+        url: "http://madasolutions-001-site1.etempurl.com/Api/Cliente",
         contentType: "application/json",
         data: JSON.stringify(DatosCliente),
         dataType: "json",

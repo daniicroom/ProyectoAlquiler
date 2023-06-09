@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppAlquiler.ListaDevoluciones"
+             Title="ListaDevoluciones">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="Center" >
+            <StackLayout Padding="9">
+                <Label Text="DEVOLUCIÓN VEHÍCULOS" FontSize="16" FontAttributes="Bold"
+                    HorizontalOptions="Center" />
+
+                <BoxView HeightRequest="15" Color="Black" />
+
+                <Grid ColumnDefinitions="10, 70, 70, 130,130, 95, 10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="0" Grid.Column="1" BorderColor="Gray" HasShadow="False" CornerRadius="0">
+                        <Label Text="DEV" FontSize="14" FontAttributes="Bold" />
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="2" BorderColor="Gray" HasShadow="False" CornerRadius="0">
+                        <Label Text="ALQ" FontSize="14" FontAttributes="Bold" />
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="3" BorderColor="Gray" HasShadow="False" CornerRadius="0">
+                        <Label Text="RECIBIÓ" FontSize="14" FontAttributes="Bold" />
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="4" BorderColor="Gray" HasShadow="False" CornerRadius="0">
+                        <Label Text="FECHA" FontSize="14" FontAttributes="Bold" />
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="5" BorderColor="Gray" HasShadow="False" CornerRadius="0">
+                        <Label Text="TOTAL" FontSize="14" FontAttributes="Bold" />
+                    </Frame>
+                </Grid>
+
+                <CollectionView x:Name="lstDevolucion" SelectionMode="Single" Margin="0">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"></LinearItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="0" RowSpacing="0" HeightRequest="40" ColumnDefinitions="10, 70, 70, 130,130, 95, 10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Frame Grid.Row="0" Grid.Column="1" BorderColor="Gray" HasShadow="False" CornerRadius="0">
+                                    <Label Text="{Binding Codigo}" FontSize="14" HeightRequest="20" />
+                                </Frame>
+                                <Frame Grid.Row="0" Grid.Column="2" BorderColor="Gray" HasShadow="False" CornerRadius="0">
+                                    <Label Text="{Binding CodigoAlquiler}" FontSize="14" HeightRequest="20" />
+                                </Frame>
+                                <Frame Grid.Row="0" Grid.Column="3" BorderColor="Gray" HasShadow="False" CornerRadius="0">
+                                    <Label Text="{Binding IDEmpleadoRecibe}" FontSize="14" HeightRequest="20" />
+                                </Frame>
+                                <Frame Grid.Row="0" Grid.Column="4" BorderColor="Gray" HasShadow="False" CornerRadius="0">
+                                    <Label Text="{Binding FechaDevolucion}" FontSize="14" HeightRequest="20" />
+                                </Frame>
+                                <Frame Grid.Row="0" Grid.Column="5" BorderColor="Gray" HasShadow="False" CornerRadius="0">
+                                    <Label Text="{Binding TotalPagar}" FontSize="14" HeightRequest="20" />
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

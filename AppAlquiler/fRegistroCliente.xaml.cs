@@ -54,7 +54,7 @@ public partial class fRegistroCliente : ContentPage, IQueryAttributable
         lblMensaje.Text = "Se grabó el cliente";
     }
 
-    public async void ApplyQueryAttributes(IDictionary<string, object> query)
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
         if (query.Any())
         {

@@ -18,7 +18,7 @@ $(document).ready(function () {
 });
 
 function LlenarComboCargo() {
-    LlenarComboServicio("http://localhost:62556/Api/Cargo", "#cboCargo", "", false);
+    LlenarComboServicio("http://madasolutions-001-site1.etempurl.com/Api/Cargo", "#cboCargo", "", false);
 }
 
 
@@ -27,7 +27,7 @@ function Consultar() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:62556/Api/Empleado?Documento=" + Documento,
+        url: "http://madasolutions-001-site1.etempurl.com/Api/Empleado?Documento=" + Documento,
         contentType: "application/json",
         data: null,
         dataType: "json",
@@ -63,7 +63,7 @@ function Procesar(Comando) {
     }
     $.ajax({
         type: Comando,
-        url: "http://localhost:62556/Api/Empleado",
+        url: "http://madasolutions-001-site1.etempurl.com/Api/Empleado",
         contentType: "application/json",
         data: JSON.stringify(DatosEmpleado),
         dataType: "json",

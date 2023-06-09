@@ -36,7 +36,7 @@ $(document).ready(function () {
         }
     });
 
-    LlenaTablaServicio("http://localhost:62556/Api/Devolucion", "#tblDevolucion");
+    LlenaTablaServicio("http://madasolutions-001-site1.etempurl.com/Api/Devolucion", "#tblDevolucion");
 
 });
 
@@ -58,7 +58,7 @@ function ConsultarEmpleado() {
     let Documento = $("#txtDocumentoEmpleado").val();
     $.ajax({
         type: "GET",
-        url: "http://localhost:62556/Api/Empleado?Documento=" + Documento,
+        url: "http://madasolutions-001-site1.etempurl.com/Api/Empleado?Documento=" + Documento,
         contentType: "application/json",
         data: null,
         dataType: "json",
@@ -78,7 +78,7 @@ function Consultar() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:62556/api/Devolucion/GetDevolucionByAlquiler?idAlquiler=" + CodigoAlquiler,
+        url: "http://madasolutions-001-site1.etempurl.com/api/Devolucion/GetDevolucionByAlquiler?idAlquiler=" + CodigoAlquiler,
         contentType: "application/json",
         data: null,
         dataType: "json",
@@ -123,7 +123,7 @@ function Procesar(Comando) {
     }
     $.ajax({
         type: Comando,
-        url: "http://localhost:62556/Api/Devolucion",
+        url: "http://madasolutions-001-site1.etempurl.com/Api/Devolucion",
         contentType: "application/json",
         data: JSON.stringify(DatosDevolucion),
         dataType: "json",
@@ -131,7 +131,7 @@ function Procesar(Comando) {
             $("#dvMensaje").addClass("alert alert-success");
             $("#dvMensaje").html(Rpta);
             //Vuelve y presenta la tabla con los cambios realizados
-            LlenaTablaServicio("http://localhost:62556/Api/Devolucion", "#tblDevolucion");
+            LlenaTablaServicio("http://madasolutions-001-site1.etempurl.com/Api/Devolucion", "#tblDevolucion");
         },
         error: function (errDevolucion) {
             $("#dvMensaje").addClass("alert alert-danger");
@@ -145,7 +145,7 @@ function CalcularTotalPagar() {
     let CodigoAlquiler = $("#txtCodigoAlquiler").val();
     $.ajax({
         type: "GET",
-        url: "http://localhost:62556/Api/Devolucion?idAlquiler=" + CodigoAlquiler,
+        url: "http://madasolutions-001-site1.etempurl.com/Api/Devolucion?idAlquiler=" + CodigoAlquiler,
         success: function (Rpta) {
             valorDia = Rpta.Precio;
             let now = new Date();

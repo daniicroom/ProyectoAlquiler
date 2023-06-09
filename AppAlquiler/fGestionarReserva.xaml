@@ -4,22 +4,17 @@
              x:Class="AppAlquiler.fGestionarReserva"
              Title="">
 
-
     <ContentPage.ToolbarItems>
         <ToolbarItem
             IconImageSource="home.png"
-            Command="{Binding HomeCommand}" />
+            Command="{Binding HomeCommand}"/>
     </ContentPage.ToolbarItems>
-    
-
-
+  
     <ContentPage.Content>
-        
-        
-
+             
         <StackLayout Padding="12">
 
-            <BoxView HeightRequest="20" Color="Black" />
+            <BoxView HeightRequest="10" Color="Black" />
 
             <Label 
                 Text="RESERVAR VEHÍCULO" TextColor="White" FontAttributes="Bold"
@@ -33,7 +28,7 @@
 
             <Grid ColumnDefinitions="*">
 
-                <Label x:Name="lblMensaje" TextColor="White" FontSize="18" FontAttributes="None" HorizontalOptions="Center"></Label>
+                <Label x:Name="lblMensaje" TextColor="White" FontSize="16" FontAttributes="None" HorizontalOptions="Center"></Label>
 
             </Grid>
 
@@ -79,7 +74,7 @@
 
             </Grid>
 
-            <BoxView HeightRequest="10" Color="Black" />
+            <BoxView HeightRequest="5" Color="Black" />
 
             <Grid ColumnDefinitions="12,*,10,*,20,12">
 
@@ -90,16 +85,22 @@
             <BoxView HeightRequest="10" Color="Black" />
 
 
-            <Grid ColumnDefinitions="12,*,10,*,10,*,12">
+            <Grid ColumnDefinitions="12,*,8,*,12">
 
-                <Picker Title="Tipo Vehículo" x:Name="cboTipoVehiculo"  Grid.Column="1" FontSize="10" ItemDisplayBinding="{Binding Nombre}"  SelectedIndexChanged="cboTipoVehiculo_SelectedIndexChanged"/>
-                <Picker Title="Vehículo" x:Name="cboVehiculo"  Grid.Column="3" FontSize="10" ItemDisplayBinding="{Binding Nombre}" SelectedIndexChanged="cboVehiculo_SelectedIndexChanged"/>
-                <Entry x:Name="txtEmpleado" Grid.Column="5" Placeholder="Empleado" IsVisible="false"></Entry>
+                <Picker Title="Tipo Vehículo" x:Name="cboTipoVehiculo"  Grid.Column="1"  ItemDisplayBinding="{Binding Nombre}"  SelectedIndexChanged="cboTipoVehiculo_SelectedIndexChanged"/>
+                <Entry x:Name="txtEmpleado" Grid.Column="3" Placeholder="Empleado" IsVisible="false"></Entry>
 
             </Grid>
 
+            <BoxView HeightRequest="10" Color="Black" />
 
-            <BoxView HeightRequest="40" Color="Black" />
+            <Grid ColumnDefinitions="12,400,12">
+
+                <Picker Title="Vehículo" x:Name="cboVehiculo"  Grid.Column="1" ItemDisplayBinding="{Binding Nombre}" SelectedIndexChanged="cboVehiculo_SelectedIndexChanged"/>
+
+            </Grid>
+
+            <BoxView HeightRequest="30" Color="Black" />
 
             <Grid ColumnDefinitions= "60,*,10,*,60">
 

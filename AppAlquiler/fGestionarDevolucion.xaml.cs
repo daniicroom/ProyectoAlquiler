@@ -43,6 +43,9 @@ public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
         devolucion.TotalPagar = totalPagar;
 
         await _bDevolucion.GrabarDevolucion(devolucion);
+
+        NavegarLista();
+
         lblMensaje.Text = "Se grabó la devolucion";
     }
 
@@ -66,5 +69,15 @@ public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
         }else{
             lblMensaje.Text = "La placa debe tener algún valor para realizar la consulta";
         }
+
     }
+
+
+    private async void NavegarLista()
+    {
+        await Navigation.PushAsync(new ListaDevoluciones());
+    }
+
+
+
 }

@@ -42,16 +42,17 @@ $(document).ready(function () {
 });
 
 function LlenarComboEmpleado() {
-    LlenarComboServicio("http://localhost:62556/Api/Empleado", "#cboEmpleado", "", false);
+    //LlenarComboServicio("http://localhost:62556/Api/Empleado", "#cboEmpleado", "", false);
+    LlenarComboServicio("http://madasolutions-001-site1.etempurl.com/Api/Empleado", "#cboEmpleado", "", false);
 }
 
 function LlenarTablaAlquiler() {
-    LlenaTablaServicio("http://localhost:62556/Api/Alquiler", "#tblAlquiler");
+    LlenaTablaServicio("http://madasolutions-001-site1.etempurl.com/Api/Alquiler", "#tblAlquiler");
 }
 
 function LlenarComboTipoVehiculo() {
 
-    LlenarComboServicio("http://localhost:62556/Api/TipoVehiculo", "#cboTipoVehiculo", "", false);
+    LlenarComboServicio("http://madasolutions-001-site1.etempurl.com/Api/TipoVehiculo", "#cboTipoVehiculo", "", false);
 }
 
 function LlenarComboVehiculo() {
@@ -59,7 +60,7 @@ function LlenarComboVehiculo() {
     let Codigo = $("#cboTipoVehiculo").val();
     let Cedula = $("#txtDocumentoCliente").val();
     if (Codigo >= 0) {
-        let sURL = "http://localhost:62556/Api/Vehiculo/GetComboVehiculosXTipoCliente?Codigo=" + Codigo + "&Cedula="+Cedula
+        let sURL = "http://madasolutions-001-site1.etempurl.com/Api/Vehiculo/GetComboVehiculosXTipoCliente?Codigo=" + Codigo + "&Cedula="+Cedula
         LlenarComboServicio(sURL, "#cboVehiculo", "", false);
     }
 }
@@ -69,7 +70,7 @@ function ConsultarCliente() {
     let Documento = $("#txtDocumentoCliente").val();
     $.ajax({
         type: "GET",
-        url: "http://localhost:62556/Api/Cliente?Documento=" + Documento,
+        url: "http://madasolutions-001-site1.etempurl.com/Api/Cliente?Documento=" + Documento,
         contentType: "application/json",
         data: null,
         dataType: "json",
@@ -93,7 +94,7 @@ function EditarFila(DatosFila) {
     let Codigo = $("#cboTipoVehiculo").val();
     let Placa = DatosFila.find('td:eq(4)').text();
     
-    LlenarComboServicio("http://localhost:62556/Api/Vehiculo/GetAllComboVehiculosXTipo?Codigo=" + Codigo+"&Placa="+Placa, "#cboVehiculo", "", false);
+    LlenarComboServicio("http://madasolutions-001-site1.etempurl.com/Api/Vehiculo/GetAllComboVehiculosXTipo?Codigo=" + Codigo+"&Placa="+Placa, "#cboVehiculo", "", false);
 
     $("#txtCodigoAlquiler").val(DatosFila.find('td:eq(0)').text());
     $("#txtDocumentoCliente").val(DatosFila.find('td:eq(1)').text());
@@ -108,7 +109,7 @@ function EditarFila(DatosFila) {
 
 function Consultar() {
     let Documento = $("#txtDocumentoCliente").val();
-    LlenaTablaServicio("http://localhost:62556/Api/Alquiler?Documento=" + Documento, "#tblAlquiler");
+    LlenaTablaServicio("http://madasolutions-001-site1.etempurl.com/Api/Alquiler?Documento=" + Documento, "#tblAlquiler");
     ConsultarCliente();
 
     $("#txtCodigoAlquiler").val("");
@@ -141,7 +142,7 @@ function Procesar(Comando) {
     }
     $.ajax({
         type: Comando,
-        url: "http://localhost:62556/Api/Alquiler",
+        url: "http://madasolutions-001-site1.etempurl.com/Api/Alquiler",
         contentType: "application/json",
         data: JSON.stringify(DatosAlquiler),
         dataType: "json",
@@ -153,7 +154,7 @@ function Procesar(Comando) {
                 $("#dvMensaje").html(Rpta);
             }
             //Vuelve y presenta la tabla con los cambios realizados
-            LlenarTablaAlquiler("http://localhost:62556/Api/Alquiler", "#tblAlquiler");
+            LlenarTablaAlquiler("http://madasolutions-001-site1.etempurl.com/Api/Alquiler", "#tblAlquiler");
         },
         error: function (errAlquiler) {
             $("#dvMensaje").addClass("alert alert-danger");
