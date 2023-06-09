@@ -47,5 +47,41 @@ namespace AppAlquiler.Broker
                 return _connection.UpdateAsync(devolucion).Result;
             }
         }
+        public async Task<string> GrabarDevolucionServicio(Devolucion devolucion)
+        {
+            try
+            {
+                //Variable con la ruta del serviicio a consumir
+                string sURL;
+
+                if (Local)
+                {
+                    sURL = BaseLocal + "/Api/Devolucion";
+                }
+                else
+                {
+                    sURL = BaseServicio + "/Api/Devolucion";
+                }
+
+                //Clase para invocar el servicio rest
+                HttpClient httpClient = new();
+                string jsonDevolucion = JsonConvert.SerializeObject(devolucion);
+                HttpContent content = new StringContent(jsonDevolucion, Encoding.UTF8, "application/json");
+
+                // Realizar la solicitud POST y obtener la respuesta
+                HttpResponseMessage response = await httpClient.PostAsync(sURL, content);
+
+                // Leer el contenido de la respuesta como una cadena
+                string responseContent = await response.Content.ReadAsStringAsync();
+
+                return responseContent;
+
+            }
+            catch (Exception ex)
+            {
+                string Error = ex.Message;
+                return null;
+            }
+        }
     }
 }

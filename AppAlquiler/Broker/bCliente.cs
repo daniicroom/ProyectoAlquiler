@@ -33,7 +33,7 @@ namespace AppAlquiler.Broker
         public bCliente()
         {
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
-            Local = true;
+            Local = false;
         }
         public bCliente(string rutaDB)
         {
@@ -121,10 +121,12 @@ namespace AppAlquiler.Broker
 
                 // Realizar la solicitud POST y obtener la respuesta
                 HttpResponseMessage response = await httpClient.PostAsync(sURL, content);
-
                 // Leer el contenido de la respuesta como una cadena
                 string responseContent = await response.Content.ReadAsStringAsync();
-
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    return null;
+                }
                 return responseContent;
 
             }

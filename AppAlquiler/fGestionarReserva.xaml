@@ -5,13 +5,6 @@
              Title="">
 
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem
-            IconImageSource="home.png"
-            Command="{Binding HomeCommand}" />
-    </ContentPage.ToolbarItems>
-    
-
 
     <ContentPage.Content>
         
@@ -92,7 +85,7 @@
             <Grid ColumnDefinitions="12,*,10,*,10,*,12">
 
                 <Picker Title="Tipo Vehículo" x:Name="cboTipoVehiculo"  Grid.Column="1" ItemDisplayBinding="{Binding Nombre}" SelectedIndexChanged="cboTipoVehiculo_SelectedIndexChanged"/>
-                <Picker Title="Vehículo" x:Name="cboVehiculo"  Grid.Column="3" ItemDisplayBinding="{Binding Nombre}" SelectedIndexChanged="cboVehiculo_SelectedIndexChanged"/>
+                <Picker Title="Vehículo" x:Name="cboVehiculo"  Grid.Column="3" ItemDisplayBinding="{Binding Nombre}"/>
                 <Entry x:Name="txtEmpleado" Grid.Column="5" Placeholder="Empleado" IsVisible="false"></Entry>
 
             </Grid>
@@ -119,4 +112,9 @@
         </StackLayout>
 
     </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            IconImageSource="home.png"
+            Command="{Binding HomeCommand}"/>
+    </ContentPage.ToolbarItems>
 </ContentPage>
