@@ -50,15 +50,16 @@ namespace AppAlquiler.Broker
 
                 //Clase para invocar el servicio rest
                 HttpClient httpClient = new();
-
                 //Invoca el servicio y lleva la respuesta a una variable de tipo string
-                string Respuesta = await httpClient.GetStringAsync(sURL);
-
+                var Respuesta = httpClient.GetStringAsync(sURL).Result;
+                if(Respuesta == "null")
+                {
+                    return null;
+                }
                 //Procesa la respuesta de tipo string y la convierte en una clase con JsonConvert 
                 Alquiler alquiler = JsonConvert.DeserializeObject<Alquiler>(Respuesta);
 
                 return alquiler;
-
             }
             catch (Exception ex)
             {

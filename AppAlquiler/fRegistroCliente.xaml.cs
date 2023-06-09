@@ -29,13 +29,15 @@ public partial class fRegistroCliente : ContentPage, IQueryAttributable
         { 
             documento = txtDocumento.Text; 
         }
-        int categoriaLicencia = Convert.ToInt32(cboCategoriaLicencia.SelectedIndex);
+        ViewCombo categoria = (ViewCombo)cboCategoriaLicencia.SelectedItem;
+        int categoriaLicencia = Convert.ToInt32(categoria.Codigo);
         string nombre = txtNombres.Text;
         string apellidos = txtApellidos.Text;
         string direccion = txtDireccion.Text;
         int edad = Convert.ToInt32(txtEdad.Text);
         string numeroLicencia = txtNumeroLicencia.Text;
-        int tipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedIndex);
+        ViewCombo tipoDoc = (ViewCombo)cboTipoDocumento.SelectedItem;
+        int tipoDocumento = Convert.ToInt32(tipoDoc.Codigo);
 
         Cliente cliente = new Cliente();
         cliente.Documento = documento;
@@ -47,7 +49,7 @@ public partial class fRegistroCliente : ContentPage, IQueryAttributable
         cliente.NumeroLicencia = numeroLicencia;
         cliente.IDLicencia = categoriaLicencia;
         var response = await _bCliente.GrabarClienteServicio(cliente);
-        if (response == null)
+        if (response == null || response == "null")
         {
             await _bCliente.GrabarCliente(cliente);
         }

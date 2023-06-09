@@ -121,4 +121,9 @@
         </StackLayout>
 
     </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            IconImageSource="home.png"
+            Command="{Binding HomeCommand}"/>
+    </ContentPage.ToolbarItems>
 </ContentPage>

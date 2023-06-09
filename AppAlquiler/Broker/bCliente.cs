@@ -121,10 +121,12 @@ namespace AppAlquiler.Broker
 
                 // Realizar la solicitud POST y obtener la respuesta
                 HttpResponseMessage response = await httpClient.PostAsync(sURL, content);
-
                 // Leer el contenido de la respuesta como una cadena
                 string responseContent = await response.Content.ReadAsStringAsync();
-
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    return null;
+                }
                 return responseContent;
 
             }

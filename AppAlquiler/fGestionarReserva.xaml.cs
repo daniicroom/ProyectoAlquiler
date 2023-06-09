@@ -1,5 +1,7 @@
 using AppAlquiler.Broker;
 using AppAlquiler.Models;
+using Microsoft.Maui.Platform;
+using System.ComponentModel;
 using System.Web;
 using System.Windows.Input;
 
@@ -36,9 +38,10 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
     private async void HomeCommandExecute()
     {
         //Navegar a la pagina de Inicio
-        await Shell.Current.GoToAsync("//fIndex");
-    }
+        //await Shell.Current.GoToAsync(fIndex);
+        await Shell.Current.GoToAsync("///fIndex");
 
+    }
     private void dtpFechaInicio_DateSelected(object sender, DateChangedEventArgs e)
     {
         // Una vez seleccionada la fecha inicio se actualiza la fecha mínima del DatePicker de fecha fin
@@ -72,17 +75,14 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
         TipoVehiculo Valor = (TipoVehiculo)cboTipoVehiculo.SelectedItem;
 
         int Codigo = Valor.Codigo;
-
+        cboVehiculo.ItemsSource = null;
         cboVehiculo.ItemsSource = _bVehiculo.GetVehiculosXTipo(Codigo);
-    }
+        cboVehiculo.ItemsSource = cboVehiculo.GetItemsAsList();
 
     private void cboVehiculo_SelectedIndexChanged(object sender, EventArgs e)
     {
-       
+
     }
-
-
-
 
     private async void btnGrabar_Clicked(object sender, EventArgs e)
     {
@@ -109,7 +109,15 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
         reservar.FechaInicio = fechaInicio;
         reservar.FechaFin = fechaFin;
 
-        await _bReserva.GrabarReserva(reservar);
+        string response = await _bReserva.GrabarReservaServicio(reservar);
+        if (response == null)
+        {
+            await _bReserva.GrabarReserva(reservar);
+        }
+        else
+        {
+            
+        }
         lblMensaje.Text = "Se grabó la reserva";
     }
 
@@ -125,7 +133,8 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
             txtDocumentoCliente.Text = Documento;
             txtNombre.Text = Nombres + " " + Apellidos;
             txtEmpleado.Text = "ADMINISTRADOR";
-            cboTipoVehiculo.ItemsSource = _bTipoVehiculo.GetTiposVehiculos();          
+            cboTipoVehiculo.ItemsSource = _bTipoVehiculo.GetTiposVehiculos();
+        
         }
     }
 
