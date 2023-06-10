@@ -11,7 +11,7 @@ namespace AppAlquiler.Models
     [Table("Cliente")]
     public class Cliente
     {
-        [PrimaryKey, AutoIncrement] public string Documento { get; set; }
+        [PrimaryKey] public string Documento { get; set; }
         public int TipoDocumento { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
@@ -25,7 +25,7 @@ namespace AppAlquiler.Models
     [Table("Empleado")]
     public class Empleado
     {
-        [PrimaryKey, AutoIncrement] public string Documento { get; set; }
+        [PrimaryKey] public string Documento { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public int IDCargoEmpleado { get; set; }
