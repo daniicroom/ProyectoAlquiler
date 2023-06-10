@@ -13,7 +13,7 @@
              
         <StackLayout Padding="12">
 
-            <BoxView HeightRequest="10" Color="Black" />
+            <BoxView HeightRequest="30" Color="Black" />
 
             <Label 
                 Text="RESERVAR VEHÍCULO" TextColor="White" FontAttributes="Bold"
@@ -69,7 +69,7 @@
 
             <Grid ColumnDefinitions="12,*,10,*,20,12">
                 <Label Text="Fecha inicio:" Grid.Column="1" VerticalOptions="Center" />
-                <DatePicker Grid.Column="3" x:Name="dtpFechaInicio" Margin="30, 0, 0, 0" DateSelected="dtpFechaInicio_DateSelected" />
+                <DatePicker Grid.Column="3" x:Name="dtpFechaInicio" FontSize="13" Margin="30, 0, 0, 0" DateSelected="dtpFechaInicio_DateSelected" />
 
             </Grid>
 
@@ -78,33 +78,48 @@
             <Grid ColumnDefinitions="12,*,10,*,20,12">
 
                 <Label Text="Fecha fin:" Grid.Column="1" VerticalOptions="Center" />
-                <DatePicker Grid.Column="3" x:Name="dtpFechaFin" Margin="30, 0, 0, 0" DateSelected="dtpFechaFin_DateSelected" />
+                <DatePicker Grid.Column="3" x:Name="dtpFechaFin" FontSize="13" Margin="30, 0, 0, 0" DateSelected="dtpFechaFin_DateSelected" />
             </Grid>
 
             <BoxView HeightRequest="10" Color="Black" />
 
+            
+            <Grid ColumnDefinitions="12,*,10,*,12">
+
+                <Label Text ="Tipo Vehículo" Grid.Column="1" />
+            </Grid>
+
+            <BoxView HeightRequest="5" Color="Black" />
+
 
             <Grid ColumnDefinitions="12,*,8,*,12">
 
-                <Picker Title="Tipo Vehículo" x:Name="cboTipoVehiculo"  Grid.Column="1"  ItemDisplayBinding="{Binding Nombre}"  SelectedIndexChanged="cboTipoVehiculo_SelectedIndexChanged"/>
+                <Picker x:Name="cboTipoVehiculo"  Grid.Column="1" FontSize="12" ItemDisplayBinding="{Binding Nombre}"  SelectedIndexChanged="cboTipoVehiculo_SelectedIndexChanged"/>
                 <Entry x:Name="txtEmpleado" Grid.Column="3" Placeholder="Empleado" IsVisible="false"></Entry>
 
             </Grid>
 
             <BoxView HeightRequest="10" Color="Black" />
 
+            <Grid ColumnDefinitions="12,*,10,*,12">
+
+                <Label Text ="Vehículo" Grid.Column="1" />
+            </Grid>
+
+            <BoxView HeightRequest="5" Color="Black" />
+            
             <Grid ColumnDefinitions="12,400,12">
 
-                <Picker Title="Vehículo" x:Name="cboVehiculo"  Grid.Column="1" ItemDisplayBinding="{Binding Nombre}" SelectedIndexChanged="cboVehiculo_SelectedIndexChanged"/>
+                <Picker x:Name="cboVehiculo"  Grid.Column="1" FontSize="12" ItemDisplayBinding="{Binding Nombre}" SelectedIndexChanged="cboVehiculo_SelectedIndexChanged"/>
 
             </Grid>
 
             <BoxView HeightRequest="30" Color="Black" />
 
-            <Grid ColumnDefinitions= "60,*,10,*,60">
+            <Grid ColumnDefinitions= "50,*,10,*,50">
 
-                <Button x:Name="btnGrabar" Grid.Column="1" WidthRequest="100" HeightRequest="37" Text="REGISTRAR"  Clicked="btnGrabar_Clicked" />
-                <Button x:Name="btnSalir" Grid.Column="3" WidthRequest="100" HeightRequest="37" Text="SALIR" HorizontalOptions="Center" Clicked="btnSalir_Clicked" />
+                <Button x:Name="btnGrabar" Grid.Column="1" HeightRequest="37" Text="REGISTRAR"  Clicked="btnGrabar_Clicked" />
+                <Button x:Name="btnAtras" Grid.Column="3" HeightRequest="37" Text="ATRAS" Clicked="btnAtras_Clicked" />
 
             </Grid>
 

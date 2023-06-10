@@ -13,7 +13,7 @@
         <StackLayout Padding="12">
 
             <!-- Agregar un espacio de 15 puntos al inicio -->
-            <BoxView HeightRequest="60" Color="Black" />
+            <BoxView HeightRequest="40" Color="Black" />
 
            
             <Grid ColumnDefinitions="*">
@@ -46,7 +46,7 @@
             <!--Aquí se realiza la distribución de la pantalla los * son los espacios que ocupan los txt -->
             <Grid ColumnDefinitions="12,*,10,*,12">
 
-                <Picker x:Name="cboTipoDocumento"  Grid.Column="1" FontSize="10" ItemDisplayBinding="{Binding Nombre}"/>
+                <Picker x:Name="cboTipoDocumento"  Grid.Column="1" FontSize="12" ItemDisplayBinding="{Binding Nombre}"/>
                 <Entry x:Name="txtDocumento" Grid.Column="3" Placeholder="Documento" TextColor="White" IsEnabled="False" ></Entry>
 
             </Grid>
@@ -82,7 +82,7 @@
             <!--Aquí se realiza la distribución de la pantalla los * son los espacios que ocupan los txt -->
             <Grid ColumnDefinitions="12,*,10,*,12">
 
-                <Picker x:Name="cboCategoriaLicencia"  Grid.Column="1" FontSize="10" ItemDisplayBinding="{Binding Nombre}"/>
+                <Picker x:Name="cboCategoriaLicencia"  Grid.Column="1" FontSize="12" ItemDisplayBinding="{Binding Nombre}"/>
                 <Entry x:Name="txtNumeroLicencia" Grid.Column="3" Placeholder="Número Licencia" ></Entry>
 
             </Grid>
@@ -92,8 +92,8 @@
 
             <Grid ColumnDefinitions= "60,*,10,*,60">
 
-                <Button x:Name="btnRegistrar" Grid.Column="1" WidthRequest="100" HeightRequest="37" Text="REGISTRAR"  Clicked="btnRegistrar_Clicked" />
-                <Button x:Name="btnAtras" Grid.Column="3" WidthRequest="100" HeightRequest="37" Text="ATRAS"  Clicked="btnAtras_Clicked" />
+                <Button x:Name="btnRegistrar" Grid.Column="1" HeightRequest="37" Text="REGISTRAR"  Clicked="btnRegistrar_Clicked" />
+                <Button x:Name="btnAtras" Grid.Column="3" HeightRequest="37" Text="ATRAS"  Clicked="btnAtras_Clicked" />
 
             </Grid>
 

@@ -1,14 +1,14 @@
 using AppAlquiler.Broker;
 using AppAlquiler.Models;
 using System.Web;
-using Windows.UI.Notifications;
+//using Windows.UI.Notifications;
 
 namespace AppAlquiler;
-
 public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
 {
     private bDevolucion _bDevolucion = new bDevolucion(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dbAppAlquiler2023.db3"));
     private bAlquiler _bAlquiler = new bAlquiler(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dbAppAlquiler2023.db3"));
+
     public fGestionarDevolucion()
     {
         InitializeComponent();
@@ -64,7 +64,8 @@ public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
             }
             
         }
-        lblMensaje.Text = "Se grabó la devolucion";
+        //lblMensaje.Text = "Se grabó la devolucion";
+        _ = DisplayAlert("Ok !", "Devolución de vehículo grabada exitosamente", "ACEPTAR");
     }
 
     private void btnConsultar_Clicked(object sender, EventArgs e)
@@ -76,7 +77,8 @@ public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
             Alquiler alquiler = _bAlquiler.GetAlquilerByPlaca(placa).Result;
             if (alquiler == null)
             {
-                lblMensaje.Text = "No hay Alquiler asignadas a esta placa";
+                //lblMensaje.Text = "No hay Alquiler asignadas a esta placa";
+                _ = DisplayAlert("Error !", "No hay Alquiler asignado a esta placa", "ACEPTAR");
                 txtIdAlquiler.Text = "";
                 txtTotalPagar.Text = "";
                 txtCodigo.Text = "";
@@ -95,15 +97,17 @@ public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
         }
         else
         {
-            lblMensaje.Text = "La placa debe tener algún valor para realizar la consulta";
+            //lblMensaje.Text = "La placa debe tener algún valor para realizar la consulta";
+            _ = DisplayAlert("Error !", "La placa debe tener algún valor para realizar la consulta", "ACEPTAR");
+
         }
 
     }
 
-
     private async void NavegarLista()
     {
-        await Navigation.PushAsync(new ListaDevoluciones());
+        await Navigation.PushAsync(new ListaDevoluciones(txtDocumentoEmpleado.Text));
+        
     }
 
     private void btnTodos_Clicked(object sender, EventArgs e)
@@ -116,6 +120,4 @@ public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
         // Navega a la pagina de inicio
         Shell.Current.GoToAsync("fIndex");
     }
-
-    
 }

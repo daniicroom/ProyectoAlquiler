@@ -53,7 +53,9 @@ public partial class fRegistroCliente : ContentPage, IQueryAttributable
         {
             await _bCliente.GrabarCliente(cliente);
         }
-        lblMensaje.Text = "Se grabó el cliente";
+
+        //lblMensaje.Text = "Se grabó el cliente";
+        _ = DisplayAlert("Ok !", "Cliente registrado exitosamente, ahora puede gestionar su reserva", "ACEPTAR");
 
         await Shell.Current.GoToAsync($"fGestionarReserva?Documento={documento}&Nombres={nombre}&Apellidos={apellidos}");
         
@@ -65,7 +67,8 @@ public partial class fRegistroCliente : ContentPage, IQueryAttributable
         {
             string Documento = HttpUtility.UrlDecode((string)query["Documento"]);
 
-            lblMensaje.Text = "No se encontró el cliente con N° de documento '" + Documento + "' debe diligenciar el formulario de registro.";
+            //lblMensaje.Text = "No se encontró el cliente con N° de documento '" + Documento + "' debe diligenciar el formulario de registro.";
+            _ = DisplayAlert("Error !", "No se encontró el cliente con N° de documento '" + Documento + "' debe diligenciar el formulario de registro.", "ACEPTAR");
             txtDocumento.Text = Documento;
             cboTipoDocumento.ItemsSource = _bTipoDocumento.GetTiposDocumentos();
             cboCategoriaLicencia.ItemsSource = _bCategoriaLicencia.GetCategoriasLicencias();

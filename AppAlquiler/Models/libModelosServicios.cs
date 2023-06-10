@@ -13,7 +13,6 @@ namespace AppAlquiler.Models
         public string Nombre { get; set; }
     }
 
-
     public class TipoVehiculo
     {
         public int Codigo { get; set; }

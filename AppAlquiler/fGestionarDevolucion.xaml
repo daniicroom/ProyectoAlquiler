@@ -13,7 +13,7 @@
         <StackLayout Padding="12">
 
 
-            <BoxView HeightRequest="60" Color="Black" />
+            <BoxView HeightRequest="40" Color="Black" />
 
             <Label 
                 Text="DEVOLVER VEHÍCULO" TextColor="White" FontAttributes="Bold"
@@ -22,20 +22,20 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
-            <!-- Agregar un espacio de 10 puntos al inicio -->
-            <BoxView HeightRequest="15" Color="Black" />
-
+            <!-- Agregar un espacio de 20 puntos al inicio -->
+            <BoxView HeightRequest="20" Color="Black" />
+           
             <Grid ColumnDefinitions="*">
 
                 <Label x:Name="lblMensaje" TextColor="MediumPurple" FontSize="18" FontAttributes="None" HorizontalOptions="Center"></Label>
 
             </Grid>
 
-            <BoxView HeightRequest="40" Color="Black" />
+            <BoxView HeightRequest="30" Color="Black" />
 
             <Grid ColumnDefinitions="12,120,10,*,12">
 
-                <Label Text ="Cod. Devolución" Grid.Column="1" />
+                <Label Text ="Cod. Devolución" Grid.Column="1" IsVisible="False" />
 
             </Grid>
 
@@ -43,7 +43,7 @@
 
             <Grid ColumnDefinitions="12,80,10,*,12">
 
-                <Entry x:Name="txtCodigo" Grid.Column="1"  IsEnabled="False" ></Entry>
+                <Entry x:Name="txtCodigo" Grid.Column="1"  IsVisible="False" ></Entry>
 
             </Grid>
 
@@ -97,8 +97,8 @@
 
             <Grid ColumnDefinitions= "60,*,10,*,60">
 
-                <Button x:Name="btnGrabar" Grid.Column="1" WidthRequest="100" HeightRequest="37" Text="REGISTRAR"  Clicked="btnGrabar_Clicked" />
-                <Button x:Name="btnConsultar" Grid.Column="3" WidthRequest="100" HeightRequest="37" Text="CONSULTAR"  Clicked="btnConsultar_Clicked"/>
+                <Button x:Name="btnGrabar" Grid.Column="1" HeightRequest="37" Text="REGISTRAR"  Clicked="btnGrabar_Clicked" />
+                <Button x:Name="btnConsultar" Grid.Column="3" HeightRequest="37" Text="CONSULTAR"  Clicked="btnConsultar_Clicked"/>
 
             </Grid>
 
@@ -106,11 +106,9 @@
 
             <Grid ColumnDefinitions= "60,*,60">
 
-                <Button x:Name="btnTodos" Grid.Column="1" WidthRequest="100" HeightRequest="37" HorizontalOptions="Center" Text="DEVOLUCIONES"  Clicked="btnTodos_Clicked" />
+                <Button x:Name="btnTodos" Grid.Column="1" HeightRequest="37" HorizontalOptions="Center" Text="DEVOLUCIONES"  Clicked="btnTodos_Clicked" />
          
             </Grid>
-
-
 
         </StackLayout>
 

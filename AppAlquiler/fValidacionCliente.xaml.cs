@@ -28,11 +28,9 @@ public partial class fValidacionCliente : ContentPage
 		}
 		else
 		{
-            //lblMensaje.Text = "Cliente encontrado " + _cliente.Nombres + " " + _cliente.Apellidos;
 
             //Navegar a la pagina de Gestionar Reserva
             await Shell.Current.GoToAsync($"fGestionarReserva?Documento={_cliente.Documento}&Nombres={_cliente.Nombres}&Apellidos={_cliente.Apellidos}");
-
 
         }
 

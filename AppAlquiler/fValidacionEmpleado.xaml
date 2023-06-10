@@ -37,7 +37,7 @@
 
             <Grid ColumnDefinitions= "80, *, 80">
 
-                <Button x:Name="btnSiguiente" Grid.Column="1" WidthRequest="100" HeightRequest="37" Text="SIGUIENTE" Clicked="btnSiguiente_Clicked"  HorizontalOptions="Center" />
+                <Button x:Name="btnSiguiente" Grid.Column="1" HeightRequest="37" Text="SIGUIENTE" Clicked="btnSiguiente_Clicked"  HorizontalOptions="Center" />
 
             </Grid>
 

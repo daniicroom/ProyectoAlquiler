@@ -21,6 +21,7 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
 
         // Se establece la fecha actual como la fecha mínima del DatePicker de fecha inicio
         dtpFechaInicio.MinimumDate = DateTime.Today;
+        dtpFechaFin.MinimumDate = DateTime.Today.AddDays(1);
   
     }
 
@@ -30,21 +31,22 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
         dtpFechaFin.MinimumDate = dtpFechaInicio.Date.AddDays(1);
 
     }
-
     private void dtpFechaFin_DateSelected(object sender, DateChangedEventArgs e)
     {
 
     }
-
-
     private void cboTipoVehiculo_SelectedIndexChanged(object sender, EventArgs e)
     {
         TipoVehiculo Valor = (TipoVehiculo)cboTipoVehiculo.SelectedItem;
 
         int Codigo = Valor.Codigo;
+        List<Vehiculo> data = _bVehiculo.GetVehiculosXTipo(Codigo);
+        cboVehiculo.ItemsSource = data;
+
+        /*
         cboVehiculo.ItemsSource = null;
         cboVehiculo.ItemsSource = _bVehiculo.GetVehiculosXTipo(Codigo);
-        cboVehiculo.ItemsSource = cboVehiculo.GetItemsAsList();
+        cboVehiculo.ItemsSource = cboVehiculo.GetItemsAsList();*/
     }
     private void cboVehiculo_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -59,17 +61,19 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
         DateTime fechaInicio = dtpFechaInicio.Date;
         DateTime fechaFin = dtpFechaFin.Date;
         int tipoVehiculo = cboTipoVehiculo.SelectedIndex;
-        int vehiculo = cboVehiculo.SelectedIndex;
+
+        Vehiculo vehiculo = (Vehiculo)cboVehiculo.SelectedItem;
+
         string placa = "";
         if (cboVehiculo.SelectedItem != null)
         {
-            placa = cboVehiculo.SelectedItem.ToString();
+            placa = vehiculo.Codigo.ToString();
 
         }
 
         Reservar reservar = new Reservar();
         reservar.CedulaCliente = documentoCliente;
-        reservar.IDEmpleado = documentoCliente;
+        reservar.IDEmpleado = empleado;
         reservar.IDTipoVehiculo = tipoVehiculo;
         reservar.PlacaVehiculo = placa;
         reservar.EstadoReserva = "ACTIVO";
@@ -85,7 +89,8 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
         {
             
         }
-        lblMensaje.Text = "Se grabó la reserva";
+        //lblMensaje.Text = "Se grabó la reserva";
+        _ = DisplayAlert("Ok !", "Reserva grabada exitosamente", "ACEPTAR");
     }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -95,20 +100,19 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
             string Documento = HttpUtility.UrlDecode((string)query["Documento"]);
             string Nombres = HttpUtility.UrlDecode((string)query["Nombres"]);
             string Apellidos = HttpUtility.UrlDecode((string)query["Apellidos"]);
-            lblMensaje.Text = "Bienvenido(a) por favor gestione su reserva";
+            lblMensaje.Text = "Bienvenido(a) "+ Nombres + " por favor gestione su reserva";
 
             txtDocumentoCliente.Text = Documento;
             txtNombre.Text = Nombres + " " + Apellidos;
-            txtEmpleado.Text = "ADMINISTRADOR";
+            txtEmpleado.Text = "1023525415";
             cboTipoVehiculo.ItemsSource = _bTipoVehiculo.GetTiposVehiculos();
         
         }
     }
-
-    private async void btnSalir_Clicked(object sender, EventArgs e)
+    private async void btnAtras_Clicked(object sender, EventArgs e)
     {
         // Navega a la pagína de inicio
-        await Shell.Current.GoToAsync($"fIndex");
+        await Shell.Current.GoToAsync($"fValidacionCliente");
     }
     private void ToolbarItem_Clicked(object sender, EventArgs e)
     {
@@ -116,5 +120,5 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
             Shell.Current.GoToAsync("fIndex");
         
     }
-    
+
 }

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppAlquiler.ListaDevoluciones"
-             Title="ListaDevoluciones">
+             Title="">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="home.png" Clicked="ToolbarItem_Clicked" />
@@ -11,29 +11,29 @@
     <ContentPage.Content>
         <Grid HorizontalOptions="Center" >
             <StackLayout Padding="9">
+                <BoxView HeightRequest="15" Color="Black" />
                 <Label Text="DEVOLUCIÓN VEHÍCULOS" FontSize="16" FontAttributes="Bold"
                     HorizontalOptions="Center" />
 
                 <BoxView HeightRequest="15" Color="Black" />
 
-                <Grid ColumnDefinitions="10, 70, 70, 130,130, 95, 10">
+                <Grid ColumnDefinitions="5, 66, 116,104, 82, 5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+                    
+                    
                     <Frame Grid.Row="0" Grid.Column="1" BorderColor="Gray" HasShadow="False" CornerRadius="0">
-                        <Label Text="DEV" FontSize="12" FontAttributes="Bold" />
+                        <Label Text="ALQ" FontSize="11" FontAttributes="Bold" />
                     </Frame>
                     <Frame Grid.Row="0" Grid.Column="2" BorderColor="Gray" HasShadow="False" CornerRadius="0">
-                        <Label Text="ALQ" FontSize="12" FontAttributes="Bold" />
+                        <Label Text="ID EMPLEADO" FontSize="11" FontAttributes="Bold" />
                     </Frame>
                     <Frame Grid.Row="0" Grid.Column="3" BorderColor="Gray" HasShadow="False" CornerRadius="0">
-                        <Label Text="ID EMPLEADO" FontSize="12" FontAttributes="Bold" />
+                        <Label Text="FECHA" FontSize="11" FontAttributes="Bold" />
                     </Frame>
                     <Frame Grid.Row="0" Grid.Column="4" BorderColor="Gray" HasShadow="False" CornerRadius="0">
-                        <Label Text="FECHA" FontSize="12" FontAttributes="Bold" />
-                    </Frame>
-                    <Frame Grid.Row="0" Grid.Column="5" BorderColor="Gray" HasShadow="False" CornerRadius="0">
-                        <Label Text="TOTAL" FontSize="12" FontAttributes="Bold" />
+                        <Label Text="TOTAL" FontSize="11" FontAttributes="Bold" />
                     </Frame>
                 </Grid>
 
@@ -41,40 +41,39 @@
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"></LinearItemsLayout>
                     </CollectionView.ItemsLayout>
+                    
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Padding="0" RowSpacing="0" HeightRequest="40" ColumnDefinitions="10, 70, 70, 130,130, 95, 10">
+                            <Grid Padding="0" RowSpacing="0" HeightRequest="40" ColumnDefinitions="5, 66, 116,104, 82, 5">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
+                                
                                 <Frame Grid.Row="0" Grid.Column="1" BorderColor="Gray" HasShadow="False" CornerRadius="0">
-                                    <Label Text="{Binding Codigo}" FontSize="14" HeightRequest="20" />
+                                    <Label Text="{Binding CodigoAlquiler}" FontSize="13" HeightRequest="20" />
                                 </Frame>
                                 <Frame Grid.Row="0" Grid.Column="2" BorderColor="Gray" HasShadow="False" CornerRadius="0">
-                                    <Label Text="{Binding CodigoAlquiler}" FontSize="14" HeightRequest="20" />
+                                    <Label Text="{Binding IDEmpleadoRecibe}" FontSize="13" HeightRequest="20" />
                                 </Frame>
                                 <Frame Grid.Row="0" Grid.Column="3" BorderColor="Gray" HasShadow="False" CornerRadius="0">
-                                    <Label Text="{Binding IDEmpleadoRecibe}" FontSize="14" HeightRequest="20" />
+                                    <Label Text="{Binding FechaDevolucion}" FontSize="13" HeightRequest="20" />
                                 </Frame>
                                 <Frame Grid.Row="0" Grid.Column="4" BorderColor="Gray" HasShadow="False" CornerRadius="0">
-                                    <Label Text="{Binding FechaDevolucion}" FontSize="14" HeightRequest="20" />
+                                    <Label Text="{Binding TotalPagar}" FontSize="13" HeightRequest="20" />
                                 </Frame>
-                                <Frame Grid.Row="0" Grid.Column="5" BorderColor="Gray" HasShadow="False" CornerRadius="0">
-                                    <Label Text="{Binding TotalPagar}" FontSize="14" HeightRequest="20" />
-                                </Frame>
+                                
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <BoxView HeightRequest="30" Color="Black" />
+                <BoxView HeightRequest="50" Color="Black" />
 
                 <Grid ColumnDefinitions= "60,*,60">
 
-                    <Button x:Name="btnRegresar" Grid.Column="1" WidthRequest="100" HeightRequest="37" HorizontalOptions="Center" Text="REGRESAR"  Clicked="btnRegresar_Clicked" />
+                    <Button x:Name="btnRegresar" Grid.Column="1" HeightRequest="37" HorizontalOptions="Center" Text="REGRESAR"  Clicked="btnRegresar_Clicked" />
 
                 </Grid>
-              
 
             </StackLayout>
         </Grid>

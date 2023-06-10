@@ -22,7 +22,8 @@ public partial class fValidacionEmpleado : ContentPage
 
         if (_empleado == null)
         {
-            lblMensaje.Text = "No existe un empleado registrado con el número de documento " + Documento;
+            //lblMensaje.Text = "No existe un empleado registrado con el número de documento " + Documento;
+            _ = DisplayAlert("Error", "No existe un empleado registrado con el número de documento '" + Documento + "'", "ACEPTAR");
         }
         else
         {
