@@ -100,7 +100,7 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
             string Documento = HttpUtility.UrlDecode((string)query["Documento"]);
             string Nombres = HttpUtility.UrlDecode((string)query["Nombres"]);
             string Apellidos = HttpUtility.UrlDecode((string)query["Apellidos"]);
-            lblMensaje.Text = "Bienvenido(a) "+ Nombres + " por favor gestione su reserva";
+            lblMensaje.Text = "Bienvenido(a) " + Nombres + " por favor gestione su reserva";
 
             txtDocumentoCliente.Text = Documento;
             txtNombre.Text = Nombres + " " + Apellidos;
