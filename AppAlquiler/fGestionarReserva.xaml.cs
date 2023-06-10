@@ -81,16 +81,18 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
         reservar.FechaFin = fechaFin;
 
         string response = await _bReserva.GrabarReservaServicio(reservar);
-        if (response == null)
+        var data = response.Split(":");
+
+        if (data.Count() == 1)
         {
             await _bReserva.GrabarReserva(reservar);
+            _ = DisplayAlert("Ok !", "Reserva grabada exitosamente en sqlite", "ACEPTAR");
         }
         else
         {
-            
+            _ = DisplayAlert("Ok !", response, "ACEPTAR");
         }
-        //lblMensaje.Text = "Se grabó la reserva";
-        _ = DisplayAlert("Ok !", "Reserva grabada exitosamente", "ACEPTAR");
+        //_ = DisplayAlert("Ok !", "Reserva grabada exitosamente", "ACEPTAR");
     }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
