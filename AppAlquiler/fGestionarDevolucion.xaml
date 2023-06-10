@@ -102,6 +102,14 @@
 
             </Grid>
 
+            <BoxView HeightRequest="10" Color="Black" />
+
+            <Grid ColumnDefinitions= "60,*,60">
+
+                <Button x:Name="btnTodos" Grid.Column="1" HorizontalOptions="Center" Text="DEVOLUCIONES"  Clicked="btnTodos_Clicked" />
+         
+            </Grid>
+
 
 
         </StackLayout>

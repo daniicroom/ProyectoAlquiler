@@ -22,20 +22,28 @@ namespace AppAlquiler.Broker
         public bDevolucion()
         {
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
-            Local = false;
+            Local = true;
         }
         public bDevolucion(string rutaDB)
         {
             //Asignamos la conexión
             _connection = new SQLiteAsyncConnection(rutaDB);
             // Si es true, el servicio ejecuta localmente, si es false, ejecuta en la nube
-            Local = false;
+            Local = true;
         }
+
+        public Task<List<Devolucion>> GetAll()
+        {
+            return _connection.Table<Devolucion>().ToListAsync();
+        }
+
         public async Task<int> GrabarDevolucion(Devolucion devolucion)
         {
             Devolucion _devolucion = await (_connection.Table<Devolucion>()
                     .Where(p => p.CodigoAlquiler == devolucion.CodigoAlquiler)
                     .FirstOrDefaultAsync());
+
+
             if (_devolucion == null)
             {
                 //Se va a grabar

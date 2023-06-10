@@ -1,7 +1,7 @@
 using AppAlquiler.Broker;
 using AppAlquiler.Models;
 using System.Web;
-
+using Windows.UI.Notifications;
 
 namespace AppAlquiler;
 
@@ -18,7 +18,7 @@ public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
     }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
-    {
+    { 
         string Documento = HttpUtility.UrlDecode((string)query["Documento"]);
         lblMensaje.Text = "Por favor diligencie los datos para finalizar el proceso de alquiler";
         btnGrabar.IsEnabled = false;
@@ -53,7 +53,16 @@ public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
         {
             response = response.Replace('"',' ');
             var data = response.Split(":");
-            txtCodigo.Text = data[1];
+
+            if(data.Count() == 1)
+            {
+                await _bDevolucion.GrabarDevolucion(devolucion);
+            }
+            else
+            {
+                txtCodigo.Text = data[1];
+            }
+            
         }
         lblMensaje.Text = "Se grabó la devolucion";
     }
@@ -97,9 +106,16 @@ public partial class fGestionarDevolucion : ContentPage, IQueryAttributable
         await Navigation.PushAsync(new ListaDevoluciones());
     }
 
+    private void btnTodos_Clicked(object sender, EventArgs e)
+    {
+        NavegarLista();
+    }
+
     private void ToolbarItem_Clicked(object sender, EventArgs e)
     {
         // Navega a la pagina de inicio
         Shell.Current.GoToAsync("fIndex");
     }
+
+    
 }
