@@ -8,7 +8,7 @@
     
         <StackLayout HorizontalOptions="Center">
 
-            <BoxView HeightRequest="60" Color="Black" />
+            <BoxView HeightRequest="70" Color="Black" />
             
             <Label Text="Alquiler de Vehículos" HorizontalOptions="Center" FontSize="24" FontAttributes="Bold" />
 
@@ -19,10 +19,11 @@
                 Margin="0,50,0,0"
                 HorizontalOptions="Center" />
 
+            <BoxView HeightRequest="20" Color="Black" />
 
-            <Button x:Name="btnCliente" Text="SOY CLIENTE" HorizontalOptions="Center" WidthRequest="180" Margin="0,60,0,0" Clicked="btnCliente_Clicked"/>
-            <BoxView HeightRequest="5" Color="Black" />
-            <Button x:Name="btnEmpleado" Text="SOY EMPLEADO" HorizontalOptions="Center" WidthRequest="180" Clicked="btnEmpleado_Clicked"/>
+            <Button x:Name="btnCliente" Text="SOY CLIENTE" HorizontalOptions="Center" WidthRequest="150" HeightRequest="40" Margin="0,60,0,0" Clicked="btnCliente_Clicked"/>
+            <BoxView HeightRequest="6" Color="Black" />
+            <Button x:Name="btnEmpleado" Text="SOY EMPLEADO" HorizontalOptions="Center" WidthRequest="150" HeightRequest="40" Clicked="btnEmpleado_Clicked"/>
 
         </StackLayout>
     </ContentPage.Content>

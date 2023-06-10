@@ -71,7 +71,7 @@
 
                 <Grid ColumnDefinitions= "60,*,60">
 
-                    <Button x:Name="btnRegresar" Grid.Column="1" HorizontalOptions="Center" Text="REGRESAR"  Clicked="btnRegresar_Clicked" />
+                    <Button x:Name="btnRegresar" Grid.Column="1" WidthRequest="100" HeightRequest="37" HorizontalOptions="Center" Text="REGRESAR"  Clicked="btnRegresar_Clicked" />
 
                 </Grid>
               

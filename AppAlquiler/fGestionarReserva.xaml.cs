@@ -105,22 +105,16 @@ public partial class fGestionarReserva : ContentPage, IQueryAttributable
         }
     }
 
-    private void btnConsultar_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
-    private async void btnCancelar_Clicked(object sender, EventArgs e)
+    private async void btnSalir_Clicked(object sender, EventArgs e)
     {
         // Navega a la pagína de inicio
         await Shell.Current.GoToAsync($"fIndex");
-       
     }
-
     private void ToolbarItem_Clicked(object sender, EventArgs e)
     {
             // Navega a la pagina de inicio
             Shell.Current.GoToAsync("fIndex");
         
     }
+    
 }

@@ -27,7 +27,7 @@
 
             <Grid ColumnDefinitions="*">
 
-                <Label x:Name="lblMensaje" TextColor="White" FontSize="18" FontAttributes="None" HorizontalOptions="Center"></Label>
+                <Label x:Name="lblMensaje" TextColor="MediumPurple" FontSize="18" FontAttributes="None" HorizontalOptions="Center"></Label>
 
             </Grid>
 
@@ -97,8 +97,8 @@
 
             <Grid ColumnDefinitions= "60,*,10,*,60">
 
-                <Button x:Name="btnGrabar" Grid.Column="1" Text="REGISTRAR"  Clicked="btnGrabar_Clicked" />
-                <Button x:Name="btnConsultar" Grid.Column="3" Text="CONSULTAR"  Clicked="btnConsultar_Clicked"/>
+                <Button x:Name="btnGrabar" Grid.Column="1" WidthRequest="100" HeightRequest="37" Text="REGISTRAR"  Clicked="btnGrabar_Clicked" />
+                <Button x:Name="btnConsultar" Grid.Column="3" WidthRequest="100" HeightRequest="37" Text="CONSULTAR"  Clicked="btnConsultar_Clicked"/>
 
             </Grid>
 
@@ -106,7 +106,7 @@
 
             <Grid ColumnDefinitions= "60,*,60">
 
-                <Button x:Name="btnTodos" Grid.Column="1" HorizontalOptions="Center" Text="DEVOLUCIONES"  Clicked="btnTodos_Clicked" />
+                <Button x:Name="btnTodos" Grid.Column="1" WidthRequest="100" HeightRequest="37" HorizontalOptions="Center" Text="DEVOLUCIONES"  Clicked="btnTodos_Clicked" />
          
             </Grid>
 

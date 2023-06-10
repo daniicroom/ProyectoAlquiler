@@ -54,7 +54,9 @@ public partial class fRegistroCliente : ContentPage, IQueryAttributable
             await _bCliente.GrabarCliente(cliente);
         }
         lblMensaje.Text = "Se grabó el cliente";
-        await Shell.Current.GoToAsync($"fGestionarReserva");
+
+        await Shell.Current.GoToAsync($"fGestionarReserva?Documento={documento}&Nombres={nombre}&Apellidos={apellidos}");
+        
     }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)

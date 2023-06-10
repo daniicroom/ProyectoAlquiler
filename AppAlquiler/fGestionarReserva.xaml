@@ -27,7 +27,7 @@
 
             <Grid ColumnDefinitions="*">
 
-                <Label x:Name="lblMensaje" TextColor="White" FontSize="16" FontAttributes="None" HorizontalOptions="Center"></Label>
+                <Label x:Name="lblMensaje" TextColor="MediumPurple" FontSize="16" FontAttributes="None" HorizontalOptions="Center"></Label>
 
             </Grid>
 
@@ -103,19 +103,10 @@
 
             <Grid ColumnDefinitions= "60,*,10,*,60">
 
-                <Button x:Name="btnGrabar" Grid.Column="1" Text="REGISTRAR"  Clicked="btnGrabar_Clicked" />
-                <Button x:Name="btnConsultar" Grid.Column="3" Text="CONSULTAR"  Clicked="btnConsultar_Clicked" />
+                <Button x:Name="btnGrabar" Grid.Column="1" WidthRequest="100" HeightRequest="37" Text="REGISTRAR"  Clicked="btnGrabar_Clicked" />
+                <Button x:Name="btnSalir" Grid.Column="3" WidthRequest="100" HeightRequest="37" Text="SALIR" HorizontalOptions="Center" Clicked="btnSalir_Clicked" />
 
             </Grid>
-
-            <BoxView HeightRequest="7" Color="Black" />
-
-            <Grid ColumnDefinitions= "60,*,60">
-
-                <Button x:Name="btnCancelar" Grid.Column="1" Text="CANCELAR" HorizontalOptions="Center" Clicked="btnCancelar_Clicked" />
-
-            </Grid>
-
 
         </StackLayout>
 

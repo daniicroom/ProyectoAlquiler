@@ -18,7 +18,7 @@
            
             <Grid ColumnDefinitions="*">
 
-                <Label x:Name="lblMensaje" TextColor="White" FontSize="15" FontAttributes="None" HorizontalOptions="Center"></Label>
+                <Label x:Name="lblMensaje" TextColor="MediumPurple" FontSize="15" FontAttributes="None" HorizontalOptions="Center"></Label>
 
             </Grid>
 
@@ -92,8 +92,8 @@
 
             <Grid ColumnDefinitions= "60,*,10,*,60">
 
-                <Button x:Name="btnRegistrar" Grid.Column="1" Text="REGISTRAR"  Clicked="btnRegistrar_Clicked" />
-                <Button x:Name="btnAtras" Grid.Column="3" Text="ATRAS"  Clicked="btnAtras_Clicked" />
+                <Button x:Name="btnRegistrar" Grid.Column="1" WidthRequest="100" HeightRequest="37" Text="REGISTRAR"  Clicked="btnRegistrar_Clicked" />
+                <Button x:Name="btnAtras" Grid.Column="3" WidthRequest="100" HeightRequest="37" Text="ATRAS"  Clicked="btnAtras_Clicked" />
 
             </Grid>
 
